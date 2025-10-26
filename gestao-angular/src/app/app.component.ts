@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {PessoaService} from "./shared/service/pessoa.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'gestao-angular';
+
+  constructor(private service:PessoaService) {
+  }
+  tt(event: MouseEvent) {
+    return this.service.getAll().subscribe(pessoa =>{
+      console.log(pessoa);
+    })
+  }
 }
