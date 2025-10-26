@@ -1,12 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {PessoaComponent} from "./pages/pessoa-component/pessoa.component";
 
 const routes: Routes = [
 
-  {path: 'pessoa', component: PessoaComponent},
-  // {path: 'pages/pessoa/edit', component: PessoaComponent},
-  // {path: 'pages/pessoa/edit/:id', component: PessoaComponent},
+  // Carregando todos os modulos pelo filhos
+
+  {path: 'cadastros', loadChildren: () => import('./pages/cadastros/cadastros.module').then(m => m.CadastrosModule)},
 
 ];
 

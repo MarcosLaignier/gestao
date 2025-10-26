@@ -9,11 +9,4 @@ import {PessoaService} from "./shared/service/pessoa.service";
 export class AppComponent {
   title = 'gestao-angular';
 
-  constructor(private service:PessoaService) {
-  }
-  tt(event: MouseEvent) {
-    return this.service.getAll().subscribe(pessoa =>{
-      console.log(pessoa);
-    })
-  }
 }

@@ -7,12 +7,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {PessoaService} from "./shared/service/pessoa.service";
 import {HttpClientModule} from "@angular/common/http";
 import {AngularMaterialModule} from "./angular.material.module";
-import {PessoaComponent} from "./pages/pessoa-component/pessoa.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    PessoaComponent
+
 
   ],
   imports: [

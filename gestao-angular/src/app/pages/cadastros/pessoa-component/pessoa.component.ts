@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {PessoaService} from "../../shared/service/pessoa.service";
+import {PessoaService} from "../../../shared/service/pessoa.service";
 
 
 @Component({
