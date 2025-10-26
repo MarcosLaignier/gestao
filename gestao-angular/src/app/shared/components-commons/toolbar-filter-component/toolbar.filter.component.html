@@ -1,13 +1,17 @@
- <div class="button-panel">
+<div class="header-panel">
+  <h3 class="page-title">{{tituloPagina}}</h3>
+  <div class="button-panel">
     <button mat-raised-button color="primary" (click)="filtrarClick($event)">
       <mat-icon>search</mat-icon> Buscar
     </button>
 
     <button mat-raised-button color="accent" (click)="limparClick($event)">
-      <mat-icon>refresh</mat-icon> Limpar
+      <mat-icon>refresh</mat-icon> Atualizar
     </button>
 
     <button mat-raised-button color="warn" (click)="fecharClick($event)">
       <mat-icon>close</mat-icon> Fechar
     </button>
   </div>
+</div>
+

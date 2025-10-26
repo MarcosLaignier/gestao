@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'toolbar-filter-component',
@@ -6,6 +6,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./toolbar.filter.component.scss']
 })
 export class ToolbarFilterComponent {
+
+  @Input() tituloPagina: string = '';
+
   @Output() filtrar = new EventEmitter<void>();
   @Output() limpar = new EventEmitter<void>();
   @Output() fechar = new EventEmitter<void>();

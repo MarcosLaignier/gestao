@@ -1,13 +1,8 @@
 <div>
-  <toolbar-filter-component
-   (filtrar)="getPessoas($event)">
+  <toolbar-filter-component [tituloPagina]="'Listagem de Pessoas'"
+                            (filtrar)="getPessoas($event)">
 
   </toolbar-filter-component>
-  <!--  <button matButton (click)="getPessoas($event)">Filtrar</button>-->
-
-  <!--  <button matButton (click)="filtrarClick($event)">Filtrar</button>-->
-  <!--  <button matButton (click)="limparClick($event)">Limpar</button>-->
-  <!--  <button matButton (click)="fecharClic($event)">Fechar</button>-->
 </div>
 
 <mat-card class="example-card" appearance="outlined">
