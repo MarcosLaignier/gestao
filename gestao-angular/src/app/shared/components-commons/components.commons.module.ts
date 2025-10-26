@@ -1,17 +1,17 @@
 import {NgModule} from "@angular/core";
-import {TableLineComponent} from "./table-line/table.line.component";
 import {AngularMaterialModule} from "../../angular.material.module";
-import {CommonModule} from "@angular/common";
-import {TabelaComponent} from "./tabela-component/tabela.component";
+import {ToolbarFilterComponent} from "./toolbar-filter-component/toolbar.filter.component";
 
 @NgModule({
   declarations: [
+    ToolbarFilterComponent
   ],
   imports: [
     AngularMaterialModule,
 
   ],
   exports:[
+    ToolbarFilterComponent
   ],
   providers: [
   ],

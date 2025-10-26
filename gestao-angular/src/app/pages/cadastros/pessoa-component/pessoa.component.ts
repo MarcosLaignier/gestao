@@ -15,7 +15,7 @@ export class PessoaComponent {
   constructor(private service:PessoaService) {
   }
 
-  getPessoas(event: MouseEvent) {
+  getPessoas(event:any) {
     return this.service.getAll().subscribe(pessoas =>{
       this.dataSource = pessoas
     })

@@ -3,6 +3,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {PessoaService} from "../../shared/service/pessoa.service";
 import {AngularMaterialModule} from "../../angular.material.module";
 import {PessoaComponent} from "./pessoa-component/pessoa.component";
+import {ComponentsCommonsModule} from "../../shared/components-commons/components.commons.module";
 
 const routes : Routes = [
 
@@ -16,6 +17,7 @@ const routes : Routes = [
   imports: [
     RouterModule.forChild(routes),
     AngularMaterialModule,
+    ComponentsCommonsModule,
   ],
   exports:[
     RouterModule

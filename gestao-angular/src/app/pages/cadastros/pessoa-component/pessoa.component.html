@@ -1,32 +1,49 @@
 <div>
-  <button matButton (click)="getPessoas($event)">Busca Pessoas</button>
+  <toolbar-filter-component
+   (filtrar)="getPessoas($event)">
+
+  </toolbar-filter-component>
+  <!--  <button matButton (click)="getPessoas($event)">Filtrar</button>-->
+
+  <!--  <button matButton (click)="filtrarClick($event)">Filtrar</button>-->
+  <!--  <button matButton (click)="limparClick($event)">Limpar</button>-->
+  <!--  <button matButton (click)="fecharClic($event)">Fechar</button>-->
 </div>
 
+<mat-card class="example-card" appearance="outlined">
+  <mat-card-header>
+    <mat-toolbar color="primary">
+      <span>Pessoas</span>
+    </mat-toolbar>
+  </mat-card-header>
+  <mat-card-content>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-  <ng-container matColumnDef="nome">
-    <th mat-header-cell *matHeaderCellDef> Nome </th>
-    <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
-  </ng-container>
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef> Nome </th>
+        <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="nascimento">
-    <th mat-header-cell *matHeaderCellDef> Nascimento </th>
-    <td mat-cell *matCellDef="let element"> {{element.nascimento}} </td>
-  </ng-container>
+      <ng-container matColumnDef="nascimento">
+        <th mat-header-cell *matHeaderCellDef> Nascimento </th>
+        <td mat-cell *matCellDef="let element"> {{element.nascimento}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="documento">
-    <th mat-header-cell *matHeaderCellDef> Documento </th>
-    <td mat-cell *matCellDef="let element"> {{element.documento}} </td>
-  </ng-container>
+      <ng-container matColumnDef="documento">
+        <th mat-header-cell *matHeaderCellDef> Documento </th>
+        <td mat-cell *matCellDef="let element"> {{element.documento}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="situacao">
-    <th mat-header-cell *matHeaderCellDef> Situacao </th>
-    <td mat-cell *matCellDef="let element"> {{element.situacao}} </td>
-  </ng-container>
+      <ng-container matColumnDef="situacao">
+        <th mat-header-cell *matHeaderCellDef> Situacao </th>
+        <td mat-cell *matCellDef="let element"> {{element.situacao}} </td>
+      </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>
 
 

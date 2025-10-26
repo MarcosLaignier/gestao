@@ -1,0 +1,28 @@
+.button-panel {
+  display: flex;
+  gap: 8px;             /* Espaço entre os botões */
+  justify-content: flex-end; /* Alinha à direita */
+  padding: 4px 0;       /* Pouco padding */
+}
+
+.button-panel button {
+  font-size: 13px;
+  padding: 4px 12px;    /* Padding horizontal, vertical mínimo */
+  min-height: 28px;     /* Altura compacta */
+  display: flex;
+  align-items: center;
+  gap: 4px;             /* Espaço entre ícone e texto */
+  border-radius: 4px;   /* Borda discreta */
+  border: 1px solid #ccc; /* borda fina e discreta */
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s; /* animação suave */
+}
+
+.button-panel button:hover {
+  background-color: #f0f0f0; /* muda fundo levemente */
+  transform: translateY(-1px); /* efeito de elevação sutil */
+}
+
+.button-panel button:last-child {
+  margin-right: 8px; /* espaço do último botão para a borda */
+}
