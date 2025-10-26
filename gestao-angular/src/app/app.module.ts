@@ -6,13 +6,13 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {PessoaService} from "./shared/service/pessoa.service";
 import {HttpClientModule} from "@angular/common/http";
-import {PessoaCrudComponent} from "../pages/pessoa-component/pessoa.crud.component";
 import {AngularMaterialModule} from "./angular.material.module";
+import {PessoaComponent} from "./pages/pessoa-component/pessoa.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    PessoaCrudComponent
+    PessoaComponent
 
   ],
   imports: [
