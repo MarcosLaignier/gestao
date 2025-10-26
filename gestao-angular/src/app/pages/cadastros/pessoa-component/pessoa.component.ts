@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
 import {PessoaService} from "../../../shared/service/pessoa.service";
+import {Pessoa} from "../../../shared/model/pessoa";
 
 
 @Component({
@@ -9,12 +10,14 @@ import {PessoaService} from "../../../shared/service/pessoa.service";
 })
 export class PessoaComponent {
 
+  dataSource: Pessoa[];
+  displayedColumns = ['nome', 'nascimento', 'documento', 'situacao']
   constructor(private service:PessoaService) {
   }
 
   getPessoas(event: MouseEvent) {
-    return this.service.getAll().subscribe(pessoa =>{
-      console.log(pessoa);
+    return this.service.getAll().subscribe(pessoas =>{
+      this.dataSource = pessoas
     })
   }
 

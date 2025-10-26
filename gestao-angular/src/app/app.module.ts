@@ -11,8 +11,6 @@ import {AngularMaterialModule} from "./angular.material.module";
 @NgModule({
   declarations: [
     AppComponent,
-
-
   ],
   imports: [
     BrowserModule,
@@ -20,9 +18,12 @@ import {AngularMaterialModule} from "./angular.material.module";
     BrowserAnimationsModule,
     HttpClientModule,
     AngularMaterialModule,
+
   ],
   providers: [
     PessoaService],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
