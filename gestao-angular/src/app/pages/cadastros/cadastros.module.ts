@@ -21,7 +21,6 @@ const routes : Routes = [
     ComponentsCommonsModule,
     DatePipe,
     TitleCasePipe,
-    CommonModule,
   ],
   exports:[
     RouterModule

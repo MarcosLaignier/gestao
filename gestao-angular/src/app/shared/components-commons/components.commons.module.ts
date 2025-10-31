@@ -2,6 +2,7 @@ import {NgModule} from "@angular/core";
 import {AngularMaterialModule} from "../../angular.material.module";
 import {ToolbarFilterComponent} from "./toolbar-filter-component/toolbar.filter.component";
 import {GridColumnComponent} from "./grid-column-component/grid.column.component";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -10,6 +11,8 @@ import {GridColumnComponent} from "./grid-column-component/grid.column.component
   ],
   imports: [
     AngularMaterialModule,
+    CommonModule,
+
 
   ],
   exports:[
