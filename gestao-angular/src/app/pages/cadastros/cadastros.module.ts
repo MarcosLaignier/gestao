@@ -4,7 +4,7 @@ import {PessoaService} from "../../shared/service/pessoa.service";
 import {AngularMaterialModule} from "../../angular.material.module";
 import {PessoaComponent} from "./pessoa-component/pessoa.component";
 import {ComponentsCommonsModule} from "../../shared/components-commons/components.commons.module";
-import {DatePipe, TitleCasePipe} from "@angular/common";
+import {CommonModule, DatePipe, TitleCasePipe} from "@angular/common";
 
 const routes : Routes = [
 
@@ -21,6 +21,7 @@ const routes : Routes = [
     ComponentsCommonsModule,
     DatePipe,
     TitleCasePipe,
+    CommonModule,
   ],
   exports:[
     RouterModule

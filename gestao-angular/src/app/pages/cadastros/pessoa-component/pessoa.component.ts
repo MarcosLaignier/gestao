@@ -10,7 +10,7 @@ import {Pessoa} from "../../../shared/model/pessoa";
 })
 export class PessoaComponent {
 
-  dataSource: Pessoa[];
+  dataSource: Pessoa[] = [];
   displayedColumns = ['nome', 'nascimento', 'documento', 'situacao']
   constructor(private service:PessoaService) {
   }

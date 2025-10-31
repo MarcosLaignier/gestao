@@ -1,17 +1,8 @@
-<div class="header-panel">
-  <h3 class="page-title">{{tituloPagina}}</h3>
-  <div class="button-panel">
-    <button mat-raised-button color="primary" (click)="filtrarClick($event)">
-      <mat-icon>search</mat-icon> Buscar
-    </button>
-
-    <button mat-raised-button color="accent" (click)="limparClick($event)">
-      <mat-icon>refresh</mat-icon> Atualizar
-    </button>
-
-    <button mat-raised-button color="warn" (click)="fecharClick($event)">
-      <mat-icon>close</mat-icon> Fechar
-    </button>
-  </div>
+<div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2 header-panel">
+    <h3 class="mb-0 fw-semibold text-dark">{{ tituloPagina }}</h3>
+    <div class="d-flex gap-2">
+        <button type="button" class="btn btn-outline-secondary" (click)="filtrarClick($event)">Filtrar</button>
+        <button type="button" class="btn btn-outline-secondary" (click)="limparClick($event)">Limpar</button>
+        <button type="button" class="btn btn-outline-secondary" (click)="fecharClick($event)">Fechar</button>
+    </div>
 </div>
-
