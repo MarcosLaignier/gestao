@@ -13,4 +13,5 @@ export class Pessoa{
   situacao: AtivoInativoEnum;
 
   versao: number;
+
 }

@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
-
+import {Component, Input} from '@angular/core';
+import * as _ from 'lodash';
+import {startCase} from "lodash";
 @Component({
   selector: 'grid-column',
   templateUrl: './grid.column.component.html',
@@ -7,31 +8,38 @@ import { Component, Input } from '@angular/core';
 })
 export class GridColumnComponent {
 
-  @Input()
-  dataSource: any[] = [];
-  @Input()
-  columns: string[] = [];
+  @Input() dataSource: any[] = [];
+
+  @Input() columns: string[] = [];
 
   ngOnInit() {
-    // Exemplo de dataSource
 
-    // Pega as chaves do primeiro objeto para gerar colunas
-    if (this.dataSource.length > 0) {
+    // Pega as chaves do primeiro objeto para gerar colunas caso nao tenha colunas
+    if (this.dataSource.length > 0 && _.isEmpty(this.columns)) {
       this.columns = Object.keys(this.dataSource[0]);
     }
   }
 
   formatValue(row: any, key: string) {
-    const value = row[key];
+    let value = row[key];
 
-    if (value instanceof Date) {
-      return new Intl.DateTimeFormat('pt-BR').format(value); // formata data
+    // Se for string e parecer uma data, converte
+    if (typeof value === 'string' && /^\d{4}-\d{2}-\d{2}/.test(value)) {
+      value = new Date(value);
     }
 
-    if (typeof value === 'string') {
-      return value.charAt(0).toUpperCase() + value.slice(1); // titlecase simples
+    if (value instanceof Date) {
+      const d = value.getDate().toString().padStart(2, '0');
+      const m = (value.getMonth() + 1).toString().padStart(2, '0');
+      const y = value.getFullYear();
+      return `${d}-${m}-${y}`;
     }
 
     return value;
+  }
+
+  formatTitle(col: string): string {
+    if (!col) return '';
+    return startCase(col.replace(/[._]/g, ' '));
   }
 }

@@ -2,9 +2,7 @@ import {Directive, Injector, Input} from "@angular/core";
 import {BaseCrudPadrao} from "./base.crud.padrao";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import notify from "devextreme/ui/notify";
 import {CrudServicePadrao} from "../service/crud.service.padrao";
-import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Directive()
@@ -17,6 +15,8 @@ export abstract class CrudPadrao<T,F> extends BaseCrudPadrao{
   model:T;
 
   dataSource: T[] = [];
+
+  http: HttpClient
 
   getFilter(): any {
     return this.filter;
@@ -60,11 +60,11 @@ export abstract class CrudPadrao<T,F> extends BaseCrudPadrao{
     if(this.validateSave()){
       this.getMainService().save(model).subscribe(res => {
         if (res.ok) {
-          notify('Salvo com sucesso', 'success', 3000);
+          // notify('Salvo com sucesso', 'success', 3000);
         }
         return res;
       },error => {
-        notify('Algo deu errado ao tentar salvar', 'error', 3000);
+        // notify('Algo deu errado ao tentar salvar', 'error', 3000);
         return error;
 
       })
@@ -106,54 +106,6 @@ export abstract class CrudPadrao<T,F> extends BaseCrudPadrao{
 
   }
 
-  getByidRoute(id:string, modelCrud:T){
-    this.navigateToEdit(false,id);
-    return this.getMainService().getById(id).subscribe(resp =>{
-      if(resp.body){
-        this.model = resp.body;
-        console.log(this.model)
-      }
-    })
-  }
-
-  /** Metodo responsavel por navegar ate a rota de edit diante da rota atual
-   *
-   */
-  navigateToEdit(novo:boolean, idEdicao:any) {
-    // Obtendo a rota atual
-    const currentRoute = this.activatedRoute.snapshot.url.map(segment => segment.path).join('/');
-    // Montando a nova rota
-
-    let newRoute = `${currentRoute}`
-    if(!this.router.url.split('/').includes('edit')){
-      newRoute += `/edit`;
-    }
-    if(!novo){
-      this.activatedRoute.paramMap.subscribe(params => {
-        const idRota = params.get('id'); // Tentativa de pegar o 'id' da rota
-
-        if (!idRota) {
-          newRoute += `/${idEdicao}`;
-
-        } else {
-        }
-      })
-    }
-
-    // Navegando para a nova rota
-    this.router.navigate([newRoute]);
-  }
-
-  protected override doOnInit() {
-
-    let isEditing: boolean = this.router.url.split('/').includes('edit');
-if(isEditing){
-
-}
-    super.doOnInit();
-  }
-
-
 
 
 
@@ -172,10 +124,7 @@ if(isEditing){
 
 
   constructor( private _injector:Injector,
-               private urlPrefix:string,
-               protected http: HttpClient,
-               protected activatedRoute: ActivatedRoute,
-               protected router: Router) {
+               private urlPrefix:string) {
     super(_injector)
   }
 }

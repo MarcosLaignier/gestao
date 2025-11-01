@@ -1,6 +1,8 @@
-import {Component} from "@angular/core";
+import {Component, Injector} from "@angular/core";
 import {PessoaService} from "../../../shared/service/pessoa.service";
 import {Pessoa} from "../../../shared/model/pessoa";
+import {CrudPadrao} from "../../../shared/utils/crud/crud.padrao";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -8,17 +10,18 @@ import {Pessoa} from "../../../shared/model/pessoa";
   templateUrl: './pessoa.component.html',
   styleUrls: ['./pessoa.component.scss']
 })
-export class PessoaComponent {
+export class PessoaComponent extends CrudPadrao<Pessoa, any>{
 
-  dataSource: Pessoa[] = [];
   displayedColumns = ['nome', 'nascimento', 'documento', 'situacao']
-  constructor(private service:PessoaService) {
+
+  constructor(injector: Injector,
+              private mainService:PessoaService,
+              private router:Router) {
+    super(injector, "pessoa");
   }
 
-  getPessoas(event:any) {
-    return this.service.getAll().subscribe(pessoas =>{
-      this.dataSource = pessoas
-    })
+  override getMainService(): any {
+    return this.mainService;
   }
 
 }
