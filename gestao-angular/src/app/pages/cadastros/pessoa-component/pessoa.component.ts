@@ -6,7 +6,7 @@ import {Router} from "@angular/router";
 
 
 @Component({
-  selector: 'app-root',
+  selector: 'pessoa-component',
   templateUrl: './pessoa.component.html',
   styleUrls: ['./pessoa.component.scss']
 })

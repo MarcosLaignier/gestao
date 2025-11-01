@@ -5,6 +5,7 @@ import {AngularMaterialModule} from "../../angular.material.module";
 import {PessoaComponent} from "./pessoa-component/pessoa.component";
 import {ComponentsCommonsModule} from "../../shared/components-commons/components.commons.module";
 import {CommonModule, DatePipe, TitleCasePipe} from "@angular/common";
+import {PessoaFilterComponent} from "./pessoa-component/pessoa-filter/pessoa.filter.component";
 
 const routes : Routes = [
 
@@ -13,7 +14,8 @@ const routes : Routes = [
 ]
 @NgModule({
   declarations: [
-    PessoaComponent
+    PessoaComponent,
+    PessoaFilterComponent
   ],
   imports: [
     RouterModule.forChild(routes),
