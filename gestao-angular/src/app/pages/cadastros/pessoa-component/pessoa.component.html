@@ -5,7 +5,9 @@
     </toolbar-filter-component>
 </div>
 
-<grid-column [columns]="displayedColumns"
+
+<grid-column [typeDataSource]="dataSourceType"
+             [columns]="displayedColumns"
              [dataSource]="dataSource">
 
 </grid-column>

@@ -3,13 +3,13 @@ import * as _ from 'lodash';
 import {startCase} from "lodash";
 @Component({
   selector: 'grid-column',
-  templateUrl: './grid.column.component.html',
-  styleUrls: ['./grid.column.component.scss']
+  templateUrl: './grid.component.html',
+  styleUrls: ['./grid.component.scss']
 })
-export class GridColumnComponent {
+export class GridComponent {
 
+  @Input() typeDataSource:any;
   @Input() dataSource: any[] = [];
-
   @Input() columns: string[] = [];
 
   ngOnInit() {

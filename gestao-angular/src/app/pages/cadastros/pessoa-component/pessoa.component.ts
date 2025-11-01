@@ -13,6 +13,7 @@ import {Router} from "@angular/router";
 export class PessoaComponent extends CrudPadrao<Pessoa, any>{
 
   displayedColumns = ['nome', 'nascimento', 'documento', 'situacao']
+  dataSourceType = Pessoa;
 
   constructor(injector: Injector,
               private mainService:PessoaService,

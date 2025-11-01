@@ -1,0 +1,18 @@
+grid-component{
+  .table-hover tbody tr:hover {
+    background-color: #f6f8fa; /* tom leve ao passar o mouse */
+  }
+
+  .table td, .table th {
+    padding: 0.75rem 1rem; /* mais espaçamento */
+    vertical-align: middle;
+  }
+
+  .table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f8f9fa;
+    z-index: 1;
+  }
+
+}
