@@ -1,0 +1,47 @@
+<div class="d-flex">
+  <!-- Sidebar -->
+  <nav class="sidebar bg-light border-end vh-100 p-3">
+    <h5 class="mb-4 text-primary fw-bold">Gestão</h5>
+
+    <ul class="nav flex-column">
+      <li *ngFor="let item of menuItems" class="nav-item mb-2">
+
+        <!-- Item com submenu -->
+        <ng-container *ngIf="item.children; else simpleItem">
+          <a class="nav-link d-flex justify-content-between align-items-center text-dark"
+             href="javascript:void(0)"
+             (click)="toggleSubmenu(item)">
+            <span class="d-flex align-items-center">
+              <i class="bi {{ item.icon }} me-2 text-primary"></i>
+              {{ item.label }}
+            </span>
+            <i class="bi bi-chevron-down small"
+               [class.rotate]="item.expanded"></i>
+          </a>
+
+          <ul class="nav flex-column ps-4 mt-1 submenu"
+              [class.show]="item.expanded">
+            <li *ngFor="let sub of item.children" class="nav-item mb-1">
+              <a [routerLink]="sub.route"
+                 routerLinkActive="active"
+                 class="nav-link text-dark d-flex align-items-center">
+                <i class="bi {{ sub.icon }} me-2"></i> {{ sub.label }}
+              </a>
+            </li>
+          </ul>
+        </ng-container>
+
+        <!-- Item simples -->
+        <ng-template #simpleItem>
+          <a [routerLink]="item.route"
+             routerLinkActive="active"
+             class="nav-link text-dark d-flex align-items-center">
+            <i class="bi {{ item.icon }} me-2 text-primary"></i>
+            {{ item.label }}
+          </a>
+        </ng-template>
+
+      </li>
+    </ul>
+  </nav>
+</div>

@@ -1,14 +1,8 @@
-<mat-toolbar color="primary">
-  <span>Gestão</span>
+<div class="d-flex">
+  <side-bar-component></side-bar-component>
 
-<!--  <section>-->
-<!--    <div class="example-label">Outlined</div>-->
-<!--    <div class="example-button-row">-->
-<!--      <button matButton="outlined">Basic</button>-->
-<!--      <button matButton="outlined" disabled>Disabled</button>-->
-<!--      <a matButton="outlined" href="https://www.google.com/" target="_blank">Link</a>-->
-<!--    </div>-->
-<!--  </section>-->
-</mat-toolbar>
-
-<router-outlet></router-outlet>
+  <!-- Conteúdo -->
+  <div class="flex-grow-1 p-4">
+    <router-outlet></router-outlet>
+  </div>
+</div>

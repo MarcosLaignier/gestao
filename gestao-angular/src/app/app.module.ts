@@ -7,6 +7,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {PessoaService} from "./shared/service/pessoa.service";
 import {HttpClientModule} from "@angular/common/http";
 import {AngularMaterialModule} from "./angular.material.module";
+import {ComponentsCommonsModule} from "./shared/components-commons/components.commons.module";
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {AngularMaterialModule} from "./angular.material.module";
     BrowserAnimationsModule,
     HttpClientModule,
     AngularMaterialModule,
+    ComponentsCommonsModule,
 
   ],
   providers: [

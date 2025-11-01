@@ -9,4 +9,5 @@ import {PessoaService} from "./shared/service/pessoa.service";
 export class AppComponent {
   title = 'gestao-angular';
 
+
 }
