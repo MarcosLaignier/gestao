@@ -8,12 +8,14 @@ import {PessoaService} from "./shared/service/pessoa.service";
 import {HttpClientModule} from "@angular/common/http";
 import {AngularMaterialModule} from "./angular.material.module";
 import {ComponentsCommonsModule} from "./shared/components-commons/components.commons.module";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -23,7 +25,8 @@ import {ComponentsCommonsModule} from "./shared/components-commons/components.co
 
   ],
   providers: [
-    PessoaService],
+    PessoaService
+  ],
   exports: [
   ],
   bootstrap: [AppComponent]

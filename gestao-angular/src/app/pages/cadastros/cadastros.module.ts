@@ -6,6 +6,8 @@ import {PessoaComponent} from "./pessoa-component/pessoa.component";
 import {ComponentsCommonsModule} from "../../shared/components-commons/components.commons.module";
 import {CommonModule, DatePipe, TitleCasePipe} from "@angular/common";
 import {PessoaFilterComponent} from "./pessoa-component/pessoa-filter/pessoa.filter.component";
+import {AppModule} from "../../app.module";
+import {FormsModule} from "@angular/forms";
 
 const routes : Routes = [
 
@@ -23,6 +25,7 @@ const routes : Routes = [
     ComponentsCommonsModule,
     DatePipe,
     TitleCasePipe,
+    FormsModule
   ],
   exports:[
     RouterModule

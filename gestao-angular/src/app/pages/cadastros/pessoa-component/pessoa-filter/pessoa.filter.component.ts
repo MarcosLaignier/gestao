@@ -6,4 +6,9 @@ import {Component} from "@angular/core";
 })
 export class PessoaFilterComponent {
 
+  tt:any;
+
+  teste() {
+    console.log(this.tt)
+  }
 }

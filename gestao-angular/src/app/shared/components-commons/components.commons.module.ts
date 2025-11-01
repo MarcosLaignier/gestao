@@ -5,17 +5,21 @@ import {GridComponent} from "./grid-column-component/grid.component";
 import {CommonModule} from "@angular/common";
 import {SideBarComponent} from "./side-bar-component/side.bar.component";
 import {RouterLink} from "@angular/router";
+import {TextBoxComponent} from "./text-box-component/text.box.component";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     ToolbarFilterComponent,
     GridComponent,
     SideBarComponent,
+    TextBoxComponent,
   ],
   imports: [
     AngularMaterialModule,
     CommonModule,
     RouterLink,
+    FormsModule,
 
 
   ],
@@ -23,6 +27,7 @@ import {RouterLink} from "@angular/router";
     ToolbarFilterComponent,
     GridComponent,
     SideBarComponent,
+    TextBoxComponent,
   ],
   providers: [
   ],
