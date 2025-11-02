@@ -13,12 +13,13 @@ export abstract class FormFieldBase<T> {
    */
   @Input() label: string = ''
 
+
+  private _dataField!: T;
+
   /** dataField dos componentes, com two-way dataBind
    *
    * @private
    */
-  private _dataField!: T;
-
   @Input()
   get dataField(): T {
     return this._dataField;
