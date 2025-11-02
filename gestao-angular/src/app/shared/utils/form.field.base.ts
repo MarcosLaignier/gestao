@@ -1,8 +1,22 @@
-import {Input, Output, EventEmitter, Directive} from '@angular/core';
+import {Directive, EventEmitter, Input, Output} from '@angular/core';
 
 @Directive()
 export abstract class FormFieldBase<T> {
 
+  /** Responsavel por aplicar o css do bootstrap na div externa ao component
+   *
+   */
+  @Input() colClass: string = 'col-md-2';
+
+  /** Responsavel por aplicar o label no component
+   *
+   */
+  @Input() label: string = ''
+
+  /** dataField dos componentes, com two-way dataBind
+   *
+   * @private
+   */
   private _dataField!: T;
 
   @Input()

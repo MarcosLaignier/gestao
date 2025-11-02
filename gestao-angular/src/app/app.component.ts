@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import {PessoaService} from "./shared/service/pessoa.service";
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',

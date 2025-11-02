@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component} from "@angular/core";
 import {FormFieldBase} from "../../utils/form.field.base";
 
 @Component({
@@ -8,7 +8,6 @@ import {FormFieldBase} from "../../utils/form.field.base";
   styles: [':host { display: contents; }']
 })
 export class DateBoxComponent extends FormFieldBase<Date> {
-  @Input() colClass: string = 'col-md-2';
-  @Input() label: string = ''
+
 
 }

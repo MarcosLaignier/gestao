@@ -16,28 +16,28 @@ interface MenuItem {
 export class SideBarComponent{
 
   menuItems: MenuItem[] = [
-    {
-      label: 'Dashboard',
-      icon: 'bi-house',
-      route: '/dashboard'
-    },
+    // {
+    //   label: 'Dashboard',
+    //   icon: 'bi-house',
+    //   route: '/dashboard'
+    // },
     {
       label: 'Cadastro',
       icon: 'bi-folder2-open',
       children: [
         { label: 'Pessoas', icon: 'bi-person', route: '/cadastros/pessoa' },
-        { label: 'Empresas', icon: 'bi-building', route: '/cadastro/empresas' },
-        { label: 'Produtos', icon: 'bi-box-seam', route: '/cadastro/produtos' }
+        // { label: 'Empresas', icon: 'bi-building', route: '/cadastro/empresas' },
+        // { label: 'Produtos', icon: 'bi-box-seam', route: '/cadastro/produtos' }
       ]
     },
-    {
-      label: 'Financeiro',
-      icon: 'bi-cash-coin',
-      children: [
-        { label: 'Contas a Pagar', icon: 'bi-arrow-down-circle', route: '/financeiro/pagar' },
-        { label: 'Contas a Receber', icon: 'bi-arrow-up-circle', route: '/financeiro/receber' }
-      ]
-    },
+    // {
+    //   label: 'Financeiro',
+    //   icon: 'bi-cash-coin',
+    //   children: [
+    //     { label: 'Contas a Pagar', icon: 'bi-arrow-down-circle', route: '/financeiro/pagar' },
+    //     { label: 'Contas a Receber', icon: 'bi-arrow-up-circle', route: '/financeiro/receber' }
+    //   ]
+    // },
     {
       label: 'Configurações',
       icon: 'bi-gear',

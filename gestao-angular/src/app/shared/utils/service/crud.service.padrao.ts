@@ -1,6 +1,5 @@
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../enviroment";
-import {Observable} from "rxjs";
 
 export class CrudServicePadrao<T,F> {
 

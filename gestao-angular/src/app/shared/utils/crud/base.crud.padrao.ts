@@ -1,11 +1,15 @@
 import {
   AfterContentChecked,
-  AfterContentInit, AfterViewChecked,
+  AfterContentInit,
+  AfterViewChecked,
   AfterViewInit,
   Directive,
-  DoCheck, Injector,
-  OnChanges, OnDestroy,
-  OnInit, SimpleChanges
+  DoCheck,
+  Injector,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges
 } from "@angular/core";
 
 @Directive()

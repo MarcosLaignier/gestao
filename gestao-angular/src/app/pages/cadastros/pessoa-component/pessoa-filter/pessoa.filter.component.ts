@@ -1,4 +1,5 @@
 import {Component} from "@angular/core";
+import {AtivoInativoEnum} from "../../../../shared/enum/ativo.inativo.enum";
 
 @Component({
   selector: 'pessoa-filter-component',
@@ -6,9 +7,13 @@ import {Component} from "@angular/core";
 })
 export class PessoaFilterComponent {
 
+  situacaoSelecionada: AtivoInativoEnum | '' = '';
+  SituacaoEnum = AtivoInativoEnum;
+
   tt:any;
 
   teste() {
     console.log(this.tt)
+    console.log(this.situacaoSelecionada)
   }
 }

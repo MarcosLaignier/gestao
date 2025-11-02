@@ -12,14 +12,11 @@
       <date-box-component [label]="'Nascimento Até'" [colClass]="'col-md-2'"></date-box-component>
     </div>
 
-    <div class="col-md-2">
-      <label for="situacao" class="form-label">Situação</label>
-      <select class="form-select" id="situacao">
-        <option value="">Todas</option>
-        <option value="ATIVO">Ativo</option>
-        <option value="INATIVO">Inativo</option>
-      </select>
-    </div>
+    <select-enum [label]="'Situação'"
+                 [enumObject]="SituacaoEnum"
+                 [(dataField)]="situacaoSelecionada"
+                 placeholder="Todas">
+    </select-enum>
   </div>
 
   <button (click)="teste()"></button>

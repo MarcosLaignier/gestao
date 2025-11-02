@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import * as _ from 'lodash';
-import {startCase} from "lodash";
+import {startCase} from 'lodash';
+
 @Component({
   selector: 'grid-column',
   templateUrl: './grid.component.html',

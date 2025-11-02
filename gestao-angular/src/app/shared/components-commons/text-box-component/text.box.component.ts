@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from "@angular/core";
+import {Component} from "@angular/core";
 import {FormFieldBase} from "../../utils/form.field.base";
 
 @Component({
@@ -9,20 +9,5 @@ import {FormFieldBase} from "../../utils/form.field.base";
   styles: [':host { display: contents; }']
 })
 export class TextBoxComponent extends FormFieldBase<string> {
-  @Input() colClass: string = 'col-md-2';
-  @Input() label: string = ''
-  // private _dataField:any;
-  //
-  //
-  // @Input()
-  // get dataField() {
-  //   return this._dataField;
-  // }
-  // set dataField(val: any) {
-  //   this._dataField = val;
-  //   this.dataFieldChange.emit(this._dataField);
-  // }
-  //
-  // @Output() dataFieldChange = new EventEmitter<any>();
 
 }

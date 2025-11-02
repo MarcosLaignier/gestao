@@ -8,6 +8,7 @@ import {RouterLink} from "@angular/router";
 import {TextBoxComponent} from "./text-box-component/text.box.component";
 import {FormsModule} from "@angular/forms";
 import {DateBoxComponent} from "./date-box-component/date.box.component";
+import {SelectEnumComponent} from "./select-enum-component/select.enum.component";
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import {DateBoxComponent} from "./date-box-component/date.box.component";
     SideBarComponent,
     TextBoxComponent,
     DateBoxComponent,
+    SelectEnumComponent,
   ],
   imports: [
     AngularMaterialModule,
@@ -23,14 +25,14 @@ import {DateBoxComponent} from "./date-box-component/date.box.component";
     RouterLink,
     FormsModule,
 
-
   ],
   exports:[
     ToolbarFilterComponent,
     GridComponent,
     SideBarComponent,
     TextBoxComponent,
-    DateBoxComponent
+    DateBoxComponent,
+    SelectEnumComponent
   ],
   providers: [
   ],
