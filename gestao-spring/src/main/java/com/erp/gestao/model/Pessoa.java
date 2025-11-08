@@ -4,6 +4,7 @@ import com.erp.gestao.enums.AtivoInativoEnum;
 import com.erp.gestao.utils.validate.ValidateField;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -24,8 +25,8 @@ public class Pessoa {
     private String documento;
 
     @ValidateField(message = "A Data de Nascimento deve ser Informada!")
-    @Temporal(TemporalType.DATE)
-    private Date nascimento;
+//    @Temporal(TemporalType.DATE)
+    private LocalDate nascimento;
 
 
     @Enumerated(EnumType.STRING)
@@ -41,7 +42,7 @@ public class Pessoa {
     public Pessoa() {
     }
 
-    public Pessoa(String nome, String documento, Date nascimento, AtivoInativoEnum situacao) {
+    public Pessoa(String nome, String documento, LocalDate nascimento, AtivoInativoEnum situacao) {
         this.nome = nome;
         this.documento = documento;
         this.nascimento = nascimento;
@@ -72,11 +73,11 @@ public class Pessoa {
         this.documento = documento;
     }
 
-    public Date getNascimento() {
+    public LocalDate getNascimento() {
         return nascimento;
     }
 
-    public void setNascimento(Date nascimento) {
+    public void setNascimento(LocalDate nascimento) {
         this.nascimento = nascimento;
     }
 
