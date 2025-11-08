@@ -24,12 +24,13 @@ export class GridComponent {
   formatValue(row: any, key: string) {
     let value = row[key];
 
-    // Se for string e parecer uma data, converte
-    if (typeof value === 'string' && /^\d{4}-\d{2}-\d{2}/.test(value)) {
-      value = new Date(value);
+    // Se for string no formato "yyyy-MM-dd", to criando a data localmente
+    if (typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)) {
+      const [year, month, day] = value.split('-').map(Number);
+      value = new Date(year, month - 1, day);
     }
 
-    if (value instanceof Date) {
+    if (value instanceof Date && !isNaN(value.getTime())) {
       const d = value.getDate().toString().padStart(2, '0');
       const m = (value.getMonth() + 1).toString().padStart(2, '0');
       const y = value.getFullYear();
