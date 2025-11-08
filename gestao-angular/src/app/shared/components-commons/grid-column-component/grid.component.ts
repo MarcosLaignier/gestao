@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 import {startCase} from 'lodash';
 
 @Component({
-  selector: 'grid-column',
+  selector: 'grid-component',
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.scss']
 })
