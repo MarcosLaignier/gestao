@@ -7,7 +7,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 /** Classe que sobe junto com o spring,
  * Como utilizo um banco H2 ele cria dados simulados de forma automatica
