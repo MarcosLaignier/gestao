@@ -4,7 +4,6 @@ import {Pessoa} from "../../../shared/model/pessoa";
 import {CrudPadrao} from "../../../shared/utils/crud/crud.padrao";
 import {Router} from "@angular/router";
 import {PessoaFilterDTO} from "../../../shared/dto/filterDTO/pessoa.filter.dto";
-import {of} from "rxjs";
 
 
 @Component({
