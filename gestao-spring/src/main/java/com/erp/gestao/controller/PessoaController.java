@@ -1,15 +1,13 @@
 package com.erp.gestao.controller;
 
+import com.erp.gestao.dto.filterDTO.PessoaFilterDTO;
 import com.erp.gestao.model.Pessoa;
 import com.erp.gestao.service.PessoaService;
 import com.erp.gestao.utils.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,4 +29,11 @@ public class PessoaController  extends BaseController<Pessoa, Integer> {
         List<Pessoa> result = service.findAll();
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
+
+    @PostMapping("/listagem")
+    public ResponseEntity<List<Pessoa>> filtrar(@RequestBody PessoaFilterDTO filtro) {
+        List<Pessoa> pessoas = service.listar(filtro);
+        return ResponseEntity.ok(pessoas);
+    }
+
 }

@@ -3,6 +3,7 @@ import {PessoaService} from "../../../shared/service/pessoa.service";
 import {Pessoa} from "../../../shared/model/pessoa";
 import {CrudPadrao} from "../../../shared/utils/crud/crud.padrao";
 import {Router} from "@angular/router";
+import {PessoaFilterDTO} from "../../../shared/dto/filterDTO/pessoa.filter.dto";
 
 
 @Component({
@@ -10,7 +11,7 @@ import {Router} from "@angular/router";
   templateUrl: './pessoa.component.html',
   styleUrls: ['./pessoa.component.scss']
 })
-export class PessoaComponent extends CrudPadrao<Pessoa, any>{
+export class PessoaComponent extends CrudPadrao<Pessoa, PessoaFilterDTO>{
 
   displayedColumns = ['nome', 'nascimento', 'documento', 'situacao']
   dataSourceType = Pessoa;
@@ -23,6 +24,13 @@ export class PessoaComponent extends CrudPadrao<Pessoa, any>{
 
   override getMainService(): any {
     return this.mainService;
+  }
+
+
+  override ngOnInit() {
+    if (!this.filter) {
+      this.filter = new PessoaFilterDTO();
+    }
   }
 
 }

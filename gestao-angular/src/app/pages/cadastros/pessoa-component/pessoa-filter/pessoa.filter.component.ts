@@ -1,5 +1,6 @@
-import {Component} from "@angular/core";
+import {Component, Input} from "@angular/core";
 import {AtivoInativoEnum} from "../../../../shared/enum/ativo.inativo.enum";
+import {PessoaFilterDTO} from "../../../../shared/dto/filterDTO/pessoa.filter.dto";
 
 @Component({
   selector: 'pessoa-filter-component',
@@ -12,8 +13,9 @@ export class PessoaFilterComponent {
 
   tt:any;
 
-  teste() {
-    console.log(this.tt)
-    console.log(this.situacaoSelecionada)
-  }
+  @Input()
+  filter: PessoaFilterDTO = new PessoaFilterDTO();
+
+
+
 }
