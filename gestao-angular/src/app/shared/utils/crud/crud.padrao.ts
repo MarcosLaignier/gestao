@@ -58,7 +58,7 @@ export abstract class CrudPadrao<T,F> extends BaseCrudPadrao{
   doSave(model:any) {
     this.beforeDoSave();
     if(this.validateSave()){
-      this.getMainService().save(model).subscribe(res => {
+      this.getMainService().save(this.model).subscribe(res => {
         if (res.ok) {
           // notify('Salvo com sucesso', 'success', 3000);
         }
@@ -93,7 +93,8 @@ export abstract class CrudPadrao<T,F> extends BaseCrudPadrao{
 
   doFilter(){
     this.beforeDoFilter();
-    return this.getMainService().getAll().subscribe(res => {
+    console.log(this.filter)
+    return this.getMainService().getByFiltro(this.filter).subscribe(res => {
       if(res.body){
         this.dataSource = res.body
       }

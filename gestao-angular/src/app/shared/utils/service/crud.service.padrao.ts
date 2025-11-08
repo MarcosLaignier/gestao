@@ -5,13 +5,17 @@ export class CrudServicePadrao<T,F> {
 
     url: string = environment.BASE_URL
 
-    constructor(private http: HttpClient, private urlPrefix: string) {
+    constructor(protected http: HttpClient, private urlPrefix: string) {
         this.url = this.url + urlPrefix;
     }
 
     getAll() {
         return this.http.get<T[]>(`${this.url}` ,{observe: 'response'})
     }
+
+  getByFiltro(filtro?: F) {
+    return this.http.post<T[]>(`${this.url}/listagem`, filtro ?? {}, { observe: 'response' });
+  }
 
     getById(id: string) {
         return this.http.get<T>(`${this.url}/${id}`, {observe: 'response'})

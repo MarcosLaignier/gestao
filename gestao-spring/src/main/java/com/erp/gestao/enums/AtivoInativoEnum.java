@@ -21,6 +21,6 @@ public enum AtivoInativoEnum {
                 return status;
             }
         }
-        throw new IllegalArgumentException("Não encontrado enum com o valor : " + value);
+        return null;
     }
 }
