@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import * as _ from 'lodash';
 import {startCase} from 'lodash';
 
@@ -13,9 +13,11 @@ export class GridComponent {
   @Input() dataSource: any[] = [];
   @Input() columns: string[] = [];
 
+  @Output() dblClickLine = new EventEmitter<any>();
+
   ngOnInit() {
 
-    // Pega as chaves do primeiro objeto para gerar colunas caso nao tenha colunas
+    // TODO:(EM IMPLEMENTACAO FUTURA)  Pegar as chaves do primeiro objeto para gerar colunas caso nao tenha colunas
     if (this.dataSource.length > 0 && _.isEmpty(this.columns)) {
       this.columns = Object.keys(this.dataSource[0]);
     }
@@ -43,5 +45,9 @@ export class GridComponent {
   formatTitle(col: string): string {
     if (!col) return '';
     return startCase(col.replace(/[._]/g, ' '));
+  }
+
+  editItem(row: any) {
+    this.dblClickLine.emit(row);
   }
 }

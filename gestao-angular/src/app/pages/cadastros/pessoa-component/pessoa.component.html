@@ -1,8 +1,8 @@
 <div>
-    <toolbar-filter-component [tituloPagina]="'Listagem de Pessoas'"
-                              (filtrar)="doFilter()">
+  <toolbar-filter-component [tituloPagina]="'Listagem de Pessoas'"
+                            (filtrar)="doFilter()">
 
-    </toolbar-filter-component>
+  </toolbar-filter-component>
 </div>
 
 <pessoa-filter-component [filter]="filter">
@@ -10,8 +10,9 @@
 </pessoa-filter-component>
 
 <grid-component [typeDataSource]="dataSourceType"
-             [columns]="displayedColumns"
-             [dataSource]="dataSource">
+                [columns]="displayedColumns"
+                [dataSource]="dataSource"
+                (dblClickLine)="dblClickListGridPessoa($event)">
 
 </grid-component>
 

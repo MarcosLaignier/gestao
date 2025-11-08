@@ -17,7 +17,7 @@ export class CrudServicePadrao<T,F> {
     return this.http.post<T[]>(`${this.url}/listagem`, filtro ?? {}, { observe: 'response' });
   }
 
-    getById(id: string) {
+    getById(id: number) {
         return this.http.get<T>(`${this.url}/${id}`, {observe: 'response'})
     }
 
