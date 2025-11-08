@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2 header-panel">
+    <h3 class="mb-0 fw-semibold text-dark">{{ tituloPagina }}</h3>
+    <div class="d-flex gap-2">
+        <button type="button" class="btn btn-outline-secondary" (click)="filtrarClick($event)" *ngIf="listMode">Filtrar</button>
+      <button type="button" class="btn btn-outline-secondary" (click)="filtrarClick($event)" *ngIf="!listMode">Salvar</button>
+      <button type="button" class="btn btn-outline-secondary" (click)="limparClick($event)">Limpar</button>
+        <button type="button" class="btn btn-outline-secondary" (click)="fecharClick($event)">Fechar</button>
+    </div>
+</div>

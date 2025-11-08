@@ -2,14 +2,16 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'toolbar-filter-component',
-  templateUrl: './toolbar.filter.component.html',
-  styleUrls: ['./toolbar.filter.component.scss']
+  templateUrl: './toolbar.component.html',
+  styleUrls: ['./toolbar.component.scss']
 })
-export class ToolbarFilterComponent {
+export class ToolbarComponent {
 
   @Input() tituloPagina: string = '';
+  @Input() listMode: boolean = true;
 
   @Output() filtrar = new EventEmitter<void>();
+  @Output() salvar = new EventEmitter<void>();
   @Output() limpar = new EventEmitter<void>();
   @Output() fechar = new EventEmitter<void>();
 
@@ -18,6 +20,10 @@ export class ToolbarFilterComponent {
     this.filtrar.emit();
   }
 
+  salvarClick(event: Event) {
+    event.preventDefault();
+    this.salvar.emit();
+  }
   limparClick(event: Event) {
     event.preventDefault();
     this.limpar.emit();
