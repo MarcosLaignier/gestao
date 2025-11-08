@@ -1,9 +1,6 @@
 package com.erp.gestao.utils;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
+import jakarta.persistence.criteria.*;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.util.ArrayList;
@@ -40,7 +37,27 @@ public class SpecificationBuilder<T> implements Specification<T> {
         return this;
     }
 
-// falta fazer um betwen
+// TODO: Data nao ta pegando no mesmo dia, verificar
+    public <Y extends Comparable<? super Y>> SpecificationBuilder<T> between(String field, Y start, Y end) {
+        if (start != null && end != null) {
+            specs.add((root, query, cb) -> {
+                Path<Y> path = root.get(field);
+                return cb.between(path.as((Class<Y>) start.getClass()), start, end);
+            });
+        } else if (start != null) {
+            specs.add((root, query, cb) -> {
+                Path<Y> path = root.get(field);
+                return cb.greaterThanOrEqualTo(path.as((Class<Y>) start.getClass()), start);
+            });
+        } else if (end != null) {
+            specs.add((root, query, cb) -> {
+                Path<Y> path = root.get(field);
+                return cb.lessThanOrEqualTo(path.as((Class<Y>) end.getClass()), end);
+            });
+        }
+        return this;
+    }
+
 
     @Override
     public Predicate toPredicate(Root<T> root, CriteriaQuery<?> query, CriteriaBuilder cb) {

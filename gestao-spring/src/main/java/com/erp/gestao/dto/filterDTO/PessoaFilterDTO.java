@@ -14,6 +14,10 @@ public class PessoaFilterDTO {
 
     private LocalDate nascimento;
 
+    private LocalDate nascimentoInicio;
+
+    private LocalDate nascimentoFim;
+
     private AtivoInativoEnum situacao;
 
     public Integer getId() {
@@ -46,6 +50,22 @@ public class PessoaFilterDTO {
 
     public void setNascimento(LocalDate nascimento) {
         this.nascimento = nascimento;
+    }
+
+    public LocalDate getNascimentoInicio() {
+        return nascimentoInicio;
+    }
+
+    public void setNascimentoInicio(LocalDate nascimentoInicio) {
+        this.nascimentoInicio = nascimentoInicio;
+    }
+
+    public LocalDate getNascimentoFim() {
+        return nascimentoFim;
+    }
+
+    public void setNascimentoFim(LocalDate nascimentoFim) {
+        this.nascimentoFim = nascimentoFim;
     }
 
     public AtivoInativoEnum getSituacao() {

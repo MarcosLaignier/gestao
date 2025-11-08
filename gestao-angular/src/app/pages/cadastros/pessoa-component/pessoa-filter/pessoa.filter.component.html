@@ -8,8 +8,8 @@
     </div>
 
     <div class="d-flex flex-row gap-1">
-      <date-box-component [label]="'Nascimento de'" [colClass]="'col-md-2'" ></date-box-component>
-      <date-box-component [label]="'Nascimento Até'" [colClass]="'col-md-2'"></date-box-component>
+      <date-box-component [label]="'Nascimento de'" [colClass]="'col-md-2'" [(dataField)]="filter.nascimentoInicio"></date-box-component>
+      <date-box-component [label]="'Nascimento Até'" [colClass]="'col-md-2'" [(dataField)]="filter.nascimentoFim"></date-box-component>
     </div>
 
     <select-enum [label]="'Situação'"

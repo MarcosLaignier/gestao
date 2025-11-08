@@ -10,5 +10,10 @@ export class PessoaFilterDTO {
 
   nascimento: Date;
 
+  nascimentoInicio: Date;
+
+  nascimentoFim: Date;
+
+
   situacao: AtivoInativoEnum;
 }

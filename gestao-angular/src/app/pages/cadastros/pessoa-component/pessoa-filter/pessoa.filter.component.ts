@@ -8,10 +8,7 @@ import {PessoaFilterDTO} from "../../../../shared/dto/filterDTO/pessoa.filter.dt
 })
 export class PessoaFilterComponent {
 
-  situacaoSelecionada: AtivoInativoEnum | '' = '';
   SituacaoEnum = AtivoInativoEnum;
-
-  tt:any;
 
   @Input()
   filter: PessoaFilterDTO = new PessoaFilterDTO();
