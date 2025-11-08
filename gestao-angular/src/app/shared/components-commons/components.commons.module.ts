@@ -1,6 +1,6 @@
 import {NgModule} from "@angular/core";
 import {AngularMaterialModule} from "../../angular.material.module";
-import {ToolbarFilterComponent} from "./toolbar-filter-component/toolbar.filter.component";
+import {ToolbarComponent} from "./toolbar-filter-component/toolbar.component";
 import {GridComponent} from "./grid-column-component/grid.component";
 import {CommonModule} from "@angular/common";
 import {SideBarComponent} from "./side-bar-component/side.bar.component";
@@ -12,7 +12,7 @@ import {SelectEnumComponent} from "./select-enum-component/select.enum.component
 
 @NgModule({
   declarations: [
-    ToolbarFilterComponent,
+    ToolbarComponent,
     GridComponent,
     SideBarComponent,
     TextBoxComponent,
@@ -27,7 +27,7 @@ import {SelectEnumComponent} from "./select-enum-component/select.enum.component
 
   ],
   exports:[
-    ToolbarFilterComponent,
+    ToolbarComponent,
     GridComponent,
     SideBarComponent,
     TextBoxComponent,

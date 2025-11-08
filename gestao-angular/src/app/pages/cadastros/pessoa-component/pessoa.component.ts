@@ -36,9 +36,6 @@ export class PessoaComponent extends CrudPadrao<Pessoa, PessoaFilterDTO>{
 
   dblClickListGridPessoa(event: any) {
     let pessoa: Pessoa = event
-
-    return this.mainService.getById(pessoa.id).subscribe(resp =>{
-      console.log(resp)
-    })
+    this.router.navigate(['/cadastros/pessoa/editar', pessoa.id]);
   }
 }
