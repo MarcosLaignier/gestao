@@ -11,16 +11,12 @@
     <text-box-component [label]="'Nome'" [colClass]="'col-md-2'" [(dataField)]="model.nome"></text-box-component>
     <text-box-component [label]="'Documento'"  [colClass]="'col-md-2'" [(dataField)]="model.documento" ></text-box-component>
   </div>
-
-  <div class="d-flex flex-row gap-1">
-    <date-box-component [label]="'Nascimento '" [colClass]="'col-md-2'" [(dataField)]="model.nascimento" *ngIf="model"></date-box-component>
-
-    <select-enum [label]="'Situação'"
-                 [enumObject]="SituacaoEnum"
-                 [(dataField)]="model.situacao"
-                 [colClass]="'col-md-2'">
-    </select-enum>
-  </div>
+  <date-box-component [label]="'Nascimento '" [colClass]="'col-md-2'" [(dataField)]="model.nascimento" *ngIf="model"></date-box-component>
+  <select-enum [label]="'Situação'"
+               [enumObject]="SituacaoEnum"
+               [(dataField)]="model.situacao"
+               [colClass]="'col-md-2'">
+  </select-enum>
 
 
 </div>

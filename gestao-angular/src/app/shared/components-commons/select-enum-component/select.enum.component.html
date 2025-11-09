@@ -2,6 +2,6 @@
   <label class="form-label">{{ label }}</label>
   <select class="form-select" [(ngModel)]="dataField">
     <option value="">{{ placeholder }}</option>
-    <option *ngFor="let opt of enumOptions" [value]="opt">{{ opt }}</option>
+    <option *ngFor="let opt of enumOptions" [ngValue]="opt.key">{{ opt.value }}</option>
   </select>
 </div>
