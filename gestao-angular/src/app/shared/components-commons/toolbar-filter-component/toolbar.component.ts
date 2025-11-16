@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'toolbar-filter-component',
@@ -14,6 +15,8 @@ export class ToolbarComponent {
   @Output() salvar = new EventEmitter<void>();
   @Output() limpar = new EventEmitter<void>();
   @Output() fechar = new EventEmitter<void>();
+
+  constructor(private location: Location) {}
 
   filtrarClick(event: Event) {
     event.preventDefault();
@@ -32,5 +35,6 @@ export class ToolbarComponent {
   fecharClick(event: Event) {
     event.preventDefault();
     this.fechar.emit();
+    this.location.back();
   }
 }

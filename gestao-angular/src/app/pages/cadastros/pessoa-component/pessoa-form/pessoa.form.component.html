@@ -1,9 +1,12 @@
 <div>
   <toolbar-filter-component [tituloPagina]="'Cadastro de Pessoa'"
-                            [listMode]="false">
+                            [listMode]="false"
+                            (salvar)="doSave(model)">
 
   </toolbar-filter-component>
 </div>
+
+<alert-component *ngIf=""></alert-component>
 
 <div class="flex-column" *ngIf="model">
 

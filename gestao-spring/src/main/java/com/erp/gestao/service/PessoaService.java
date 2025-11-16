@@ -45,7 +45,7 @@ public class PessoaService extends BaseService<Pessoa, Integer> {
             throw new IllegalArgumentException("Documento inválido");
         }
 
-        if(entity.getNascimento() != null && entity.getNascimento().isBefore(LocalDate.now())){
+        if(entity.getNascimento() != null && entity.getNascimento().isAfter(LocalDate.now())){
             throw new IllegalArgumentException("A data de nascimento não pode ser futura!");
         }
 

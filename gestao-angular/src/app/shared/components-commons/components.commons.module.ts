@@ -9,6 +9,7 @@ import {TextBoxComponent} from "./text-box-component/text.box.component";
 import {FormsModule} from "@angular/forms";
 import {DateBoxComponent} from "./date-box-component/date.box.component";
 import {SelectEnumComponent} from "./select-enum-component/select.enum.component";
+import {AlertComponent} from "./alert-component/alert.component";
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {SelectEnumComponent} from "./select-enum-component/select.enum.component
     TextBoxComponent,
     DateBoxComponent,
     SelectEnumComponent,
+    AlertComponent
   ],
   imports: [
     AngularMaterialModule,
@@ -32,7 +34,8 @@ import {SelectEnumComponent} from "./select-enum-component/select.enum.component
     SideBarComponent,
     TextBoxComponent,
     DateBoxComponent,
-    SelectEnumComponent
+    SelectEnumComponent,
+    AlertComponent
   ],
   providers: [
   ],
