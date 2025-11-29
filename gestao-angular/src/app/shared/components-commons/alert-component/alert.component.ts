@@ -36,4 +36,22 @@ export class AlertComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.sub?.unsubscribe();
   }
+
+  pageSize = 3;
+  currentPage = 0;
+
+  getLines(message: string): string[] {
+    return message.split('<br>').map(l => l.trim());
+  }
+
+  getPages(message: string): string[][] {
+    const lines = this.getLines(message);
+    const pages = [];
+    for (let i = 0; i < lines.length; i += this.pageSize) {
+      pages.push(lines.slice(i, i + this.pageSize));
+    }
+    return pages;
+  }
+
+
 }

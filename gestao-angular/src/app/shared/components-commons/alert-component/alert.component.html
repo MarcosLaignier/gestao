@@ -1,9 +1,25 @@
 <div class="toast-container">
   <div class="toast" *ngFor="let t of toasts" [ngClass]="t.type">
-    <div class="icon">{{ icons[t.type] }}</div>
 
-    <div class="text" [innerHTML]="t.message"></div>
+    <!-- Página atual da mensagem -->
+    <div class="text">
+      <div *ngFor="let linha of getPages(t.message)[currentPage]">
+        {{ linha }}
+      </div>
+    </div>
+
+    <!-- Navegação entre páginas -->
+    <div class="pagination" *ngIf="getPages(t.message).length > 1">
+      <div
+        class="dot"
+        *ngFor="let page of getPages(t.message); let i = index"
+        [class.active]="i === currentPage"
+        (click)="currentPage = i">
+      </div>
+    </div>
 
     <button class="close-btn" (click)="removeToast(t)">✖</button>
+
   </div>
+
 </div>

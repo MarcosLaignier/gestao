@@ -22,7 +22,7 @@ export class AlertService {
   }
 
   success(msg: string) { this.show('success', msg); }
-  error(msg: string) { this.show('error', msg); }
+  error(msg: string) { this.show('error', msg,7000); }
   warning(msg: string) { this.show('warning', msg); }
   info(msg: string) { this.show('info', msg); }
 
