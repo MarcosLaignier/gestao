@@ -13,7 +13,7 @@ import {PessoaFilterDTO} from "../../../shared/dto/filterDTO/pessoa.filter.dto";
 })
 export class PessoaComponent extends CrudPadrao<Pessoa, PessoaFilterDTO>{
 
-  displayedColumns = ['nome', 'nascimento', 'documento', 'situacao']
+  displayedColumns = ['nome', 'nascimento','tipoPessoa', 'documento', 'situacao']
   dataSourceType = Pessoa;
 
   constructor(injector: Injector,

@@ -1,6 +1,7 @@
 package com.erp.gestao.dto.filterDTO;
 
 import com.erp.gestao.enums.AtivoInativoEnum;
+import com.erp.gestao.enums.TipoPessoaEnum;
 
 import java.time.LocalDate;
 
@@ -19,6 +20,8 @@ public class PessoaFilterDTO {
     private LocalDate nascimentoFim;
 
     private AtivoInativoEnum situacao;
+
+    private TipoPessoaEnum tipoPessoa;
 
     public Integer getId() {
         return id;
@@ -66,6 +69,14 @@ public class PessoaFilterDTO {
 
     public void setNascimentoFim(LocalDate nascimentoFim) {
         this.nascimentoFim = nascimentoFim;
+    }
+
+    public TipoPessoaEnum getTipoPessoa() {
+        return tipoPessoa;
+    }
+
+    public void setTipoPessoa(TipoPessoaEnum tipoPessoa) {
+        this.tipoPessoa = tipoPessoa;
     }
 
     public AtivoInativoEnum getSituacao() {

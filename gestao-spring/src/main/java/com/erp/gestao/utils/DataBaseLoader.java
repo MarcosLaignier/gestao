@@ -1,6 +1,7 @@
 package com.erp.gestao.utils;
 
 import com.erp.gestao.enums.AtivoInativoEnum;
+import com.erp.gestao.enums.TipoPessoaEnum;
 import com.erp.gestao.model.Pessoa;
 import com.erp.gestao.repository.PessoaRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -27,8 +28,8 @@ public class DataBaseLoader implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
-        pessoaRepository.save(new Pessoa("Marcos Leao", "07956285607", LocalDate.now(), AtivoInativoEnum.ATIVO));
-        pessoaRepository.save(new Pessoa("Ana Souza", "12345678901", LocalDate.now(), AtivoInativoEnum.ATIVO));
-        pessoaRepository.save(new Pessoa("Carlos Pereira", "98765432100", LocalDate.now(), AtivoInativoEnum.ATIVO));
+        pessoaRepository.save(new Pessoa("Marcos Leao", "07956285607", LocalDate.now(), AtivoInativoEnum.ATIVO, TipoPessoaEnum.FISICA));
+        pessoaRepository.save(new Pessoa("Ana Souza", "12345678901", LocalDate.now(), AtivoInativoEnum.ATIVO, TipoPessoaEnum.FISICA));
+        pessoaRepository.save(new Pessoa("Carlos Pereira", "98765432100", LocalDate.now(), AtivoInativoEnum.ATIVO, TipoPessoaEnum.FISICA));
     }
 }

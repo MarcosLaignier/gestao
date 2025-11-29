@@ -1,6 +1,7 @@
 package com.erp.gestao.model;
 
 import com.erp.gestao.enums.AtivoInativoEnum;
+import com.erp.gestao.enums.TipoPessoaEnum;
 import com.erp.gestao.utils.validate.ValidateField;
 import jakarta.persistence.*;
 
@@ -26,6 +27,9 @@ public class Pessoa {
 //    @Temporal(TemporalType.DATE)
     private LocalDate nascimento;
 
+    @Enumerated(EnumType.STRING)
+    @ValidateField(message = "A situação deve ser Informada!")
+    private TipoPessoaEnum tipoPessoa;
 
     @Enumerated(EnumType.STRING)
     @ValidateField(message = "A situação deve ser Informada!")
@@ -40,11 +44,12 @@ public class Pessoa {
     public Pessoa() {
     }
 
-    public Pessoa(String nome, String documento, LocalDate nascimento, AtivoInativoEnum situacao) {
+    public Pessoa(String nome, String documento, LocalDate nascimento, AtivoInativoEnum situacao, TipoPessoaEnum tipoPessoa) {
         this.nome = nome;
         this.documento = documento;
         this.nascimento = nascimento;
         this.situacao = situacao;
+        this.tipoPessoa = tipoPessoa;
     }
 
     public Integer getId() {
@@ -87,7 +92,15 @@ public class Pessoa {
         this.situacao = situacao;
     }
 
-//    public List<PessoaTipo> getPessoaTipoList() {
+    public TipoPessoaEnum getTipoPessoa() {
+        return tipoPessoa;
+    }
+
+    public void setTipoPessoa(TipoPessoaEnum tipoPessoa) {
+        this.tipoPessoa = tipoPessoa;
+    }
+
+    //    public List<PessoaTipo> getPessoaTipoList() {
 //        return pessoaTipoList;
 //    }
 //
@@ -107,7 +120,7 @@ public class Pessoa {
     public final boolean equals(Object o) {
         if (!(o instanceof Pessoa pessoa)) return false;
 
-        return Objects.equals(id, pessoa.id) && Objects.equals(nome, pessoa.nome) && Objects.equals(documento, pessoa.documento) && Objects.equals(nascimento, pessoa.nascimento) && situacao == pessoa.situacao;
+        return Objects.equals(id, pessoa.id) && Objects.equals(nome, pessoa.nome) && Objects.equals(documento, pessoa.documento) && Objects.equals(nascimento, pessoa.nascimento) && tipoPessoa == pessoa.tipoPessoa && situacao == pessoa.situacao;
     }
 
     @Override
@@ -116,6 +129,7 @@ public class Pessoa {
         result = 31 * result + Objects.hashCode(nome);
         result = 31 * result + Objects.hashCode(documento);
         result = 31 * result + Objects.hashCode(nascimento);
+        result = 31 * result + Objects.hashCode(tipoPessoa);
         result = 31 * result + Objects.hashCode(situacao);
         return result;
     }

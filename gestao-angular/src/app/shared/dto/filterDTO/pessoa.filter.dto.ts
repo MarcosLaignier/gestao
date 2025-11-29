@@ -1,4 +1,5 @@
 import {AtivoInativoEnum} from "../../enum/ativo.inativo.enum";
+import {TipoPessoaEnum} from "../../enum/tipo.pessoa.enum";
 
 export class PessoaFilterDTO {
 
@@ -14,6 +15,7 @@ export class PessoaFilterDTO {
 
   nascimentoFim: Date;
 
-
   situacao: AtivoInativoEnum;
+
+  tipoPessoa: TipoPessoaEnum;
 }

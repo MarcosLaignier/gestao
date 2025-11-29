@@ -32,6 +32,7 @@ public class PessoaService extends BaseService<Pessoa, Integer> {
                             .likeIgnoreCase("documento", filter.getDocumento())
                             .equal("nascimento", filter.getNascimento())
                             .equal("situacao", filter.getSituacao())
+                            .equal("tipoPessoa", filter.getTipoPessoa())
                             .between("nascimento", filter.getNascimentoInicio(), filter.getNascimentoFim())
             );
     }

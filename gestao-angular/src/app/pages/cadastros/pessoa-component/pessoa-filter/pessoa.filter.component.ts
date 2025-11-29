@@ -1,6 +1,7 @@
 import {Component, Input} from "@angular/core";
 import {AtivoInativoEnum} from "../../../../shared/enum/ativo.inativo.enum";
 import {PessoaFilterDTO} from "../../../../shared/dto/filterDTO/pessoa.filter.dto";
+import {TipoPessoaEnum} from "../../../../shared/enum/tipo.pessoa.enum";
 
 @Component({
   selector: 'pessoa-filter-component',
@@ -8,7 +9,8 @@ import {PessoaFilterDTO} from "../../../../shared/dto/filterDTO/pessoa.filter.dt
 })
 export class PessoaFilterComponent {
 
-  SituacaoEnum = AtivoInativoEnum;
+  situacaoEnum = AtivoInativoEnum;
+  tipoEnum = TipoPessoaEnum;
 
   @Input()
   filter: PessoaFilterDTO = new PessoaFilterDTO();

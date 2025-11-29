@@ -13,8 +13,13 @@
     </div>
 
     <select-enum [label]="'Situação'"
-                 [enumObject]="SituacaoEnum"
+                 [enumObject]="situacaoEnum"
                  [(dataField)]="filter.situacao">
+    </select-enum>
+
+    <select-enum [label]="'Tipo'"
+                 [enumObject]="tipoEnum"
+                 [(dataField)]="filter.tipoPessoa">
     </select-enum>
   </div>
 </form>
