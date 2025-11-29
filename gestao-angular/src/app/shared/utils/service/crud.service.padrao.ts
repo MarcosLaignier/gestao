@@ -1,6 +1,5 @@
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../enviroment";
-import {catchError, Observable, throwError} from "rxjs";
 
 export class CrudServicePadrao<T,F> {
 
@@ -23,9 +22,7 @@ export class CrudServicePadrao<T,F> {
   }
 
   save(model: T) {
-    return this.http.post<T>(`${this.url}`, model, {observe: 'response'}).pipe(
-      catchError(error => this.handleError(error))
-    );
+    return this.http.post<T>(this.url, model, { observe: 'response' })
   }
 
   update(id: string, model: T) {
@@ -34,18 +31,6 @@ export class CrudServicePadrao<T,F> {
 
   delete(id: string) {
     return this.http.delete(`${this.url}/${id}` , {observe: 'response'})
-  }
-
-  // Função privada para lidar com o erro
-  private handleError(error: HttpErrorResponse): Observable<never> {
-      const msg:string = error?.error?.message || error?.message || '';
-
-      const partes: string[] = msg.split(',').map(p => p.trim()).filter(p => p);
-
-     console.log(partes)
-
-    // Sempre retorne um observable de erro para que o consumidor saiba que falhou
-    return throwError(() => new Error(''));
   }
 
 }

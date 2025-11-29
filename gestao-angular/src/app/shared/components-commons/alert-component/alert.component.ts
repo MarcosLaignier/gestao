@@ -1,33 +1,39 @@
-import {Component, Input} from "@angular/core";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AlertMessage, AlertService } from './alert.service';
 
 @Component({
   selector: 'alert-component',
   templateUrl: './alert.component.html',
+  styleUrls: ['./alert.component.scss']
 })
-// styleUrls: ['./alert.component.scss']
+export class AlertComponent implements OnInit, OnDestroy {
 
-export class AlertComponent {
+  toasts: AlertMessage[] = [];
+  private sub!: Subscription;
 
-  private _textAlert : string = 'Salvo com sucesso';
+  icons: Record<string, string> = {
+    success: '✔️',
+    error: '❌',
+    warning: '⚠️',
+    info: 'ℹ️'
+  };
 
+  constructor(private alertService: AlertService) {}
 
-  get textAlert(): string {
-    return this._textAlert;
+  ngOnInit(): void {
+    this.sub = this.alertService.alertState$.subscribe((toast) => {
+      this.toasts.push(toast);
+
+      setTimeout(() => this.removeToast(toast), toast.duration || 4000);
+    });
   }
 
-  @Input()
-  set textAlert(value: string) {
-    this._textAlert = value;
-    this.classAlert = 'alert alert-' + value;
+  removeToast(t: AlertMessage) {
+    this.toasts = this.toasts.filter(x => x !== t);
   }
 
-  /** Valores Aceitos
-   * success
-   * danger
-   * warning
-   * info
-   */
-  @Input() typeAlert : string = 'success'
-
-  classAlert = 'alert alert-success'
+  ngOnDestroy(): void {
+    this.sub?.unsubscribe();
+  }
 }
