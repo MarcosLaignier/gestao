@@ -10,6 +10,15 @@
 
 <div class="flex-column" *ngIf="model">
 
+
+
+  <radio-enum
+    [enumObject]="TipoPessoaEnum"
+    label="Tipo Pessoa"
+    [(dataField)]="model.tipoPessoa"
+    [inline]="true">
+  </radio-enum>
+
   <div class="d-flex flex-row gap-1">
     <text-box-component [label]="'Nome'" [colClass]="'col-md-2'" [(dataField)]="model.nome"></text-box-component>
     <text-box-component [label]="'Documento'"  [colClass]="'col-md-2'" [(dataField)]="model.documento" ></text-box-component>

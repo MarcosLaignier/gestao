@@ -5,6 +5,7 @@ import {CrudPadrao} from "../../../../shared/utils/crud/crud.padrao";
 import {Pessoa} from "../../../../shared/model/pessoa";
 import {PessoaService} from "../../../../shared/service/pessoa.service";
 import {AtivoInativoEnum} from "../../../../shared/enum/ativo.inativo.enum";
+import {TipoPessoaEnum} from "../../../../shared/enum/tipo.pessoa.enum";
 
 
 @Component({
@@ -42,4 +43,5 @@ export class PessoaFormComponent extends CrudPadrao<Pessoa, PessoaFilterDTO>{
     }
   }
 
+  protected readonly TipoPessoaEnum = TipoPessoaEnum;
 }
