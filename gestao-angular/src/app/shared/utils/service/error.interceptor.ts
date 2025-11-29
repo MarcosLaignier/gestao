@@ -30,13 +30,14 @@ export class ErrorInterceptor implements HttpInterceptor {
 
           let message = rawMessage;
 
+          // TODO: Pra funcionar as msg do service deverao sempre terminar com !.... verificar forma de melhorar isto depois
           if (typeof rawMessage === 'string' && rawMessage.includes('!,')) {
             message = rawMessage
               .replace('[', '')
               .replace(']', '')
               .split(',')
               .map(m => m.trim())
-              .join('<br>'); // <-- usar <br> permite quebrar linha no innerHTML
+              .join('<br>'); // <-- usando BR pois o alert esta como inner html, fazendo a quebra
           }
 
           this.alertService.show('error', message);
