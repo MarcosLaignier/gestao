@@ -15,7 +15,9 @@ export class ErrorInterceptor implements HttpInterceptor {
 
       tap({
         next: (event) => {
-          if (event instanceof HttpResponse && req.method !== 'GET') {
+          if (event instanceof HttpResponse && req.method !== 'GET' && !(req.method == 'POST' && req.url.includes('list'))) {
+            console.log(event);
+            console.log(req)
             this.alertService.show('success', 'Operação realizada com sucesso!');
           }
         },
