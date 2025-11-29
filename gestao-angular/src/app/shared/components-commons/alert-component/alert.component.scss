@@ -13,7 +13,7 @@
 .toast {
   width: 80vw;
   display: flex;
-  flex-direction: column;     // necessário p/ bolinhas ficarem embaixo
+  flex-direction: column;     // necessário p/ bolinhas ficarem embaixo remova e veja o caos
   padding: 14px 16px;
   border-radius: 10px;
   color: #fff;
@@ -50,7 +50,7 @@
     right: 10px;
   }
 
-  /* 🔵 PAGINAÇÃO COM BOLINHAS CENTRALIZADAS */
+  /*  PAGINAÇÃO COM BOLINHAS CENTRALIZADAS */
   .pagination {
     display: flex;
     justify-content: center;
