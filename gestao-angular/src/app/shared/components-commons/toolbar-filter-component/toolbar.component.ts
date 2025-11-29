@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { Location } from '@angular/common';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'toolbar-filter-component',
@@ -12,15 +13,26 @@ export class ToolbarComponent {
   @Input() listMode: boolean = true;
 
   @Output() filtrar = new EventEmitter<void>();
+  @Output() novo = new EventEmitter<void>();
   @Output() salvar = new EventEmitter<void>();
   @Output() limpar = new EventEmitter<void>();
   @Output() fechar = new EventEmitter<void>();
 
-  constructor(private location: Location) {}
+  constructor(private location: Location,
+              private router: Router) {}
 
   filtrarClick(event: Event) {
     event.preventDefault();
     this.filtrar.emit();
+  }
+
+  novoClick(event: Event) {
+    event.preventDefault();
+    const currentUrl = this.router.url;
+    const newUrl = `${currentUrl}/create`;
+
+    this.router.navigateByUrl(newUrl);
+    this.novo.emit();
   }
 
   salvarClick(event: Event) {
