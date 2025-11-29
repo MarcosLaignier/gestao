@@ -20,24 +20,24 @@ public class ValidateMetodsUtils {
             if(field.isAnnotationPresent(ValidateField.class)){
                 field.setAccessible(true); // Setando como acessivel pois os campos sao private
 
-                try{
-                    //Reflection para acessar o campo
-                    Object value = field.get(entity);
-                    // String esta sendo testado separadamente para caso seja null ou vazia
-                    if(value instanceof String){
-                        if(CollectionMetodsUtils.isStringEmpty((String) value)){
-                            messageErrorValidadeFields(field);
-                        }
-                    }else{
-                        if(value == null){
-                            messageErrorValidadeFields(field);
-                        }
-                    }
-                }catch (Exception e ){
+                Object value = null;
+                try {
+//                    Reflection para acessar o campo
+                    value = field.get(entity);
+                } catch (IllegalAccessException e) {
                     throw new RuntimeException("Erro para acessar o campo" + field, e);
                 }
+                // String esta sendo testado separadamente para caso seja null ou vazia
+                if(value instanceof String){
+                    if(CollectionMetodsUtils.isStringEmpty((String) value)){
+                        messageErrorValidadeFields(field);
+                    }
+                }else{
+                    if(value == null){
+                        messageErrorValidadeFields(field);
+                    }
+                }
             }
-
         }
 
     }
@@ -49,6 +49,8 @@ public class ValidateMetodsUtils {
      */
     private static void messageErrorValidadeFields(Field field){
         String messageCampo = field.getAnnotation(ValidateField.class).message();
+        field.setAccessible(true);
+
         if(!CollectionMetodsUtils.isStringEmpty(messageCampo)){
             throw new ServiceException(messageCampo);
         }else{
