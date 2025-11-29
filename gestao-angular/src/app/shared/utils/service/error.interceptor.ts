@@ -21,13 +21,25 @@ export class ErrorInterceptor implements HttpInterceptor {
         },
 
         error: (error: HttpErrorResponse) => {
-          const message =
+          const rawMessage =
             error?.error?.message ||
             error?.message ||
             'Erro desconhecido.';
 
+          let message = rawMessage;
+
+          if (typeof rawMessage === 'string' && rawMessage.includes('!,')) {
+            message = rawMessage
+              .replace('[', '')
+              .replace(']', '')
+              .split(',')
+              .map(m => m.trim())
+              .join('<br>'); // <-- usar <br> permite quebrar linha no innerHTML
+          }
+
           this.alertService.show('error', message);
         }
+
       })
 
     );
