@@ -40,6 +40,8 @@ export class PessoaFormComponent extends CrudPadrao<Pessoa, PessoaFilterDTO>{
           this.model = pessoa.body
         }
       });
+    }else{
+      this.model.tipoPessoa = TipoPessoaEnum.FISICA;
     }
   }
 
