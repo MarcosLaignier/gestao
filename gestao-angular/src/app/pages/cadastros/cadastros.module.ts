@@ -15,6 +15,7 @@ const routes : Routes = [
     path: 'pessoa',
     children: [
       { path: '', component: PessoaComponent },
+      { path: 'create', component: PessoaFormComponent },
       { path: 'editar/:id', component: PessoaFormComponent }
     ]
   }

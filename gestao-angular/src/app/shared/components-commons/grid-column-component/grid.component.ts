@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import * as _ from 'lodash';
 import {startCase} from 'lodash';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'grid-component',
@@ -12,8 +13,13 @@ export class GridComponent {
   @Input() typeDataSource:any;
   @Input() dataSource: any[] = [];
   @Input() columns: string[] = [];
+  @Input() routerByEditDblClick: boolean = false;
 
   @Output() dblClickLine = new EventEmitter<any>();
+
+  constructor(private router: Router) {
+
+  }
 
   ngOnInit() {
 
@@ -48,6 +54,12 @@ export class GridComponent {
   }
 
   editItem(row: any) {
+    if(this.routerByEditDblClick && row?.id){
+      const currentUrl = this.router.url;
+      const newUrl = `${currentUrl}/editar/${row?.id}`;
+      this.router.navigateByUrl(newUrl);
+
+    }
     this.dblClickLine.emit(row);
   }
 }
