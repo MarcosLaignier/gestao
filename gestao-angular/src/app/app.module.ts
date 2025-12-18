@@ -10,10 +10,12 @@ import {AngularMaterialModule} from "./angular.material.module";
 import {ComponentsCommonsModule} from "./shared/components-commons/components.commons.module";
 import {FormsModule} from "@angular/forms";
 import {ErrorInterceptor} from "./shared/utils/service/error.interceptor";
+import {DocumentMaskDirective} from "./shared/utils/directives/documento.mask.directive";
 
 @NgModule({
   declarations: [
     AppComponent,
+    DocumentMaskDirective
   ],
   imports: [
     FormsModule,
@@ -30,6 +32,7 @@ import {ErrorInterceptor} from "./shared/utils/service/error.interceptor";
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
   exports: [
+    DocumentMaskDirective
   ],
   bootstrap: [AppComponent]
 })
