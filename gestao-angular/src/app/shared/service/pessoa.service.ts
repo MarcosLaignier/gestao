@@ -1,4 +1,4 @@
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import {CrudServicePadrao} from "../utils/service/crud.service.padrao";
 import {Pessoa} from "../model/pessoa";
 import {Injectable} from "@angular/core";

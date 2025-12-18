@@ -1,6 +1,6 @@
 import {Directive, Injector, Input} from "@angular/core";
 import {BaseCrudPadrao} from "./base.crud.padrao";
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import {Observable} from "rxjs";
 import {CrudServicePadrao} from "../service/crud.service.padrao";
 
