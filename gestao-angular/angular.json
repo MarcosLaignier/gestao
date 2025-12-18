@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "gestao-angular:build:production"
+              "buildTarget": "gestao-angular:build:production"
             },
             "development": {
-              "browserTarget": "gestao-angular:build:development"
+              "buildTarget": "gestao-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "gestao-angular:build"
+            "buildTarget": "gestao-angular:build"
           }
         },
         "test": {
