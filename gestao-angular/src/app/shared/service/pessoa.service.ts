@@ -4,7 +4,7 @@ import {Pessoa} from "../model/pessoa";
 import {Injectable} from "@angular/core";
 import {PessoaFilterDTO} from "../dto/filterDTO/pessoa.filter.dto";
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class PessoaService extends CrudServicePadrao<Pessoa,PessoaFilterDTO> {
 
 

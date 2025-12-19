@@ -1,15 +1,31 @@
 import {Component, Injector} from "@angular/core";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router, RouterModule} from "@angular/router";
 import {PessoaFilterDTO} from "../../../../shared/dto/filterDTO/pessoa.filter.dto";
 import {CrudPadrao} from "../../../../shared/utils/crud/crud.padrao";
 import {Pessoa} from "../../../../shared/model/pessoa";
 import {PessoaService} from "../../../../shared/service/pessoa.service";
 import {AtivoInativoEnum} from "../../../../shared/enum/ativo.inativo.enum";
 import {TipoPessoaEnum} from "../../../../shared/enum/tipo.pessoa.enum";
+import {CommonModule} from "@angular/common";
+import {ToolbarComponent} from "../../../../shared/components-commons/toolbar-filter-component/toolbar.component";
+import {RadioEnumComponent} from "../../../../shared/components-commons/radio-enum-component/radio.enum.component";
+import {TextBoxComponent} from "../../../../shared/components-commons/text-box-component/text.box.component";
+import {DateBoxComponent} from "../../../../shared/components-commons/date-box-component/date.box.component";
+import {SelectEnumComponent} from "../../../../shared/components-commons/select-enum-component/select.enum.component";
 
 
 @Component({
   selector: 'pessoa-form-component',
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterModule,
+    ToolbarComponent,
+    RadioEnumComponent,
+    TextBoxComponent,
+    DateBoxComponent,
+    SelectEnumComponent
+  ],
   templateUrl: './pessoa.form.component.html',
 })
 // styleUrls: ['./pessoa.component.scss']

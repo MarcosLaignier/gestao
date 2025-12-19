@@ -1,7 +1,14 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {CommonModule} from "@angular/common";
+import {RouterModule} from "@angular/router";
 
 @Component({
   selector: 'radio-enum',
+  standalone:true,
+  imports: [
+    CommonModule,
+    RouterModule,
+  ],
   templateUrl: './radio.enum.component.html',
   styleUrls: ['./radio.enum.component.scss']
 })

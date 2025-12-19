@@ -1,9 +1,16 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {FormFieldBase} from "../../utils/form.field.base";
-import {AtivoInativoEnum} from "../../enum/ativo.inativo.enum";
+import {CommonModule} from "@angular/common";
+import {RouterModule} from "@angular/router";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'select-enum',
+  standalone:true,
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+  ],
   templateUrl: './select.enum.component.html'
 })
 export class SelectEnumComponent  {

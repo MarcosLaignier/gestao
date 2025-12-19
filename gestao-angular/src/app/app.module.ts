@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
-import {AppRoutingModule} from './app-routing.module';
+// import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {PessoaService} from "./shared/service/pessoa.service";
@@ -21,11 +21,11 @@ import {DocumentMaskDirective} from "./shared/utils/directives/documento.mask.di
     ],
     bootstrap: [AppComponent], imports: [FormsModule,
         BrowserModule,
-        AppRoutingModule,
+        // AppRoutingModule,
         BrowserAnimationsModule,
         AngularMaterialModule,
         ComponentsCommonsModule], providers: [
-        PessoaService,
+        // PessoaService,
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         provideHttpClient(withInterceptorsFromDi())
     ] })

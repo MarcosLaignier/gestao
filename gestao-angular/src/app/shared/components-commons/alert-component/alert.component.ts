@@ -1,9 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AlertMessage, AlertService } from './alert.service';
+import {CommonModule} from "@angular/common";
 
 @Component({
   selector: 'alert-component',
+  standalone: true,
+  imports: [
+    CommonModule
+  ],
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss']
 })
