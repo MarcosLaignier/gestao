@@ -14,6 +14,7 @@ import {DateBoxComponent} from "../../../../shared/components-commons/date-box-c
 import {SelectEnumComponent} from "../../../../shared/components-commons/select-enum-component/select.enum.component";
 import {TabsComponent} from "../../../../shared/components-commons/tabs-component/tabs.component";
 import {TabComponent} from "../../../../shared/components-commons/tabs-component/tab.component";
+import {SexoEnum} from "../../../../shared/enum/sexo.enum";
 
 
 @Component({
@@ -31,12 +32,11 @@ import {TabComponent} from "../../../../shared/components-commons/tabs-component
   ],
   templateUrl: './pessoa.form.component.html',
 })
-// styleUrls: ['./pessoa.component.scss']
 
 export class PessoaFormComponent extends CrudPadrao<Pessoa, PessoaFilterDTO>{
 
-  SituacaoEnum = AtivoInativoEnum;
-
+  situacaoEnumType = AtivoInativoEnum;
+  sexoEnumType = SexoEnum;
 
   constructor(injector: Injector,
               private mainService:PessoaService,

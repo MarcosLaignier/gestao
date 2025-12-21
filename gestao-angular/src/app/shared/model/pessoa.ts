@@ -2,6 +2,7 @@ import {AtivoInativoEnum} from "../enum/ativo.inativo.enum";
 import {TipoPessoaEnum} from "../enum/tipo.pessoa.enum";
 import {Endereco} from "./endereco";
 import {Telefone} from "./telefone";
+import {SexoEnum} from "../enum/sexo.enum";
 
 export class Pessoa{
 
@@ -11,11 +12,15 @@ export class Pessoa{
 
   documento: string;
 
+  email: string;
+
   nascimento: Date;
 
   situacao: AtivoInativoEnum;
 
   tipoPessoa: TipoPessoaEnum;
+
+  sexo: SexoEnum
 
   telefoneList: Telefone[];
 

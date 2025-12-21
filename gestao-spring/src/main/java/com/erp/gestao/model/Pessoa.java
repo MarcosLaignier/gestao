@@ -1,6 +1,7 @@
 package com.erp.gestao.model;
 
 import com.erp.gestao.enums.AtivoInativoEnum;
+import com.erp.gestao.enums.SexoEnum;
 import com.erp.gestao.enums.TipoPessoaEnum;
 import com.erp.gestao.utils.validate.ValidateField;
 import jakarta.persistence.*;
@@ -33,6 +34,10 @@ public class Pessoa {
     @ValidateField(message = "A Data de Nascimento deve ser Informada!")
     @Temporal(TemporalType.DATE)
     private LocalDate nascimento;
+
+    @Enumerated(EnumType.STRING)
+    @ValidateField(message = "O Sexo deve ser Informado!")
+    private SexoEnum sexoEnum;
 
     @Enumerated(EnumType.STRING)
     @ValidateField(message = "A situação deve ser Informada!")
