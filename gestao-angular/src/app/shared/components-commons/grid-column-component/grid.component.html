@@ -3,17 +3,23 @@
     <div class="table-responsive">
       <table class="table table-striped table-hover align-middle mb-0">
         <thead class="table-light">
-        <tr>
-          <th *ngFor="let col of columns">{{ formatTitle(col) }}</th>
-        </tr>
+          <tr>
+            @for (col of columns; track col) {
+              <th>{{ formatTitle(col) }}</th>
+            }
+          </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let row of dataSource"
-        (dblclick)="editItem(row)">
-          <td *ngFor="let col of columns">
-            {{ formatValue(row, col) }}
-          </td>
-        </tr>
+          @for (row of dataSource; track row) {
+            <tr
+              (dblclick)="editItem(row)">
+              @for (col of columns; track col) {
+                <td>
+                  {{ formatValue(row, col) }}
+                </td>
+              }
+            </tr>
+          }
         </tbody>
       </table>
     </div>

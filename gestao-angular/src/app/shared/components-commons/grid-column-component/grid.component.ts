@@ -2,15 +2,14 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import * as _ from 'lodash';
 import {startCase} from 'lodash';
 import {Router, RouterModule} from "@angular/router";
-import {CommonModule} from "@angular/common";
+
 
 @Component({
   selector: 'grid-component',
   standalone:true,
   imports: [
-    CommonModule,
-    RouterModule,
-  ],
+    RouterModule
+],
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.scss']
 })

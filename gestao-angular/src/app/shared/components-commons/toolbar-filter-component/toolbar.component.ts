@@ -1,14 +1,13 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {CommonModule, Location} from '@angular/common';
+import { Location } from '@angular/common';
 import {Router, RouterModule} from "@angular/router";
 
 @Component({
   selector: 'toolbar-filter-component',
   standalone: true,
   imports: [
-    CommonModule,
     RouterModule
-  ],
+],
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 

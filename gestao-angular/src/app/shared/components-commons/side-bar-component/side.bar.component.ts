@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {RouterModule} from "@angular/router";
-import {CommonModule} from "@angular/common";
+
 
 interface MenuItem {
   label: string;
@@ -14,9 +14,8 @@ interface MenuItem {
   selector: 'side-bar-component',
   standalone: true,
   imports: [
-    CommonModule,
     RouterModule
-  ],
+],
   templateUrl: './side.bar.component.html',
   styleUrls: ['./side.bar.component.scss']
 })
