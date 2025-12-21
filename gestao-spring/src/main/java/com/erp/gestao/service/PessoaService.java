@@ -34,7 +34,7 @@ public class PessoaService extends BaseService<Pessoa, Integer> {
                             .equal("situacao", filter.getSituacao())
                             .equal("tipoPessoa", filter.getTipoPessoa())
                             .between("nascimento", filter.getNascimentoInicio(), filter.getNascimentoFim())
-            ); 
+            );
     }
 
     @Override
