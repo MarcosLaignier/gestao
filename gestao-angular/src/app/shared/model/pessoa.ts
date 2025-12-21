@@ -1,5 +1,7 @@
 import {AtivoInativoEnum} from "../enum/ativo.inativo.enum";
 import {TipoPessoaEnum} from "../enum/tipo.pessoa.enum";
+import {Endereco} from "./endereco";
+import {Telefone} from "./telefone";
 
 export class Pessoa{
 
@@ -14,6 +16,10 @@ export class Pessoa{
   situacao: AtivoInativoEnum;
 
   tipoPessoa: TipoPessoaEnum;
+
+  telefoneList: Telefone[];
+
+  enderecoList: Endereco[];
 
   versao: number;
 
