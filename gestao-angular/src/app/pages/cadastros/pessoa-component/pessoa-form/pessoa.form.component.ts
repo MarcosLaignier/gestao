@@ -12,6 +12,8 @@ import {RadioEnumComponent} from "../../../../shared/components-commons/radio-en
 import {TextBoxComponent} from "../../../../shared/components-commons/text-box-component/text.box.component";
 import {DateBoxComponent} from "../../../../shared/components-commons/date-box-component/date.box.component";
 import {SelectEnumComponent} from "../../../../shared/components-commons/select-enum-component/select.enum.component";
+import {TabsComponent} from "../../../../shared/components-commons/tabs-component/tabs.component";
+import {TabComponent} from "../../../../shared/components-commons/tabs-component/tab.component";
 
 
 @Component({
@@ -23,8 +25,10 @@ import {SelectEnumComponent} from "../../../../shared/components-commons/select-
     RadioEnumComponent,
     TextBoxComponent,
     DateBoxComponent,
-    SelectEnumComponent
-],
+    SelectEnumComponent,
+    TabsComponent,
+    TabComponent
+  ],
   templateUrl: './pessoa.form.component.html',
 })
 // styleUrls: ['./pessoa.component.scss']

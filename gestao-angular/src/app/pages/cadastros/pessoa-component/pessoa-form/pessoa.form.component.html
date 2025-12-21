@@ -1,36 +1,40 @@
 <div>
   <toolbar-filter-component [tituloPagina]="'Cadastro de Pessoa'"
-    [listMode]="false"
-    (salvar)="doSave(model)">
+                            [listMode]="false"
+                            (salvar)="doSave(model)">
 
   </toolbar-filter-component>
 </div>
 
-<!--<alert-component *ngIf=""></alert-component>-->
+<tabs-component>
+  <tab title="Dados Gerais">
 
-@if (model) {
-  <div class="flex-column">
-    <radio-enum
-      [enumObject]="TipoPessoaEnum"
-      label="Tipo Pessoa"
-      [(dataField)]="model.tipoPessoa"
-      [inline]="true">
-    </radio-enum>
-    <div class="d-flex flex-row gap-1">
-      <text-box-component [label]="'Nome'" [colClass]="'col-md-2'" [(dataField)]="model.nome"></text-box-component>
-      <text-box-component [label]="'Documento'"  [colClass]="'col-md-2'" [(dataField)]="model.documento" ></text-box-component>
-    </div>
     @if (model) {
-      <date-box-component [label]="'Nascimento '" [colClass]="'col-md-2'" [(dataField)]="model.nascimento"></date-box-component>
+      <div class="flex-column">
+        <radio-enum [enumObject]="TipoPessoaEnum"
+                    label="Tipo Pessoa"
+                    [(dataField)]="model.tipoPessoa"
+                    [inline]="true">
+        </radio-enum>
+
+        <div class="d-flex gap-2">
+          <text-box-component label="Nome" colClass="col-md-2" [(dataField)]="model.nome"></text-box-component>
+          <text-box-component label="Documento" colClass="col-md-2" [(dataField)]="model.documento"></text-box-component>
+        </div>
+        <date-box-component label="Nascimento" colClass="col-md-2" [(dataField)]="model.nascimento"></date-box-component>
+        <select-enum label="Situação" [enumObject]="SituacaoEnum" [(dataField)]="model.situacao" colClass="col-md-2"></select-enum>
+
+      </div>
     }
-    <select-enum [label]="'Situação'"
-      [enumObject]="SituacaoEnum"
-      [(dataField)]="model.situacao"
-      [colClass]="'col-md-2'">
-    </select-enum>
-  </div>
-}
 
+  </tab>
 
+  <tab title="Endereço">
 
+  </tab>
 
+  <tab title="Contatos">
+
+  </tab>
+
+</tabs-component>
