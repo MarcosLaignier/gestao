@@ -20,25 +20,26 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
       },
 
       error: (error: HttpErrorResponse) => {
-        const rawMessage =
-          error?.error?.message ||
-          error?.message ||
-          'Erro desconhecido.';
+        console.log(error.error?.messages);
 
-        let message = rawMessage;
+        let message: string;
 
-        // Mantendo sua lógica original
-        if (typeof rawMessage === 'string' && rawMessage.includes('!,')) {
-          message = rawMessage
-            .replace('[', '')
-            .replace(']', '')
-            .split(',')
-            .map(m => m.trim())
-            .join('<br>');
+        // Padrao da nossa API (Uma lista de msg)
+        if (Array.isArray(error.error?.messages)) {
+          message = error.error.messages.join('<br>');
+        }
+        // Caso venha uma msg normal somente string
+        else if (typeof error.error?.message == 'string') {
+          message = error.error.message;
+        }
+        // Se nao vier nada disso so solta um erro desconhecido
+        else {
+          message = error.message || 'Erro desconhecido, entre em contato.';
         }
 
         alertService.show('error', message);
       }
+
     })
   );
 };

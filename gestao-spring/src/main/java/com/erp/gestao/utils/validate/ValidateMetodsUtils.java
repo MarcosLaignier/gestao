@@ -44,7 +44,7 @@ public class ValidateMetodsUtils {
         }
 
         if(!CollectionMetodsUtils.isEmpty(errorMessages)){
-            throw new ServiceException(errorMessages.toString());
+            throw new ApplicationException(errorMessages);
         }
 
     }
