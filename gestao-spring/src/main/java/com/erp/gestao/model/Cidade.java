@@ -14,6 +14,10 @@ public class Cidade {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @ManyToOne
+    @JoinColumn(name = "estado")
+    private Estado estado;
+
     private String nome;
 
     private String sigla;

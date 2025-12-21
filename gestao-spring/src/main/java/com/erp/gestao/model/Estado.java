@@ -14,6 +14,10 @@ public class Estado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @ManyToOne
+    @JoinColumn(name = "pais")
+    private Pais pais;
+
     private String nome;
 
     private String sigla;
