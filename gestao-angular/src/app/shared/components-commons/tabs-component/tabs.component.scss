@@ -1,47 +1,50 @@
 .custom-tabs {
-  border-bottom: 1px solid #dee2e6;
-
-  .nav-item {
-    margin-bottom: -1px;
-  }
+  border-bottom: none;
 
   .nav-link {
-    position: relative;
-    color: #6c757d;
-    background-color: transparent;
     border: none;
-    border-radius: 0.5rem 0.5rem 0 0;
-    padding: 0.6rem 1.2rem;
-    font-weight: 500;
+    color: #495057;
+    background-color: #f8f9fa;
+    margin-right: 6px;
+    padding: 10px 16px;
+    border-radius: 8px 8px 0 0;
     transition: all 0.2s ease;
+    cursor: pointer;
+
+    i {
+      font-size: 1rem;
+      opacity: 0.8;
+    }
 
     &:hover:not(.disabled) {
-      color: #212529;
-      background-color: #f8f9fa;
+      background-color: #e9ecef;
     }
 
     &.active {
-      color: #212529;
       background-color: #ffffff;
+      color: #212529;
+      font-weight: 600;
+
       box-shadow:
         0 -2px 6px rgba(0, 0, 0, 0.08),
-        0 2px 6px rgba(0, 0, 0, 0.08);
-      z-index: 2;
+        0 2px 6px rgba(0, 0, 0, 0.12);
+
+      i {
+        opacity: 1;
+      }
     }
 
     &.disabled {
-      color: #adb5bd;
+      opacity: 0.45;
       cursor: not-allowed;
-      pointer-events: none;
-      background-color: transparent;
     }
   }
 }
 
-/* Conteúdo da aba */
-:host ::ng-deep .tab-content {
-  background-color: #ffffff;
-  border-radius: 0 0 0.5rem 0.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  padding: 1rem;
-}
+// talvez em um futuro colocar os conteudos da tab flutuando?????
+//.tab-content {
+//  background-color: #ffffff;
+//  padding: 16px;
+//  border-radius: 0 8px 8px 8px;
+//  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+//}

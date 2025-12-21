@@ -4,11 +4,13 @@ import {
   ContentChildren,
   QueryList
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { TabComponent } from './tab.component';
 
 @Component({
   selector: 'tabs-component',
   standalone: true,
+  imports: [CommonModule],
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.scss']
 })
@@ -24,9 +26,7 @@ export class TabsComponent implements AfterContentInit {
   }
 
   selectTab(tab: TabComponent): void {
-    if (tab.disabled) {
-      return;
-    }
+    if (tab.disabled) return;
 
     this.tabs.forEach(t => (t.active = false));
     tab.active = true;
