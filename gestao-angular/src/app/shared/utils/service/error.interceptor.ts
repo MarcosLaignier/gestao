@@ -1,48 +1,44 @@
-import { Injectable } from '@angular/core';
-import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
-import {AlertService} from "../../components-commons/alert-component/alert.service";
+import { HttpInterceptorFn, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { inject } from '@angular/core';
+import { tap } from 'rxjs';
+import { AlertService } from '../../components-commons/alert-component/alert.service';
 
-@Injectable()
-export class ErrorInterceptor implements HttpInterceptor {
+export const errorInterceptor: HttpInterceptorFn = (req, next) => {
 
-  constructor(private alertService: AlertService) {}
+  const alertService = inject(AlertService);
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return next.handle(req).pipe(
+  return next(req).pipe(
+    tap({
+      next: (event) => {
+        if (
+          event instanceof HttpResponse &&
+          req.method !== 'GET' &&
+          !(req.method === 'POST' && req.url.includes('list'))
+        ) {
+          alertService.show('success', 'Operação realizada com sucesso!');
+        }
+      },
 
-      tap({
-        next: (event) => {
-          if (event instanceof HttpResponse && req.method !== 'GET' && !(req.method == 'POST' && req.url.includes('list'))) {
-            console.log(event);
-            console.log(req)
-            this.alertService.show('success', 'Operação realizada com sucesso!');
-          }
-        },
+      error: (error: HttpErrorResponse) => {
+        const rawMessage =
+          error?.error?.message ||
+          error?.message ||
+          'Erro desconhecido.';
 
-        error: (error: HttpErrorResponse) => {
-          const rawMessage =
-            error?.error?.message ||
-            error?.message ||
-            'Erro desconhecido.';
+        let message = rawMessage;
 
-          let message = rawMessage;
-
-          // TODO: Pra funcionar as msg do service deverao sempre terminar com !.... verificar forma de melhorar isto depois
-          if (typeof rawMessage === 'string' && rawMessage.includes('!,')) {
-            message = rawMessage
-              .replace('[', '')
-              .replace(']', '')
-              .split(',')
-              .map(m => m.trim())
-              .join('<br>'); // <-- usando BR pois o alert esta como inner html, fazendo a quebra
-          }
-
-          this.alertService.show('error', message);
+        // Mantendo sua lógica original
+        if (typeof rawMessage === 'string' && rawMessage.includes('!,')) {
+          message = rawMessage
+            .replace('[', '')
+            .replace(']', '')
+            .split(',')
+            .map(m => m.trim())
+            .join('<br>');
         }
 
-      })
-
-    );
-  }
-}
+        alertService.show('error', message);
+      }
+    })
+  );
+};

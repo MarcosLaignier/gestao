@@ -9,9 +9,7 @@ export interface AlertMessage {
   duration?: number;
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({providedIn: 'root'})
 export class AlertService {
 
   private alertSubject = new Subject<AlertMessage>();
