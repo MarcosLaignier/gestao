@@ -4,12 +4,16 @@ import com.erp.gestao.enums.AtivoInativoEnum;
 import com.erp.gestao.enums.TipoPessoaEnum;
 import com.erp.gestao.utils.validate.ValidateField;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
 @Table(name ="pessoa")
+@Getter
+@Setter
 public class Pessoa {
 
     @Id
@@ -50,70 +54,6 @@ public class Pessoa {
         this.nascimento = nascimento;
         this.situacao = situacao;
         this.tipoPessoa = tipoPessoa;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDocumento() {
-        return documento;
-    }
-
-    public void setDocumento(String documento) {
-        this.documento = documento;
-    }
-
-    public LocalDate getNascimento() {
-        return nascimento;
-    }
-
-    public void setNascimento(LocalDate nascimento) {
-        this.nascimento = nascimento;
-    }
-
-    public AtivoInativoEnum getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(AtivoInativoEnum situacao) {
-        this.situacao = situacao;
-    }
-
-    public TipoPessoaEnum getTipoPessoa() {
-        return tipoPessoa;
-    }
-
-    public void setTipoPessoa(TipoPessoaEnum tipoPessoa) {
-        this.tipoPessoa = tipoPessoa;
-    }
-
-    //    public List<PessoaTipo> getPessoaTipoList() {
-//        return pessoaTipoList;
-//    }
-//
-//    public void setPessoaTipoList(List<PessoaTipo> pessoaTipoList) {
-//        this.pessoaTipoList = pessoaTipoList;
-//    }
-
-    public Integer getVersao() {
-        return versao;
-    }
-
-    public void setVersao(Integer versao) {
-        this.versao = versao;
     }
 
     @Override
