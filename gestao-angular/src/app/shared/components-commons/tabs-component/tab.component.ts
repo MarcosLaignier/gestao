@@ -11,5 +11,7 @@ import { Component, Input } from '@angular/core';
 })
 export class TabComponent {
   @Input({ required: true }) title!: string;
+  @Input() disabled: boolean = false;
+
   active = false;
 }

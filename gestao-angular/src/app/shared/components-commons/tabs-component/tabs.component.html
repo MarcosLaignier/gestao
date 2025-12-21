@@ -1,10 +1,11 @@
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs custom-tabs">
   @for (tab of tabs; track tab) {
     <li class="nav-item">
       <button
         type="button"
-        class="nav-link "
+        class="nav-link"
         [class.active]="tab.active"
+        [class.disabled]="tab.disabled"
         (click)="selectTab(tab)">
         {{ tab.title }}
       </button>
