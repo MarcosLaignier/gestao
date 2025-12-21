@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -27,8 +28,10 @@ public class Pessoa {
     @ValidateField(message = "O Documento deve ser Informado!")
     private String documento;
 
+    private String email;
+
     @ValidateField(message = "A Data de Nascimento deve ser Informada!")
-//    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     private LocalDate nascimento;
 
     @Enumerated(EnumType.STRING)
@@ -41,6 +44,13 @@ public class Pessoa {
 
 //    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "pessoa")
 //    private List<PessoaTipo> pessoaTipoList;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "pessoa")
+    private List<Telefone> telefoneList;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "pessoa")
+    private List<Endereco> enderecoList;
+
 
     @Version
     private Integer versao = 0;

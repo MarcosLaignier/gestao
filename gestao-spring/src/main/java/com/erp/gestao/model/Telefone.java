@@ -5,10 +5,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name ="endereco")
+@Table(name ="telefone")
 @Getter
 @Setter
-public class Endereco {
+public class Telefone {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -17,21 +18,11 @@ public class Endereco {
     @JoinColumn(name = "pessoa")
     private Pessoa pessoa;
 
-    @ManyToOne
-    @JoinColumn(name = "cidade")
-    private Cidade cidade;
-
-    private String logradouro;
-
     private String numero;
 
-    private String complemento;
+    private Boolean principal;
 
-    private String bairro;
-
-    private String cep;
-
-    private String pontoReferencia;
+    private Boolean isWhatsappNotifica;
 
     @Version
     private Integer versao = 0;
