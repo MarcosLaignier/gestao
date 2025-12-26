@@ -1,5 +1,5 @@
-<div class="{{ colClass || 'col-md-4' }}">
-  <label class="form-label">{{ label + ':'}}</label>
+<div [ngClass]="colClass">
+<label class="form-label">{{ label + ':'}}</label>
 
   @for (opt of enumOptions; track opt) {
     <div

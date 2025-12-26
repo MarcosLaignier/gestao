@@ -11,7 +11,9 @@ import {FormsModule} from "@angular/forms";
     RouterModule,
     FormsModule,
   ],
-  templateUrl: './select.enum.component.html'
+  templateUrl: './select.enum.component.html',
+  styleUrls: ['./select.enum.component.scss']
+
 })
 export class SelectEnumComponent  {
 

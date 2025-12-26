@@ -16,8 +16,6 @@ import {FormsModule} from "@angular/forms";
   ],
   templateUrl: './text.box.component.html',
   styleUrls: ['./text.box.component.scss'],
-
-  styles: [':host { display: contents; }']
 })
 export class TextBoxComponent extends FormFieldBase<string> {
 
