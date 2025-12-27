@@ -6,7 +6,7 @@ export interface GridColumnOptions {
   label?: string;
   type?: GridColumnType;
   mask?: string;
-  order?: number;
+  ordem?: number;
   hidden?: boolean;
 }
 

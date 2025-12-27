@@ -13,6 +13,7 @@ export abstract class FormFieldBase<T> {
    */
   @Input() label: string = ''
 
+  @Input() placeHolder: string = '';
 
   private _dataField!: T;
 

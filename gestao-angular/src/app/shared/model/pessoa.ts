@@ -9,24 +9,24 @@ export class Pessoa{
 
   id: number;
 
-  @GridColumn({ label: 'Nome', type: 'text', order: 1 })
+  @GridColumn({ label: 'Nome', type: 'texto', ordem: 1 })
   nome: string;
 
-  @GridColumn({ label: 'Documento', type: 'cpf', order: 2 })
+  @GridColumn({ label: 'Documento', type: 'cpf', ordem: 2 })
   documento: string;
 
   email: string;
 
-  @GridColumn({ label: 'Nascimento', type: 'date', order: 3 })
+  @GridColumn({ label: 'Nascimento', type: 'date', ordem: 3 })
   nascimento: Date;
 
-  @GridColumn({ label: 'Situação', type: 'enum', order: 6 })
+  @GridColumn({ label: 'Situação', type: 'enum', ordem: 6 })
   situacao: AtivoInativoEnum;
 
-  @GridColumn({ label: 'Tipo', type: 'text', order: 4 })
+  @GridColumn({ label: 'Tipo', type: 'texto', ordem: 4 })
   tipoPessoa: TipoPessoaEnum;
 
-  @GridColumn({ label: 'Sexo', type: 'enum', order: 5 })
+  @GridColumn({ label: 'Sexo', type: 'enum', ordem: 5 })
   sexo: SexoEnum
 
   telefoneList: Telefone[];

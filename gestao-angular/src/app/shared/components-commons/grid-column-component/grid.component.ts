@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import * as _ from 'lodash';
 import {startCase} from 'lodash';
 import {Router, RouterModule} from "@angular/router";
@@ -43,7 +43,7 @@ export class GridComponent {
     if (Array.isArray(cols)) {
       this.gridColumnConfig = cols
         .filter(c => !c.hidden)
-        .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+        .sort((a, b) => (a.ordem ?? 0) - (b.ordem ?? 0));
 
       this.columns = this.gridColumnConfig.map(c => c.key);
     }
@@ -148,6 +148,8 @@ export class GridComponent {
       case 'telefone':
         return this.applyMask('11987654321', '(00) 00000-0000');
 
+      case 'enum':
+        return value;
 
       case 'currency':
         return new Intl.NumberFormat('pt-BR', {

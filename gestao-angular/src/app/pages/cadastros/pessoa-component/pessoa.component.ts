@@ -8,7 +8,6 @@ import {PessoaFilterDTO} from "../../../shared/dto/filterDTO/pessoa.filter.dto";
 import {ToolbarComponent} from "../../../shared/components-commons/toolbar-filter-component/toolbar.component";
 import {PessoaFilterComponent} from "./pessoa-filter/pessoa.filter.component";
 import {GridComponent} from "../../../shared/components-commons/grid-column-component/grid.component";
-import {SelectEnumComponent} from "../../../shared/components-commons/select-enum-component/select.enum.component";
 
 
 @Component({
