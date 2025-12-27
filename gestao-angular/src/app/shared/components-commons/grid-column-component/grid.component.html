@@ -3,19 +3,21 @@
     <div class="table-responsive">
       <table class="table table-striped table-hover align-middle mb-0">
         <thead class="table-light">
-          <tr>
-            @for (col of columns; track col) {
-              <th>{{ formatTitle(col) }}</th>
-            }
-          </tr>
+        <tr>
+          @for (col of gridColumnConfig; track col.key) {
+            <th>
+              {{ col.label || formatTitle(col.key) }}
+            </th>
+          }
+        </tr>
         </thead>
+
         <tbody>
           @for (row of dataSource; track row) {
-            <tr
-              (dblclick)="editItem(row)">
-              @for (col of columns; track col) {
+            <tr (dblclick)="editItem(row)">
+              @for (col of gridColumnConfig; track col.key) {
                 <td>
-                  {{ formatValue(row, col) }}
+                  {{ formatByType(row[col.key], col) }}
                 </td>
               }
             </tr>
@@ -25,6 +27,3 @@
     </div>
   </div>
 </div>
-
-
-

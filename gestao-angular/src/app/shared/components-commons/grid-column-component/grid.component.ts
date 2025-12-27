@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import * as _ from 'lodash';
 import {startCase} from 'lodash';
 import {Router, RouterModule} from "@angular/router";
@@ -9,53 +9,115 @@ import {Router, RouterModule} from "@angular/router";
   standalone:true,
   imports: [
     RouterModule
-],
+  ],
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.scss']
 })
 export class GridComponent {
 
-  @Input() typeDataSource:any;
+  gridColumnConfig: any[] = [];
+
   @Input() dataSource: any[] = [];
   @Input() columns: string[] = [];
   @Input() routerByEditDblClick: boolean = false;
 
   @Output() dblClickLine = new EventEmitter<any>();
 
+  private _typeDataSource:any;
+
+
+  get typeDataSource(): any {
+    return this._typeDataSource;
+  }
+
+
+  @Input()
+  set typeDataSource(value: any) {
+    if (!value || _.isEqual(value, this._typeDataSource)) return;
+
+    this._typeDataSource = value;
+
+    const ctor = value.constructor as any;
+    const cols = ctor.__grid_columns__;
+
+    if (Array.isArray(cols)) {
+      this.gridColumnConfig = cols
+        .filter(c => !c.hidden)
+        .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+
+      this.columns = this.gridColumnConfig.map(c => c.key);
+    }
+  }
+
   constructor(private router: Router) {
 
   }
 
-  ngOnInit() {
-
-    // TODO:(EM IMPLEMENTACAO FUTURA)  Pegar as chaves do primeiro objeto para gerar colunas caso nao tenha colunas
-    if (this.dataSource.length > 0 && _.isEmpty(this.columns)) {
-      this.columns = Object.keys(this.dataSource[0]);
-    }
-  }
-
-  formatValue(row: any, key: string) {
-    let value = row[key];
-
-    // Se for string no formato "yyyy-MM-dd", to criando a data localmente
-    if (typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)) {
-      const [year, month, day] = value.split('-').map(Number);
-      value = new Date(year, month - 1, day);
+  /** Metodo responsavel por formatar datas
+   *
+   * @param value
+   */
+  formatDate(value: any): string {
+    if (!value) {
+      return '';
     }
 
-    if (value instanceof Date && !isNaN(value.getTime())) {
-      const d = value.getDate().toString().padStart(2, '0');
-      const m = (value.getMonth() + 1).toString().padStart(2, '0');
-      const y = value.getFullYear();
-      return `${d}-${m}-${y}`;
+    let date: Date;
+
+    // Se já for Date
+    if (value instanceof Date) {
+      date = value;
+    }
+    // Se vier como string yyyy-MM-dd ou yyyy-MM-ddTHH:mm:ss
+    else if (typeof value === 'string') {
+      const parsed = new Date(value);
+      if (isNaN(parsed.getTime())) {
+        return value;
+      }
+      date = parsed;
+    }
+    // Se vier como timestamp
+    else if (typeof value === 'number') {
+      date = new Date(value);
+    } else {
+      return value;
     }
 
-    return value;
+    if (isNaN(date.getTime())) {
+      return '';
+    }
+
+    const d = date.getDate().toString().padStart(2, '0');
+    const m = (date.getMonth() + 1).toString().padStart(2, '0');
+    const y = date.getFullYear();
+
+    return `${d}/${m}/${y}`;
   }
 
   formatTitle(col: string): string {
     if (!col) return '';
     return startCase(col.replace(/[._]/g, ' '));
+  }
+
+  applyMask(value: any, mask: string): string {
+    if (value === null || value === undefined) {
+      return '';
+    }
+
+    const onlyNumbers = value.toString().replace(/\D/g, '');
+    let result = '';
+    let valueIndex = 0;
+
+    for (let i = 0; i < mask.length && valueIndex < onlyNumbers.length; i++) {
+      if (mask[i] === '0') {
+        result += onlyNumbers[valueIndex];
+        valueIndex++;
+      } else {
+        result += mask[i];
+      }
+    }
+
+    return result;
   }
 
   editItem(row: any) {
@@ -66,5 +128,35 @@ export class GridComponent {
 
     }
     this.dblClickLine.emit(row);
+  }
+
+  formatByType(value: any, col: any) {
+
+    if (value == null) return '';
+
+    switch (col.type) {
+
+      case 'date':
+        return this.formatDate(value);
+
+      case 'cpf':
+        return this.applyMask(value, col.mask ?? '000.000.000-00');
+
+      case 'cnpj':
+        return this.applyMask(value, col.mask ?? '00.000.000/0000-00 ');
+
+      case 'telefone':
+        return this.applyMask('11987654321', '(00) 00000-0000');
+
+
+      case 'currency':
+        return new Intl.NumberFormat('pt-BR', {
+          style: 'currency',
+          currency: 'BRL'
+        }).format(value);
+
+      default:
+        return value;
+    }
   }
 }

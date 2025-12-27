@@ -26,8 +26,7 @@ import {SelectEnumComponent} from "../../../shared/components-commons/select-enu
 })
 export class PessoaComponent extends CrudPadrao<Pessoa, PessoaFilterDTO>{
 
-  displayedColumns = ['nome', 'nascimento','tipoPessoa', 'documento', 'situacao']
-  dataSourceType = Pessoa;
+  dataSourceType = new Pessoa();
 
   constructor(injector: Injector,
               private mainService:PessoaService,
