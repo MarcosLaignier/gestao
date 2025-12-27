@@ -5,6 +5,7 @@ import com.erp.gestao.enums.SexoEnum;
 import com.erp.gestao.enums.TipoPessoaEnum;
 import com.erp.gestao.utils.validate.ValidateField;
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,8 +15,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name ="pessoa")
-@Getter
-@Setter
+@Data
 public class Pessoa {
 
     @Id
@@ -37,7 +37,7 @@ public class Pessoa {
 
     @Enumerated(EnumType.STRING)
     @ValidateField(message = "O Sexo deve ser Informado!")
-    private SexoEnum sexoEnum;
+    private SexoEnum sexo;
 
     @Enumerated(EnumType.STRING)
     @ValidateField(message = "A situação deve ser Informada!")
@@ -69,23 +69,5 @@ public class Pessoa {
         this.nascimento = nascimento;
         this.situacao = situacao;
         this.tipoPessoa = tipoPessoa;
-    }
-
-    @Override
-    public final boolean equals(Object o) {
-        if (!(o instanceof Pessoa pessoa)) return false;
-
-        return Objects.equals(id, pessoa.id) && Objects.equals(nome, pessoa.nome) && Objects.equals(documento, pessoa.documento) && Objects.equals(nascimento, pessoa.nascimento) && tipoPessoa == pessoa.tipoPessoa && situacao == pessoa.situacao;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = Objects.hashCode(id);
-        result = 31 * result + Objects.hashCode(nome);
-        result = 31 * result + Objects.hashCode(documento);
-        result = 31 * result + Objects.hashCode(nascimento);
-        result = 31 * result + Objects.hashCode(tipoPessoa);
-        result = 31 * result + Objects.hashCode(situacao);
-        return result;
     }
 }
