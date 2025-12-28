@@ -28,8 +28,7 @@ export class PessoaComponent extends CrudPadrao<Pessoa, PessoaFilterDTO>{
   dataSourceType = new Pessoa();
 
   constructor(injector: Injector,
-              private mainService:PessoaService,
-              private router:Router) {
+              private mainService:PessoaService) {
     super(injector, "pessoa");
   }
 

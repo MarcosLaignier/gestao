@@ -19,6 +19,7 @@ import {Telefone} from "../../../../shared/model/telefone";
 import {SwitchComponent} from "../../../../shared/components-commons/switch-component/switch.component";
 import {GridComponent} from "../../../../shared/components-commons/grid-column-component/grid.component";
 import _ from "lodash";
+import {AlertService} from "../../../../shared/components-commons/alert-component/alert.service";
 
 
 @Component({
@@ -52,7 +53,8 @@ export class PessoaFormComponent extends CrudPadrao<Pessoa, PessoaFilterDTO>{
   constructor(injector: Injector,
               private mainService:PessoaService,
               private router:Router,
-              private route: ActivatedRoute
+              private route: ActivatedRoute,
+              private alertService: AlertService
   ) {
     super(injector, "pessoa");
   }
@@ -79,6 +81,52 @@ export class PessoaFormComponent extends CrudPadrao<Pessoa, PessoaFilterDTO>{
     if(_.isNil(this.model.telefoneList)){
       this.model.telefoneList = [];
     }
-    this.model.telefoneList.push(this.telefoneSelected)
+    if(this.validaAdicionaTelefone(this.telefoneSelected)){
+      this.model.telefoneList.push(this.telefoneSelected)
+      this.telefoneSelected = new Telefone();
+    }
+  }
+
+  validaAdicionaTelefone(telefoneAdd: Telefone){
+    if (!this.telefoneValido(telefoneAdd)) {
+      this.alertService.warning('Número de telefone inválido.', 3000);
+      return false;
+    }
+
+    const existe = this.model.telefoneList.some(t => t.numero.replace(/\D/g, '') === telefoneAdd.numero.replace(/\D/g, ''));
+
+    if (existe) {
+      this.alertService.warning('Contato já existente!', 3000);
+      return false;
+    }
+
+    return true;
+  }
+
+  private telefoneValido(telefone: Telefone): boolean {
+    if (!telefone?.numero) {
+      return false;
+    }
+
+    // Removendo tudo que não for número
+    const numero = telefone.numero.replace(/\D/g, '');
+
+    // Celular (11 dígitos) ou fixo (10 dígitos)
+    if (numero.length != 10 && numero.length !== 11) {
+      return false;
+    }
+
+    // DDD válido (11 a 99)
+    const ddd = Number(numero.substring(0, 2));
+    if (ddd < 11 || ddd > 99) {
+      return false;
+    }
+
+    // Se for celular, deve começar com 9
+    if (numero.length == 11 && numero.charAt(2) !== '9') {
+      return false;
+    }
+
+    return true;
   }
 }
