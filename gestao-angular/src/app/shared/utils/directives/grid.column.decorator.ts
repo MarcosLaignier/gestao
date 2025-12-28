@@ -8,6 +8,7 @@ export interface GridColumnOptions {
   mask?: string;
   ordem?: number;
   hidden?: boolean;
+  width?: string;
 }
 
 export function GridColumn(options: GridColumnOptions = {}) {

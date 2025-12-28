@@ -48,6 +48,9 @@ grid-component {
     color: #212529;
     border-top: 1px solid #dee2e6;
     white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   /* ===============================

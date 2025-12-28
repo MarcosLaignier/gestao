@@ -12,7 +12,7 @@
         <thead>
         <tr>
           @for (col of gridColumnConfig; track col.key) {
-            <th>
+            <th  [style.width]="col.width">
               {{ col.label || formatTitle(col.key) }}
             </th>
           }
@@ -23,7 +23,7 @@
           @for (row of dataSource; track row) {
             <tr (dblclick)="editItem(row)">
               @for (col of gridColumnConfig; track col.key) {
-                <td>
+                <td   [style.width]="col.width">
                   {{ formatByType(row[col.key], col) }}
                 </td>
               }
