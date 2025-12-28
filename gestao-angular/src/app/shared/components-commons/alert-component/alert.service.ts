@@ -11,7 +11,7 @@ export interface AlertMessage {
 
 @Injectable({providedIn: 'root'})
 export class AlertService {
-
+  timerPadrao= 5000;
   private alertSubject = new Subject<AlertMessage>();
   alertState$ = this.alertSubject.asObservable();
 
@@ -19,9 +19,9 @@ export class AlertService {
     this.alertSubject.next({ type, message, duration });
   }
 
-  success(msg: string) { this.show('success', msg); }
-  error(msg: string) { this.show('error', msg,7000); }
-  warning(msg: string) { this.show('warning', msg); }
-  info(msg: string) { this.show('info', msg); }
+  success(msg: string, alertTime?:number) { this.show('success', msg, alertTime ?? this.timerPadrao); }
+  error(msg: string, alertTime?:number) { this.show('error', msg, alertTime ?? this.timerPadrao); }
+  warning(msg: string, alertTime?:number) { this.show('warning', msg, alertTime ?? this.timerPadrao); }
+  info(msg: string, alertTime?:number) { this.show('info', msg, alertTime ?? this.timerPadrao); }
 
 }
