@@ -37,7 +37,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
           message = error.message || 'Erro desconhecido, entre em contato.';
         }
 
-        alertService.show('error', message);
+        alertService.error(message);
       }
 
     })
