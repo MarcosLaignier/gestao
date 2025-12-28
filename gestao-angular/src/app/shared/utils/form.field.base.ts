@@ -3,17 +3,16 @@ import {Directive, EventEmitter, Input, Output} from '@angular/core';
 @Directive()
 export abstract class FormFieldBase<T> {
 
-  /** Responsavel por aplicar o css do bootstrap na div externa ao component
-   *
-   */
+  /** Responsavel por aplicar o css do bootstrap na div externa ao component */
   @Input() colClass: string = 'col-md-2';
 
-  /** Responsavel por aplicar o label no component
-   *
-   */
+  /** Responsavel por aplicar o label no component */
   @Input() label: string = ''
 
   @Input() placeHolder: string = '';
+
+  /** Desabilita o switch */
+  @Input() disabled: boolean = false;
 
   private _dataField!: T;
 

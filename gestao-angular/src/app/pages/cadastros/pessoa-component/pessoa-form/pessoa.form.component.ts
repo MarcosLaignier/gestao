@@ -15,6 +15,8 @@ import {SelectEnumComponent} from "../../../../shared/components-commons/select-
 import {TabsComponent} from "../../../../shared/components-commons/tabs-component/tabs.component";
 import {TabComponent} from "../../../../shared/components-commons/tabs-component/tab.component";
 import {SexoEnum} from "../../../../shared/enum/sexo.enum";
+import {Telefone} from "../../../../shared/model/telefone";
+import {SwitchComponent} from "../../../../shared/components-commons/switch-component/switch.component";
 
 
 @Component({
@@ -28,15 +30,19 @@ import {SexoEnum} from "../../../../shared/enum/sexo.enum";
     DateBoxComponent,
     SelectEnumComponent,
     TabsComponent,
-    TabComponent
+    TabComponent,
+    SwitchComponent
   ],
   templateUrl: './pessoa.form.component.html',
 })
 
 export class PessoaFormComponent extends CrudPadrao<Pessoa, PessoaFilterDTO>{
 
+  tipoPessoaEnumType = TipoPessoaEnum;
   situacaoEnumType = AtivoInativoEnum;
   sexoEnumType = SexoEnum;
+
+  telefoneSelected: Telefone = new Telefone();
 
   constructor(injector: Injector,
               private mainService:PessoaService,
@@ -64,5 +70,7 @@ export class PessoaFormComponent extends CrudPadrao<Pessoa, PessoaFilterDTO>{
     }
   }
 
-  protected readonly TipoPessoaEnum = TipoPessoaEnum;
+  tt() {
+    console.log(this.telefoneSelected)
+  }
 }

@@ -11,7 +11,7 @@
 
     @if (model) {
       <div class="flex-column">
-        <radio-enum [enumObject]="TipoPessoaEnum"
+        <radio-enum [enumObject]="tipoPessoaEnumType"
                     label="Tipo Pessoa"
                     [(dataField)]="model.tipoPessoa"
                     [inline]="true">
@@ -41,6 +41,11 @@
   </tab>
 
   <tab title="Contatos" icon="bi-telephone">
+    <text-box-component label="Numero" colClass="col-md-2" [(dataField)]="telefoneSelected.numero"></text-box-component>
+    <switch-component [label]="'Contato Principal'" [(dataField)]="telefoneSelected.principal"></switch-component>
+    <switch-component [label]="'Contato Notificação'" [(dataField)]="telefoneSelected.isWhatsappNotifica"></switch-component>
+
+    <button (click)="tt()"></button>
 
   </tab>
 
