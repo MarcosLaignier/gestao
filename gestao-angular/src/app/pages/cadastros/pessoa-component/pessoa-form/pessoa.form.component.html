@@ -38,7 +38,49 @@
 
   <tab title="Endereço" icon="bi-geo-alt">
 
+    <div class="card mb-3">
+      <div class="card-header py-2 fw-semibold">
+        Novo Endereço
+      </div>
+
+      <form class="row g-1 p-3 border rounded shadow-sm">
+        <text-box-component label="CEP" colClass="col-md-2" [(dataField)]="enderecoSelected.cep"></text-box-component>
+
+        <div class="d-flex flex-row gap-1">
+          <text-box-component label="Logradouro" colClass="col-md-4" [(dataField)]="enderecoSelected.logradouro"></text-box-component>
+          <text-box-component label="Número" colClass="col-md-2" [(dataField)]="enderecoSelected.numero"></text-box-component>
+          <text-box-component label="Complemento" colClass="col-md-3" [(dataField)]="enderecoSelected.complemento"></text-box-component>
+        </div>
+
+        <div class="d-flex flex-row gap-1">
+          <text-box-component label="Bairro" colClass="col-md-3" [(dataField)]="enderecoSelected.bairro"></text-box-component>
+          <text-box-component label="Cidade" colClass="col-md-3">
+            <!--            [(dataField)]="enderecoSelected.cidade"-->
+          </text-box-component>
+          <text-box-component label="Ponto de Referência" colClass="col-md-3" [(dataField)]="enderecoSelected.pontoReferencia"></text-box-component>
+        </div>
+
+        <div class="col-md-2 d-flex">
+          <button type="button"
+                  class="btn btn-outline-primary px-4"
+                  (click)="adicionaEndereco()" >
+            <i class="bi bi-plus-circle me-1"></i>
+            Adicionar
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <grid-component
+      [titleGridVisible]="true"
+      titleGrid="Endereços Cadastrados"
+      [typeDataSource]="enderecoTypeGrid"
+      [dataSource]="model.enderecoList">
+
+    </grid-component>
+
   </tab>
+
 
   <tab title="Contatos" icon="bi-telephone">
 

@@ -20,6 +20,7 @@ import {SwitchComponent} from "../../../../shared/components-commons/switch-comp
 import {GridComponent} from "../../../../shared/components-commons/grid-column-component/grid.component";
 import _ from "lodash";
 import {AlertService} from "../../../../shared/components-commons/alert-component/alert.service";
+import {Endereco} from "../../../../shared/model/endereco";
 
 
 @Component({
@@ -47,8 +48,9 @@ export class PessoaFormComponent extends CrudPadrao<Pessoa, PessoaFilterDTO>{
   sexoEnumType = SexoEnum;
 
   contatoTypeGrid = new Telefone();
-
+  enderecoTypeGrid = new Endereco();
   telefoneSelected: Telefone = new Telefone();
+  enderecoSelected: Endereco = new Endereco();
 
   constructor(injector: Injector,
               private mainService:PessoaService,
@@ -128,5 +130,15 @@ export class PessoaFormComponent extends CrudPadrao<Pessoa, PessoaFilterDTO>{
     }
 
     return true;
+  }
+
+  adicionaEndereco() {
+    if(_.isNil(this.model.enderecoList)){
+      this.model.enderecoList = [];
+    }
+    // if(this.validaAdicionaTelefone(this.telefoneSelected)){
+      this.model.enderecoList.push(this.enderecoSelected)
+      this.enderecoSelected = new Endereco();
+    // }
   }
 }
