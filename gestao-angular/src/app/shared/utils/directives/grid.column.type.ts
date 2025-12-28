@@ -1,1 +1,1 @@
-export type GridColumnType = 'texto' | 'number' | 'date' | 'enum' | 'cpf' | 'cnpj' | 'telefone' | 'currency';
+export type GridColumnType = 'texto' | 'number' | 'date' | 'enum' | 'cpf' | 'cnpj' | 'telefone' | 'currency' | 'boolean';

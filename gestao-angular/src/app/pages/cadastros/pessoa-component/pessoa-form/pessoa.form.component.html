@@ -41,11 +41,38 @@
   </tab>
 
   <tab title="Contatos" icon="bi-telephone">
-    <text-box-component label="Numero" colClass="col-md-2" [(dataField)]="telefoneSelected.numero"></text-box-component>
-    <switch-component [label]="'Contato Principal'" [(dataField)]="telefoneSelected.principal"></switch-component>
-    <switch-component [label]="'Contato Notificação'" [(dataField)]="telefoneSelected.isWhatsappNotifica"></switch-component>
 
-    <button (click)="tt()"></button>
+    <div class="card mb-3">
+      <div class="card-header fw-semibold">
+        Novo Contato
+      </div>
+
+      <div class="card-body">
+        <div class="row align-items-end g-3">
+          <text-box-component label="Número" colClass="col-md-3" [(dataField)]="telefoneSelected.numero"></text-box-component>
+          <div class="col-md-3">
+            <switch-component [label]="'Contato Principal'" [(dataField)]="telefoneSelected.principal" colClass="col-md-3"></switch-component>
+          </div>
+
+          <div class="col-md-3">
+            <switch-component [label]="'Contato Notificação'" [(dataField)]="telefoneSelected.isWhatsappNotifica" colClass="col-md-3"></switch-component>
+          </div>
+
+          <div class="col-md-3 text-end">
+            <button type="button" class="btn btn-outline-primary w-100" (click)="adicionaContato()">
+              <i class="bi bi-plus-circle"></i>
+              Adicionar Contato</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <grid-component [titleGridVisible]="true"
+                    [titleGrid]="'Contatos Cadastrados'"
+                    [typeDataSource]="contatoTypeGrid"
+                    [dataSource]="model.telefoneList">
+    </grid-component>
 
   </tab>
 

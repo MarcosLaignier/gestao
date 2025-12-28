@@ -17,6 +17,8 @@ import {TabComponent} from "../../../../shared/components-commons/tabs-component
 import {SexoEnum} from "../../../../shared/enum/sexo.enum";
 import {Telefone} from "../../../../shared/model/telefone";
 import {SwitchComponent} from "../../../../shared/components-commons/switch-component/switch.component";
+import {GridComponent} from "../../../../shared/components-commons/grid-column-component/grid.component";
+import _ from "lodash";
 
 
 @Component({
@@ -31,7 +33,8 @@ import {SwitchComponent} from "../../../../shared/components-commons/switch-comp
     SelectEnumComponent,
     TabsComponent,
     TabComponent,
-    SwitchComponent
+    SwitchComponent,
+    GridComponent
   ],
   templateUrl: './pessoa.form.component.html',
 })
@@ -41,6 +44,8 @@ export class PessoaFormComponent extends CrudPadrao<Pessoa, PessoaFilterDTO>{
   tipoPessoaEnumType = TipoPessoaEnum;
   situacaoEnumType = AtivoInativoEnum;
   sexoEnumType = SexoEnum;
+
+  contatoTypeGrid = new Telefone();
 
   telefoneSelected: Telefone = new Telefone();
 
@@ -70,7 +75,10 @@ export class PessoaFormComponent extends CrudPadrao<Pessoa, PessoaFilterDTO>{
     }
   }
 
-  tt() {
-    console.log(this.telefoneSelected)
+  adicionaContato() {
+    if(_.isNil(this.model.telefoneList)){
+      this.model.telefoneList = [];
+    }
+    this.model.telefoneList.push(this.telefoneSelected)
   }
 }
