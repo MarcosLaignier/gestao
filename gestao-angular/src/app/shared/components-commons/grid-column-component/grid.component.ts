@@ -16,7 +16,8 @@ import {Router, RouterModule} from "@angular/router";
 export class GridComponent {
 
   gridColumnConfig: any[] = [];
-
+  @Input() titleGridVisible: boolean = false;
+  @Input() titleGrid : string = '';
   @Input() dataSource: any[] = [];
   @Input() columns: string[] = [];
   @Input() routerByEditDblClick: boolean = false;
@@ -150,6 +151,9 @@ export class GridComponent {
 
       case 'enum':
         return value;
+
+      case 'boolean':
+        return value == true ? 'Sim' : 'Não'
 
       case 'currency':
         return new Intl.NumberFormat('pt-BR', {
