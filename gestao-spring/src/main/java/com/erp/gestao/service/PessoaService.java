@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service()
 public class PessoaService extends BaseService<Pessoa, Integer> {
@@ -26,15 +27,15 @@ public class PessoaService extends BaseService<Pessoa, Integer> {
     }
 
     public List<Pessoa> listar(PessoaFilterDTO filter) {
-            return repository.findAll(
-                    SpecificationBuilder.of(Pessoa.class)
-                            .likeIgnoreCase("nome", filter.getNome())
-                            .likeIgnoreCase("documento", filter.getDocumento())
-                            .equal("nascimento", filter.getNascimento())
-                            .equal("situacao", filter.getSituacao())
-                            .equal("tipoPessoa", filter.getTipoPessoa())
-                            .between("nascimento", filter.getNascimentoInicio(), filter.getNascimentoFim())
-            );
+        return repository.findAll(
+                SpecificationBuilder.of(Pessoa.class)
+                        .likeIgnoreCase("nome", filter.getNome())
+                        .likeIgnoreCase("documento", filter.getDocumento())
+                        .equal("nascimento", filter.getNascimento())
+                        .equal("situacao", filter.getSituacao())
+                        .equal("tipoPessoa", filter.getTipoPessoa())
+                        .between("nascimento", filter.getNascimentoInicio(), filter.getNascimentoFim())
+        );
     }
 
     @Override
@@ -54,4 +55,27 @@ public class PessoaService extends BaseService<Pessoa, Integer> {
         super.validate(entity);
     }
 
+    @Override
+    protected void beforeUpdate(Pessoa entity) throws ServiceException {
+        sincronizarReferencias(entity);
+        super.beforeUpdate(entity);
+    }
+
+    @Override
+    protected void beforeSave(Pessoa entity) throws ServiceException {
+        sincronizarReferencias(entity);
+        super.beforeSave(entity);
+    }
+
+
+    private void sincronizarReferencias(Pessoa pessoa) {
+
+        Optional.ofNullable(pessoa.getTelefoneList())
+                .orElse(List.of())
+                .forEach(t -> t.setPessoa(pessoa));
+
+        Optional.ofNullable(pessoa.getEnderecoList())
+                .orElse(List.of())
+                .forEach(e -> e.setPessoa(pessoa));
+    }
 }

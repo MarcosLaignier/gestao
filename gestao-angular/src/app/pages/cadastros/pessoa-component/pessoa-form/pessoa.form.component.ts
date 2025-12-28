@@ -52,7 +52,6 @@ export class PessoaFormComponent extends CrudPadrao<Pessoa, PessoaFilterDTO>{
 
   constructor(injector: Injector,
               private mainService:PessoaService,
-              private router:Router,
               private route: ActivatedRoute,
               private alertService: AlertService
   ) {
@@ -72,6 +71,7 @@ export class PessoaFormComponent extends CrudPadrao<Pessoa, PessoaFilterDTO>{
           this.model = pessoa.body
         }
       });
+
     }else{
       this.model.tipoPessoa = TipoPessoaEnum.FISICA;
     }
