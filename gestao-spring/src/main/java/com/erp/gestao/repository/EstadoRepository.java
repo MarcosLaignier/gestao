@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository()
 public interface EstadoRepository extends JpaRepository<Estado, Integer>, JpaSpecificationExecutor<Estado> {
 
-    public Estado findByNome(String nome);
+    Estado findByNome(String nome);
 
-    public Estado findBySigla(String sigla);
+    Estado findBySigla(String sigla);
 }

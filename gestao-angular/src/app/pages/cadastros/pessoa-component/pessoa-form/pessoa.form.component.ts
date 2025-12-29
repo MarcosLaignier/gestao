@@ -1,5 +1,5 @@
 import {Component, Injector} from "@angular/core";
-import {ActivatedRoute, Router, RouterModule} from "@angular/router";
+import {ActivatedRoute, RouterModule} from "@angular/router";
 import {PessoaFilterDTO} from "../../../../shared/dto/filterDTO/pessoa.filter.dto";
 import {CrudPadrao} from "../../../../shared/utils/crud/crud.padrao";
 import {Pessoa} from "../../../../shared/model/pessoa";
