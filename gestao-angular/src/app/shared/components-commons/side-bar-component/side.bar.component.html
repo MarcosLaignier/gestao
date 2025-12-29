@@ -1,46 +1,69 @@
 <div class="d-flex">
-  <!-- Sidebar -->
-  <nav class="sidebar bg-light border-end vh-100 p-3">
-    <h5 class="mb-4 text-primary fw-bold">Gestão</h5>
 
-    <ul class="nav flex-column">
+  <nav class="sidebar bg-light border-end"
+       [class.collapsed]="!sidebarOpen">
+
+    <!-- Header -->
+    <div class="sidebar-header d-flex align-items-center justify-content-between px-3">
+      <span class="fw-bold text-primary sidebar-title">Gestão</span>
+      <button class="btn btn-sm btn-outline-primary sidebar-toggle"
+              (click)="toggleSidebar()"
+              title="Expandir/Recolher menu">
+        <i class="bi bi-list"></i>
+      </button>
+    </div>
+
+    <!-- Menu -->
+    <ul class="nav flex-column mt-3">
+
       @for (item of menuItems; track item) {
-        <li class="nav-item mb-2">
+        <li class="nav-item">
+
           <!-- Item com submenu -->
           @if (item.children) {
-            <a class="nav-link d-flex justify-content-between align-items-center text-dark"
-              href="javascript:void(0)"
-              (click)="toggleSubmenu(item)">
+            <a class="nav-link d-flex align-items-center justify-content-between"
+               href="javascript:void(0)"
+               (click)="toggleSubmenu(item)">
+
               <span class="d-flex align-items-center">
-                <i class="bi {{ item.icon }} me-2 text-primary"></i>
-                {{ item.label }}
+                <i class="bi {{ item.icon }} me-2"></i>
+                <span class="link-text">{{ item.label }}</span>
               </span>
-              <i class="bi bi-chevron-down small"
-              [class.rotate]="item.expanded"></i>
+
+              <i class="bi bi-chevron-down small chevron"
+                 [class.rotate]="item.expanded">
+              </i>
             </a>
-            <ul class="nav flex-column ps-4 mt-1 submenu"
-              [class.show]="item.expanded">
+
+            <ul class="nav flex-column submenu"
+                [class.show]="item.expanded">
+
               @for (sub of item.children; track sub) {
-                <li class="nav-item mb-1">
+                <li class="nav-item">
                   <a [routerLink]="sub.route"
-                    routerLinkActive="active"
-                    class="nav-link text-dark d-flex align-items-center">
-                    <i class="bi {{ sub.icon }} me-2"></i> {{ sub.label }}
+                     routerLinkActive="active"
+                     class="nav-link ps-4 d-flex align-items-center">
+                    <i class="bi {{ sub.icon }} me-2"></i>
+                    <span class="link-text">{{ sub.label }}</span>
                   </a>
                 </li>
               }
             </ul>
-          } @else {
+          }
+
+          @else {
             <a [routerLink]="item.route"
-              routerLinkActive="active"
-              class="nav-link text-dark d-flex align-items-center">
-              <i class="bi {{ item.icon }} me-2 text-primary"></i>
-              {{ item.label }}
+               routerLinkActive="active"
+               class="nav-link d-flex align-items-center">
+              <i class="bi {{ item.icon }} me-2"></i>
+              <span class="link-text">{{ item.label }}</span>
             </a>
           }
-          <!-- Item simples -->
+
         </li>
       }
+
     </ul>
   </nav>
+
 </div>
