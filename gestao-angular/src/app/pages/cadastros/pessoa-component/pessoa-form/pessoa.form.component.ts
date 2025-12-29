@@ -149,6 +149,13 @@ export class PessoaFormComponent extends CrudPadrao<Pessoa, PessoaFilterDTO>{
 
       this.viaCepService.buscarCep(cep).subscribe( endereco => {
         console.log(endereco)
+
+        if(endereco){
+          this.enderecoSelected.cep = endereco.cep;
+          this.enderecoSelected.logradouro = endereco.logradouro;
+          this.enderecoSelected.bairro = endereco.bairro;
+          this.enderecoSelected.cidade = endereco.cidade;
+        }
       });
     }
   }
