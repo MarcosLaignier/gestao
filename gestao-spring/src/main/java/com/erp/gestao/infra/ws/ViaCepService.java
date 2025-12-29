@@ -1,9 +1,7 @@
 package com.erp.gestao.infra.ws;
 
 import com.erp.gestao.infra.model.ViaCepResponse;
-import com.erp.gestao.model.Cidade;
-import com.erp.gestao.repository.CidadeRepository;
-import com.erp.gestao.repository.EstadoRepository;
+import com.erp.gestao.service.CidadeService;
 import com.erp.gestao.utils.validate.ApplicationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +12,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class ViaCepService {
 
     @Autowired
-    private CidadeRepository cidadeRepository;
-
-    @Autowired
-    private EstadoRepository estadoRepository;
+    private CidadeService cidadeService;
 
     private static final String BASE_URL = "https://viacep.com.br/ws";
 
@@ -43,17 +38,7 @@ public class ViaCepService {
                 .block();
 
         if (response != null  && StringUtils.hasText(response.getLocalidade()) ) {
-            Cidade cidade = cidadeRepository.findByNome(response.getLocalidade());
-
-            if(cidade != null) {
-                response.setCidade(cidade);
-            }else{
-                Cidade newCidade = new Cidade();
-                newCidade.setNome(response.getLocalidade());
-                newCidade.setCodIBGE(response.getIbge());
-                newCidade.setEstado(estadoRepository.findBySigla(response.getUf()));
-                response.setCidade(cidadeRepository.save(newCidade));
-            }
+          response.setCidade(cidadeService.buscaOuCriaCidadeByNome(response.getLocalidade(), response.getIbge(), response.getUf()));
         }
 
         if (response == null || Boolean.TRUE.equals(response.getErro())) {
