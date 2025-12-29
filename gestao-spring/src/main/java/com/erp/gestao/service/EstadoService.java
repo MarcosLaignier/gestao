@@ -1,10 +1,7 @@
 package com.erp.gestao.service;
 
-import com.erp.gestao.dto.filterDTO.CidadeFilterDTO;
 import com.erp.gestao.dto.filterDTO.EstadoFilterDTO;
-import com.erp.gestao.model.Cidade;
 import com.erp.gestao.model.Estado;
-import com.erp.gestao.repository.CidadeRepository;
 import com.erp.gestao.repository.EstadoRepository;
 import com.erp.gestao.utils.BaseService;
 import com.erp.gestao.utils.SpecificationBuilder;

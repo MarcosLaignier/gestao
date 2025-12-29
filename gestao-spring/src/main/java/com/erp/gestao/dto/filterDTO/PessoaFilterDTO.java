@@ -2,9 +2,13 @@ package com.erp.gestao.dto.filterDTO;
 
 import com.erp.gestao.enums.AtivoInativoEnum;
 import com.erp.gestao.enums.TipoPessoaEnum;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
+@Getter
+@Setter
 public class PessoaFilterDTO {
 
     private Integer id;
@@ -23,67 +27,4 @@ public class PessoaFilterDTO {
 
     private TipoPessoaEnum tipoPessoa;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDocumento() {
-        return documento;
-    }
-
-    public void setDocumento(String documento) {
-        this.documento = documento;
-    }
-
-    public LocalDate getNascimento() {
-        return nascimento;
-    }
-
-    public void setNascimento(LocalDate nascimento) {
-        this.nascimento = nascimento;
-    }
-
-    public LocalDate getNascimentoInicio() {
-        return nascimentoInicio;
-    }
-
-    public void setNascimentoInicio(LocalDate nascimentoInicio) {
-        this.nascimentoInicio = nascimentoInicio;
-    }
-
-    public LocalDate getNascimentoFim() {
-        return nascimentoFim;
-    }
-
-    public void setNascimentoFim(LocalDate nascimentoFim) {
-        this.nascimentoFim = nascimentoFim;
-    }
-
-    public TipoPessoaEnum getTipoPessoa() {
-        return tipoPessoa;
-    }
-
-    public void setTipoPessoa(TipoPessoaEnum tipoPessoa) {
-        this.tipoPessoa = tipoPessoa;
-    }
-
-    public AtivoInativoEnum getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(AtivoInativoEnum situacao) {
-        this.situacao = situacao;
-    }
 }
