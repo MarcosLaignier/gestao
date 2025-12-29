@@ -1,5 +1,6 @@
 package com.erp.gestao.infra.model;
 
+import com.erp.gestao.model.Cidade;
 import lombok.Data;
 
 @Data
@@ -18,13 +19,13 @@ public class ViaCepResponse {
 
     private String estado;
 
-
     private String regiao;
-
 
     private String ibge;
 
     private String ddd;
 
     private Boolean erro;
+
+    private Cidade cidade;
 }

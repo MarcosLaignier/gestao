@@ -1,3 +1,5 @@
+import {Cidade} from "../../shared/model/cidade";
+
 export class ViaCepResponse {
    cep: string;
 
@@ -13,9 +15,9 @@ export class ViaCepResponse {
 
    estado: string;
 
-
    regiao: string;
 
+   cidade: Cidade;
 
    ibge: string;
 

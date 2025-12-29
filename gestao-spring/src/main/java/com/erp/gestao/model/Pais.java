@@ -1,13 +1,13 @@
 package com.erp.gestao.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Table(name ="pais")
-@Getter
-@Setter
+@Data
 public class Pais {
 
     @Id

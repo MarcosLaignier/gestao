@@ -11,10 +11,10 @@ export class ViaCepService {
 
   constructor(private http: HttpClient) {}
 
-  buscarCep(cep: string): Observable<HttpResponse<ViaCepResponse>> {
+  buscarCep(cep: string): Observable<ViaCepResponse> {
     const cepLimpo = cep?.replace(/\D/g, '');
 
-    return this.http.get<ViaCepResponse>(`${this.url}/${cepLimpo}`, { observe: 'response' });
+    return this.http.get<ViaCepResponse>(`${this.url}/${cepLimpo}`);
   }
 
 }
