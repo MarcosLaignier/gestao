@@ -1,0 +1,81 @@
+package com.erp.gestao.service;
+
+import com.erp.gestao.dto.filterDTO.EmpresaFilterDTO;
+import com.erp.gestao.model.Empresa;
+import com.erp.gestao.repository.EmpresaRepository;
+import com.erp.gestao.utils.BaseService;
+import com.erp.gestao.utils.CollectionMetodsUtils;
+import com.erp.gestao.utils.SpecificationBuilder;
+import com.erp.gestao.utils.validate.ValidateMetodsUtils;
+import org.hibernate.service.spi.ServiceException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
+
+@Service()
+public class EmpresaService extends BaseService<Empresa, Integer> {
+
+    @Autowired
+    private EmpresaRepository repository;
+
+    @Override
+    public EmpresaRepository getRepository() {
+        return repository;
+    }
+
+    public List<Empresa> listar(EmpresaFilterDTO filter) {
+        return repository.findAll(
+                SpecificationBuilder.of(Empresa.class)
+                        .likeIgnoreCase("nome", filter.getNome())
+                        .likeIgnoreCase("documento", filter.getDocumento())
+                        .equal("nascimento", filter.getNascimento())
+                        .equal("situacao", filter.getSituacao())
+                        .equal("tipoEmpresa", filter.getTipoPessoa())
+                        .between("nascimento", filter.getNascimentoInicio(), filter.getNascimentoFim())
+        );
+    }
+
+    @Override
+    protected void validate(Empresa entity) throws ServiceException {
+
+        ValidateMetodsUtils.validateFieldsNonNull(entity);
+
+        if (!CollectionMetodsUtils.validaDocumento(entity.getDocumento())){
+            throw new IllegalArgumentException("Documento inválido");
+        }
+
+        if(entity.getNascimento() != null && entity.getNascimento().isAfter(LocalDate.now())){
+            throw new IllegalArgumentException("A data de criação da empresa não pode ser futura!");
+        }
+
+
+        super.validate(entity);
+    }
+
+    @Override
+    protected void beforeUpdate(Empresa entity) throws ServiceException {
+        sincronizarReferencias(entity);
+        super.beforeUpdate(entity);
+    }
+
+    @Override
+    protected void beforeSave(Empresa entity) throws ServiceException {
+        sincronizarReferencias(entity);
+        super.beforeSave(entity);
+    }
+
+
+    private void sincronizarReferencias(Empresa pessoa) {
+
+        Optional.ofNullable(pessoa.getTelefoneList())
+                .orElse(List.of())
+                .forEach(t -> t.setPessoa(pessoa));
+
+        Optional.ofNullable(pessoa.getEnderecoList())
+                .orElse(List.of())
+                .forEach(e -> e.setPessoa(pessoa));
+    }
+}
