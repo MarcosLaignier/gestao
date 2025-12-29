@@ -44,7 +44,7 @@
       </div>
 
       <form class="row g-1 p-3 border rounded shadow-sm">
-        <text-box-component label="CEP" colClass="col-md-2" [(dataField)]="enderecoSelected.cep"></text-box-component>
+        <text-box-component label="CEP" colClass="col-md-2" [(dataField)]="enderecoSelected.cep" (dataFieldChange)="getCEP($event)"></text-box-component>
 
         <div class="d-flex flex-row gap-1">
           <text-box-component label="Logradouro" colClass="col-md-4" [(dataField)]="enderecoSelected.logradouro"></text-box-component>

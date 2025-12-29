@@ -21,6 +21,7 @@ import {GridComponent} from "../../../../shared/components-commons/grid-column-c
 import _ from "lodash";
 import {AlertService} from "../../../../shared/components-commons/alert-component/alert.service";
 import {Endereco} from "../../../../shared/model/endereco";
+import {ViaCepService} from "../../../../infra/ws/via.cep.service";
 
 
 @Component({
@@ -55,7 +56,8 @@ export class PessoaFormComponent extends CrudPadrao<Pessoa, PessoaFilterDTO>{
   constructor(injector: Injector,
               private mainService:PessoaService,
               private route: ActivatedRoute,
-              private alertService: AlertService
+              private alertService: AlertService,
+              private viaCepService: ViaCepService
   ) {
     super(injector, "pessoa");
   }
@@ -137,8 +139,17 @@ export class PessoaFormComponent extends CrudPadrao<Pessoa, PessoaFilterDTO>{
       this.model.enderecoList = [];
     }
     // if(this.validaAdicionaTelefone(this.telefoneSelected)){
-      this.model.enderecoList.push(this.enderecoSelected)
-      this.enderecoSelected = new Endereco();
+    this.model.enderecoList.push(this.enderecoSelected)
+    this.enderecoSelected = new Endereco();
     // }
+  }
+
+  getCEP(cep: string){
+    if(cep.length == 8){
+
+      this.viaCepService.buscarCep(cep).subscribe( endereco => {
+        console.log(endereco)
+      });
+    }
   }
 }
