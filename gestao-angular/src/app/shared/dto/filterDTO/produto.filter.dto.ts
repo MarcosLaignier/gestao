@@ -1,6 +1,3 @@
-import {AtivoInativoEnum} from "../../enum/ativo.inativo.enum";
-import {TipoPessoaEnum} from "../../enum/tipo.pessoa.enum";
-import {GridColumn} from "../../utils/directives/grid.column.decorator";
 import {StatusProdutoEnum} from "../../enum/status.produto.enum";
 
 export class PessoaFilterDTO {
