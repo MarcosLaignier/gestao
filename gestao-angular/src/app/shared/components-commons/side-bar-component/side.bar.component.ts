@@ -47,10 +47,9 @@ export class SideBarComponent{
     },
     {
       label: 'Movimentos',
-      icon: 'bi-cash-coin',
+      icon: 'bi-briefcase',
       children: [
-        { label: 'Aluguel', icon: 'bi-arrow-down-circle', route: '/financeiro/pagar' },
-        { label: 'Contas a Receber', icon: 'bi-arrow-up-circle', route: '/financeiro/receber' }
+        {label: 'Aluguel de Produtos', icon: 'bi-cart-check', route: '/financeiro/pagar'},
       ]
     },
     {
