@@ -78,4 +78,8 @@ public class EmpresaService extends BaseService<Empresa, Integer> {
                 .orElse(List.of())
                 .forEach(e -> e.setPessoa(pessoa));
     }
+
+    public Empresa getEmpresa(){
+        return repository.findAll().stream().findFirst().orElse(null);
+    }
 }

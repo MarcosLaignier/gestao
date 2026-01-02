@@ -24,9 +24,15 @@ public class EmpresaController extends BaseController<Empresa, Integer> {
         return service;
     }
 
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<List<Empresa>> findAll() {
         List<Empresa> result = service.findAll();
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+
+    @GetMapping("/padrao")
+    public ResponseEntity<Empresa> getEmpresa() {
+        Empresa result = service.getEmpresa();
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 

@@ -9,8 +9,6 @@ public class EmpresaFilterDTO extends PessoaFilterDTO {
 
     private String nomeFantasia;
 
-    private String razaoSocial;
-
     private String inscricaoEstadual;
 
 }
