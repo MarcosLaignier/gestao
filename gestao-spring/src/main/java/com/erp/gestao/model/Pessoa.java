@@ -57,7 +57,6 @@ public class Pessoa {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "pessoa")
     private List<Endereco> enderecoList;
 
-
     @Version
     private Integer versao = 0;
 

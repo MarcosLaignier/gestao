@@ -40,5 +40,7 @@ public class Produto {
     @Column(columnDefinition = "TEXT")
     private String observacoes;
 
+    @Version
+    private Integer versao = 0;
 
 }
