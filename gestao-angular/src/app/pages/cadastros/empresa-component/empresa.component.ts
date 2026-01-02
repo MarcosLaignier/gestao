@@ -15,12 +15,12 @@ import {ToolbarComponent} from "../../../shared/components-commons/toolbar-filte
 import {RadioEnumComponent} from "../../../shared/components-commons/radio-enum-component/radio.enum.component";
 import {TextBoxComponent} from "../../../shared/components-commons/text-box-component/text.box.component";
 import {DateBoxComponent} from "../../../shared/components-commons/date-box-component/date.box.component";
-import {SelectEnumComponent} from "../../../shared/components-commons/select-enum-component/select.enum.component";
 import {TabsComponent} from "../../../shared/components-commons/tabs-component/tabs.component";
 import {TabComponent} from "../../../shared/components-commons/tabs-component/tab.component";
 import {SwitchComponent} from "../../../shared/components-commons/switch-component/switch.component";
 import {GridComponent} from "../../../shared/components-commons/grid-column-component/grid.component";
 import _ from "lodash";
+import {SelectEnumComponent} from "../../../shared/components-commons/select-enum-component/select.enum.component";
 
 
 @Component({
@@ -32,11 +32,11 @@ import _ from "lodash";
     RadioEnumComponent,
     TextBoxComponent,
     DateBoxComponent,
-    SelectEnumComponent,
     TabsComponent,
     TabComponent,
     SwitchComponent,
-    GridComponent
+    GridComponent,
+    SelectEnumComponent
   ],
   templateUrl: './empresa.component.html',
 })

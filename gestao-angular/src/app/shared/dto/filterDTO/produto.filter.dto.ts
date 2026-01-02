@@ -1,6 +1,6 @@
 import {StatusProdutoEnum} from "../../enum/status.produto.enum";
 
-export class PessoaFilterDTO {
+export class ProdutoFilterDTO {
 
   id: number;
 

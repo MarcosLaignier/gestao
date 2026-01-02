@@ -1,0 +1,18 @@
+<div>
+  <toolbar-filter-component [tituloPagina]="'Listagem de Produtos'"
+                            (filtrar)="doFilter()">
+
+  </toolbar-filter-component>
+</div>
+
+<produto-filter-component [filter]="filter">
+
+</produto-filter-component>
+
+<grid-component [typeDataSource]="dataSourceType"
+                [dataSource]="dataSource"
+                [routerByEditDblClick]="true">
+
+</grid-component>
+
+

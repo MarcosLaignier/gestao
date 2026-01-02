@@ -1,0 +1,24 @@
+<form class="row g-1 p-3 border rounded shadow-sm">
+
+  <div class="flex-column">
+<!--    Aqui falta o codigo patrimonio (criar number-box)-->
+
+    <div class="d-flex flex-row gap-1">
+      <text-box-component [label]="'Nome'" [colClass]="'col-md-2'" [(dataField)]="filter.nome" placeHolder="Digite o Nome"></text-box-component>
+      <text-box-component [label]="'Modelo'"  [colClass]="'col-md-2'" [(dataField)]="filter.modelo" ></text-box-component>
+    </div>
+
+    <div class="d-flex flex-row gap-1">
+      <date-box-component [label]="'Aquisição de'" [colClass]="'col-md-2'" [(dataField)]="filter.dataAquisicaoInicio"></date-box-component>
+      <date-box-component [label]="'Aquisição Até'" [colClass]="'col-md-2'" [(dataField)]="filter.dataAquisicaoFim"></date-box-component>
+    </div>
+
+    <!--    Aqui falta o valorDiaria (criar number-box)-->
+
+
+    <select-enum [label]="'Situação'"
+                 [enumObject]="statusProdutoEnum"
+                 [(dataField)]="filter.statusAtual">
+    </select-enum>
+  </div>
+</form>

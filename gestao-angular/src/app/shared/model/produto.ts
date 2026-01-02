@@ -6,7 +6,7 @@ import {SexoEnum} from "../enum/sexo.enum";
 import {GridColumn} from "../utils/directives/grid.column.decorator";
 import {StatusProdutoEnum} from "../enum/status.produto.enum";
 
-export class Pessoa{
+export class Produto{
 
   id: number;
 
