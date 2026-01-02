@@ -1,4 +1,6 @@
 export enum  StatusProdutoEnum {
   DISPONIVEL = "Disponivel",
-  OCUPADO = "Ocupado"
+  OCUPADO = "Ocupado",
+  MANUTENCAO = "Em Manutenção",
+
 }

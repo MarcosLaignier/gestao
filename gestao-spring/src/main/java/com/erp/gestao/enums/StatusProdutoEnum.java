@@ -7,7 +7,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 public enum StatusProdutoEnum implements EnumType {
 
     DISPONIVEL("Disponivel"),
-    OCUPADO("Ocupado");
+    OCUPADO("Ocupado"),
+    MANUTENCAO("Em Manutenção");
+
 
     StatusProdutoEnum(String nome){
         this.nome = nome;
