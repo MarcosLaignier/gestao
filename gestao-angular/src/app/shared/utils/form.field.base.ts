@@ -11,7 +11,7 @@ export abstract class FormFieldBase<T> {
 
   @Input() placeHolder: string = '';
 
-  /** Desabilita o switch */
+  /** Desabilita os campos */
   @Input() disabled: boolean = false;
 
   private _dataField!: T;
@@ -24,6 +24,7 @@ export abstract class FormFieldBase<T> {
   get dataField(): T {
     return this._dataField;
   }
+
   set dataField(val: T) {
     this._dataField = val;
     this.dataFieldChange.emit(this._dataField);
