@@ -23,6 +23,8 @@ export class RadioEnumComponent {
 
   @Input() label: string = '';
 
+  @Input() disabled: boolean = false;
+
   // Para alterar o layout: inline ou empilhado
   @Input() inline: boolean = true;
 

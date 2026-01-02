@@ -40,9 +40,17 @@ export class SideBarComponent{
       label: 'Cadastro',
       icon: 'bi-folder2-open',
       children: [
+        { label: 'Empresa', icon: 'bi-building', route: '/cadastros/empresa' },
         { label: 'Pessoas', icon: 'bi-person', route: '/cadastros/pessoa' },
-        // { label: 'Empresas', icon: 'bi-building', route: '/cadastro/empresas' },
-        { label: 'Produtos', icon: 'bi-box-seam', route: '/cadastro/produtos' }
+        { label: 'Produtos', icon: 'bi-box-seam', route: '/cadastros/produtos' }
+      ]
+    },
+    {
+      label: 'Movimentos',
+      icon: 'bi-cash-coin',
+      children: [
+        { label: 'Aluguel', icon: 'bi-arrow-down-circle', route: '/financeiro/pagar' },
+        { label: 'Contas a Receber', icon: 'bi-arrow-up-circle', route: '/financeiro/receber' }
       ]
     },
     {

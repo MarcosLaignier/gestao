@@ -1,5 +1,5 @@
 <div [ngClass]="colClass">
-<label class="form-label">{{ label + ':'}}</label>
+  <label class="form-label">{{ label + ':'}}</label>
 
   @for (opt of enumOptions; track opt) {
     <div
@@ -12,7 +12,8 @@
         [id]="label + '_' + opt.key"
         [value]="opt.key"
         [checked]="dataField === opt.key"
-        (change)="dataField = opt.key">
+        (change)="dataField = opt.key"
+        [disabled]="disabled">
       <label class="form-check-label" [for]="label + '_' + opt.key">
         {{ opt.value }}
       </label>

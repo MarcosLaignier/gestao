@@ -34,7 +34,7 @@
     </div>
   </div>
   <div class="card-footer text-end fw-semibold">
-    Total de registros: {{ dataSource?.length || 0 }}
+    Total de registros: {{ dataSource != null ? dataSource.length : 0 }}
   </div>
 </div>
 

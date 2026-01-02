@@ -19,6 +19,8 @@ export class SelectEnumComponent  {
 
   @Input() enumObject: any;
   @Input() placeholder: string = 'Selecione';
+  @Input() disabled: boolean = false;
+
   @Output() dataFieldChange = new EventEmitter<any>();
 
   /** Responsavel por aplicar o css do bootstrap na div externa ao component
