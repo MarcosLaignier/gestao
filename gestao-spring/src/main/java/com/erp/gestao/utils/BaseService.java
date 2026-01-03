@@ -1,11 +1,16 @@
 package com.erp.gestao.utils;
 
+import com.erp.gestao.utils.validate.GenericUniqueValidator;
 import org.hibernate.service.spi.ServiceException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
 public abstract class BaseService<T,ID>  {
+
+    @Autowired
+    public GenericUniqueValidator genericUniqueValidator;
 
     /** Metodo padrao de Save
      * Nele ha possibilidade de validar ou executar algo antes ou apos a execucao do metodo save do repositorio padrao */

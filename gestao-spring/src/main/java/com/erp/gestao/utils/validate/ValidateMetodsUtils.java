@@ -1,7 +1,6 @@
 package com.erp.gestao.utils.validate;
 
 import com.erp.gestao.utils.CollectionMetodsUtils;
-import org.hibernate.service.spi.ServiceException;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -9,61 +8,85 @@ import java.util.List;
 
 public class ValidateMetodsUtils {
 
-    /** Metodo responsavel por validar os fields anotados com @ValidadeField
-     * para nao serem null ou vazios e retornar a mensagem de erro
-     *
-     * @param entity
-     * @param <T>
-     */
-    public static <T> void validateFieldsNonNull(T entity){
-        Field[] declaredFields = entity.getClass().getDeclaredFields();
-        List<String> errorMessages = new ArrayList<>();
-        for(Field field : declaredFields){
-            // Verificando se o campo é anotado com a anotacao @ValidateField
-            if(field.isAnnotationPresent(ValidateField.class)){
-                field.setAccessible(true); // Setando como acessivel pois os campos sao private
+    private ValidateMetodsUtils() {
+    }
 
-                Object value = null;
-                try {
-                    // Reflection para acessar o campo
-                    value = field.get(entity);
-                } catch (IllegalAccessException e) {
-                    throw new RuntimeException("Erro para acessar o campo" + field, e);
-                }
-                // String esta sendo testado separadamente para caso seja null ou vazia
-                if(value instanceof String){
-                    if(CollectionMetodsUtils.isStringEmpty((String) value)){
-                        messageErrorValidadeFields(field,errorMessages);
-                    }
-                }else{
-                    if(value == null){
-                        messageErrorValidadeFields(field,errorMessages);
-                    }
+    /**
+     * Valida os campos anotados com @ValidateField
+     */
+    public static <T> void validate(T entity, UniqueValidator uniqueValidator) {
+
+        Field[] fields = entity.getClass().getDeclaredFields();
+        List<String> errors = new ArrayList<>();
+
+        for (Field field : fields) {
+
+            if (!field.isAnnotationPresent(ValidateField.class)) {
+                continue;
+            }
+
+            ValidateField annotation = field.getAnnotation(ValidateField.class);
+            field.setAccessible(true);
+
+            Object value;
+            try {
+                value = field.get(entity);
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException("Erro ao acessar campo: " + field.getName(), e);
+            }
+
+            for (ValidationType type : annotation.value()) {
+                switch (type) {
+
+                    case NOT_NULL -> validateNotNull(field, value, annotation, errors);
+                    case SIZE -> validateSize(field, value, annotation, errors);
+                    case UNIQUE -> validateUnique(entity, field, value, annotation, uniqueValidator, errors);
                 }
             }
         }
 
-        if(!CollectionMetodsUtils.isEmpty(errorMessages)){
-            throw new ApplicationException(errorMessages);
-        }
-
-    }
-
-    /** Metodo responsavel por acessar o Field e verificar se tem mensagem
-     * Caso nao tenha a mensagem padrao é retornada
-     *
-     * @param field
-     */
-    private static void messageErrorValidadeFields(Field field, List<String> errorMessages) {
-        String messageCampo = field.getAnnotation(ValidateField.class).message();
-        field.setAccessible(true);
-
-        if(!CollectionMetodsUtils.isStringEmpty(messageCampo)){
-            errorMessages.add(messageCampo);
-        }else{
-            errorMessages.add("O campo " + field.getName() + " devera ser informado!");
+        if (!CollectionMetodsUtils.isEmpty(errors)) {
+            throw new ApplicationException(errors);
         }
     }
 
+    /* ===================== VALIDACOES ===================== */
 
+    private static void validateNotNull(Field field, Object value, ValidateField valField, List<String> errors) {
+
+        if (value == null) {
+            errors.add(ValidationType.NOT_NULL.format(valField.fieldName(), 0, 0));
+            return;
+        }
+
+        if (value instanceof String str && CollectionMetodsUtils.isStringEmpty(str)) {
+            errors.add(ValidationType.NOT_NULL.format(valField.fieldName(), 0, 0));
+        }
+    }
+
+    private static void validateSize(Field field, Object value, ValidateField valField, List<String> errors) {
+
+        if (!(value instanceof String str)) {
+            return;
+        }
+
+        int length = str.length();
+        if (length < valField.min() || length > valField.max()) {
+            errors.add(ValidationType.SIZE.format(valField.fieldName(), valField.min(), valField.max()));
+        }
+    }
+
+
+    private static void validateUnique(Object entity, Field field, Object value, ValidateField valField, UniqueValidator uniqueValidator, List<String> errors) {
+
+        if (value == null || uniqueValidator == null) {
+            return;
+        }
+
+        boolean exists = uniqueValidator.exists(entity, field, value);
+        if (exists) {
+            errors.add(ValidationType.UNIQUE.format(valField.fieldName(), 0, 0)
+            );
+        }
+    }
 }

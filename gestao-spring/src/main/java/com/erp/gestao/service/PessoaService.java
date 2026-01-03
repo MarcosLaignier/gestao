@@ -6,6 +6,7 @@ import com.erp.gestao.repository.PessoaRepository;
 import com.erp.gestao.utils.BaseService;
 import com.erp.gestao.utils.CollectionMetodsUtils;
 import com.erp.gestao.utils.SpecificationBuilder;
+import com.erp.gestao.utils.validate.GenericUniqueValidator;
 import com.erp.gestao.utils.validate.ValidateMetodsUtils;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,7 @@ public class PessoaService extends BaseService<Pessoa, Integer> {
     @Override
     protected void validate(Pessoa entity) throws ServiceException {
 
-        ValidateMetodsUtils.validateFieldsNonNull(entity);
+        ValidateMetodsUtils.validate(entity, genericUniqueValidator);
 
         if (!CollectionMetodsUtils.validaDocumento(entity.getDocumento())){
             throw new IllegalArgumentException("Documento inválido");

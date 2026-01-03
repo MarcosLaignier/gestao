@@ -5,6 +5,7 @@ import com.erp.gestao.enums.SexoEnum;
 import com.erp.gestao.enums.TipoPessoaEnum;
 import com.erp.gestao.model.endereco.Endereco;
 import com.erp.gestao.utils.validate.ValidateField;
+import com.erp.gestao.utils.validate.ValidationType;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
@@ -24,29 +25,28 @@ public class Pessoa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ValidateField(message = "O Nome deve ser Informado!")
+    @ValidateField(value = {ValidationType.NOT_NULL}, fieldName = "Nome")
     private String nome;
 
-    @Column(unique = true)
-    @ValidateField(message = "O Documento deve ser Informado!")
+    @ValidateField(value = {ValidationType.NOT_NULL, ValidationType.UNIQUE}, fieldName = "Documento")
     private String documento;
 
     private String email;
 
-    @ValidateField(message = "A Data de Nascimento deve ser Informada!")
+    @ValidateField(value = {ValidationType.NOT_NULL}, fieldName = "Data de Nascimento")
     @Temporal(TemporalType.DATE)
     private LocalDate nascimento;
 
     @Enumerated(EnumType.STRING)
-    @ValidateField(message = "O Sexo deve ser Informado!")
+    @ValidateField(value = {ValidationType.NOT_NULL}, fieldName = "Sexo")
     private SexoEnum sexo;
 
     @Enumerated(EnumType.STRING)
-    @ValidateField(message = "A situação deve ser Informada!")
+    @ValidateField(value = {ValidationType.NOT_NULL}, fieldName = "Tipo de Pessoa")
     private TipoPessoaEnum tipoPessoa;
 
     @Enumerated(EnumType.STRING)
-    @ValidateField(message = "A situação deve ser Informada!")
+    @ValidateField(value = {ValidationType.NOT_NULL}, fieldName = "Situação")
     private AtivoInativoEnum situacao;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "pessoa")

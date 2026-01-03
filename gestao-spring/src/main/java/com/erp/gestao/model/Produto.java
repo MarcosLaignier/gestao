@@ -2,6 +2,7 @@ package com.erp.gestao.model;
 
 import com.erp.gestao.enums.StatusProdutoEnum;
 import com.erp.gestao.utils.validate.ValidateField;
+import com.erp.gestao.utils.validate.ValidationType;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
@@ -20,16 +21,16 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ValidateField(message = "O Nome deve ser Informado!")
+    @ValidateField(value = {ValidationType.NOT_NULL}, fieldName = "Nome")
     private String nome;
 
-    @ValidateField(message = "O Codigo de Patrimonio deve ser Informado!")
+    @ValidateField(value = {ValidationType.NOT_NULL, ValidationType.UNIQUE}, fieldName = "Codigo de Patrimonio")
     private String codigoPatrimonio;
 
     private String modelo;
 
     @Column(precision = 10, scale = 2)
-    @ValidateField(message = "O Valor da Diaria deve ser Informado!")
+    @ValidateField(value = {ValidationType.NOT_NULL}, fieldName = "Valor da Diaria")
     private BigDecimal valorDiaria;
 
     @Enumerated(EnumType.STRING)

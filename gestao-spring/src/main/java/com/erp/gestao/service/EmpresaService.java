@@ -41,7 +41,7 @@ public class EmpresaService extends BaseService<Empresa, Integer> {
     @Override
     protected void validate(Empresa entity) throws ServiceException {
 
-        ValidateMetodsUtils.validateFieldsNonNull(entity);
+//        ValidateMetodsUtils.validateFieldsNonNull(entity);
 
         if (!CollectionMetodsUtils.validaDocumento(entity.getDocumento())){
             throw new IllegalArgumentException("Documento inválido");

@@ -5,9 +5,17 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 public @interface ValidateField {
 
-    String message() default "Campo não pode ser nulo!";
+    ValidationType[] value();
+
+    String fieldName();
+
+    int min() default 0;
+
+    int max() default Integer.MAX_VALUE;
 }
+

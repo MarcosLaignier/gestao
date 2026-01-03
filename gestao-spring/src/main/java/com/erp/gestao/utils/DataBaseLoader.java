@@ -3,9 +3,11 @@ package com.erp.gestao.utils;
 import com.erp.gestao.enums.AtivoInativoEnum;
 import com.erp.gestao.enums.SexoEnum;
 import com.erp.gestao.enums.TipoPessoaEnum;
+import com.erp.gestao.model.endereco.Empresa;
 import com.erp.gestao.model.endereco.Estado;
 import com.erp.gestao.model.endereco.Pais;
 import com.erp.gestao.model.Pessoa;
+import com.erp.gestao.repository.EmpresaRepository;
 import com.erp.gestao.repository.EstadoRepository;
 import com.erp.gestao.repository.PaisRepository;
 import com.erp.gestao.repository.PessoaRepository;
@@ -25,13 +27,16 @@ import java.util.List;
 @Component
 public class DataBaseLoader implements CommandLineRunner {
 
+    private final EmpresaRepository empresaRepository;
     private final PessoaRepository pessoaRepository;
     private final PaisRepository paisRepository;
     private final EstadoRepository estadoRepository;
 
-    public DataBaseLoader(PessoaRepository pessoaRepository,
+    public DataBaseLoader(EmpresaRepository empresaRepository,
+                          PessoaRepository pessoaRepository,
                           PaisRepository paisRepository,
                           EstadoRepository estadoRepository) {
+        this.empresaRepository = empresaRepository;
         this.pessoaRepository = pessoaRepository;
         this.paisRepository = paisRepository;
         this.estadoRepository = estadoRepository;
@@ -39,14 +44,31 @@ public class DataBaseLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        createEmpresa();
         createPessoa();
         createPaises();
         createEstadosBrasil();
     }
 
+    private void createEmpresa() {
+        Empresa empresa = new Empresa();
+        empresa.setNome("Empresa dos Murta");
+        empresa.setDocumento("88821382000165");
+        empresa.setNascimento(LocalDate.now());
+        empresa.setEmail("gestaoMurta@gmail.com");
+        empresa.setSituacao(AtivoInativoEnum.ATIVO);
+        empresa.setTipoPessoa(TipoPessoaEnum.JURIDICA);
+        empresa.setNomeFantasia("Murtolandia");
+        empresa.setInscricaoEstadual("000001");
+
+        empresaRepository.save(empresa);
+        System.out.println("-> Empresa carregada com sucesso!");
+
+    }
+
     private void createPessoa() {
         List<Pessoa> pessoaList = pessoaRepository.findAll();
-        if (CollectionMetodsUtils.isEmpty(pessoaList)) {
+        if (CollectionMetodsUtils.isEmpty(pessoaList) || pessoaList.size() == 1) {
             List<Pessoa> pessoas = List.of(
                     new Pessoa("Marcos Leao", "07956285607", LocalDate.now(), AtivoInativoEnum.ATIVO, SexoEnum.MASCULINO, TipoPessoaEnum.FISICA),
                     new Pessoa("Ana Souza", "12345678901", LocalDate.now(), AtivoInativoEnum.ATIVO, SexoEnum.FEMININO, TipoPessoaEnum.FISICA),

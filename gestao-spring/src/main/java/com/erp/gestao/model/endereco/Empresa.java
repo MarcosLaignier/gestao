@@ -18,4 +18,5 @@ public class Empresa extends Pessoa {
 
     private String logotipoPath;
 
+
 }
