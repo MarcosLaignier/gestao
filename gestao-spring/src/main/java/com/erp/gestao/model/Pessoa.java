@@ -48,9 +48,6 @@ public class Pessoa {
     @ValidateField(message = "A situação deve ser Informada!")
     private AtivoInativoEnum situacao;
 
-//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "pessoa")
-//    private List<PessoaTipo> pessoaTipoList;
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "pessoa")
     private List<Telefone> telefoneList;
 
@@ -63,11 +60,12 @@ public class Pessoa {
     public Pessoa() {
     }
 
-    public Pessoa(String nome, String documento, LocalDate nascimento, AtivoInativoEnum situacao, TipoPessoaEnum tipoPessoa) {
+    public Pessoa(String nome, String documento, LocalDate nascimento, AtivoInativoEnum situacao, SexoEnum sexo, TipoPessoaEnum tipoPessoa) {
         this.nome = nome;
         this.documento = documento;
         this.nascimento = nascimento;
         this.situacao = situacao;
+        this.sexo = sexo;
         this.tipoPessoa = tipoPessoa;
     }
 }

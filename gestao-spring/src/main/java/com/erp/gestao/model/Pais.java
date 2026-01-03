@@ -18,4 +18,12 @@ public class Pais {
 
     @Version
     private Integer versao = 0;
+
+    public Pais() {
+    }
+
+    public Pais(String nome, String sigla) {
+        this.nome = nome;
+        this.sigla = sigla;
+    }
 }

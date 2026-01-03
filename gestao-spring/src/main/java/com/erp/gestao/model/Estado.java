@@ -26,4 +26,14 @@ public class Estado {
 
     @Version
     private Integer versao = 0;
+
+    public Estado() {
+    }
+
+    public Estado(Pais pais, String nome, String sigla, String codIBGE) {
+        this.pais = pais;
+        this.nome = nome;
+        this.sigla = sigla;
+        this.codIBGE = codIBGE;
+    }
 }
