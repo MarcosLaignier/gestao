@@ -1,5 +1,5 @@
 <div>
-  <toolbar-filter-component [tituloPagina]="'Cadastro de Pessoa'"
+  <toolbar-filter-component [tituloPagina]="'Cadastro de Produto'"
                             [listMode]="false"
                             (salvar)="doSave(model)">
 
@@ -11,7 +11,7 @@
 
     @if (model) {
       <div class="flex-column">
-
+        <badge-component [text]="model.statusAtual" [color]="getColorStatus()" size="lg" ></badge-component>
         <text-box-component label="Cod. Patrimonio" colClass="col-md-1" [(dataField)]="model.codigoPatrimonio"></text-box-component>
 
         <text-box-component label="Nome" colClass="col-md-4" [(dataField)]="model.nome"></text-box-component>
@@ -31,7 +31,7 @@
 
 
   <tab title="Locações" icon="bi-clock-history">
-<!--Aqui tem que aguardar modelagem-->
+    <!--Aqui tem que aguardar modelagem-->
   </tab>
 
 </tabs-component>

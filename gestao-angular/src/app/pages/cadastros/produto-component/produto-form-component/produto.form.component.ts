@@ -2,7 +2,6 @@ import {Component, Injector} from "@angular/core";
 import {ActivatedRoute, RouterModule} from "@angular/router";
 import {CrudPadrao} from "../../../../shared/utils/crud/crud.padrao";
 import {AlertService} from "../../../../shared/components-commons/alert-component/alert.service";
-import {ViaCepService} from "../../../../infra/ws/via.cep.service";
 import {ProdutoService} from "../../../../shared/service/produto.service";
 import {Produto} from "../../../../shared/model/produto";
 import {ProdutoFilterDTO} from "../../../../shared/dto/filterDTO/produto.filter.dto";
@@ -13,6 +12,8 @@ import {TextBoxComponent} from "../../../../shared/components-commons/text-box-c
 import {DateBoxComponent} from "../../../../shared/components-commons/date-box-component/date.box.component";
 import {TextAreaComponent} from "../../../../shared/components-commons/text-area-component/text.area.component";
 import {NumberBoxComponent} from "../../../../shared/components-commons/number-box-component/number.box.component";
+import {BadgeComponent} from "../../../../shared/components-commons/badge-component/badge.component";
+import {StatusProdutoEnum} from "../../../../shared/enum/status.produto.enum";
 
 
 @Component({
@@ -26,7 +27,8 @@ import {NumberBoxComponent} from "../../../../shared/components-commons/number-b
     TextBoxComponent,
     DateBoxComponent,
     TextAreaComponent,
-    NumberBoxComponent
+    NumberBoxComponent,
+    BadgeComponent
   ],
   templateUrl: './produto.form.component.html',
 })
@@ -57,9 +59,24 @@ export class ProdutoFormComponent extends CrudPadrao<Produto, ProdutoFilterDTO>{
       });
 
     }else{
-
+      this.model.statusAtual = StatusProdutoEnum.DISPONIVEL;
     }
   }
 
+  getColorStatus() {
+    switch (this.model.statusAtual) {
+      case StatusProdutoEnum.DISPONIVEL:
+        return 'success';
+
+      case StatusProdutoEnum.OCUPADO:
+        return 'warning';
+
+      case StatusProdutoEnum.MANUTENCAO:
+        return 'danger';
+
+      default:
+        return 'secondary';
+    }
+  }
 
 }
