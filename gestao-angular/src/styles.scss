@@ -2,3 +2,13 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.badge-sm {
+  font-size: 0.65rem;
+  padding: 0.25em 0.45em;
+}
+
+.badge-lg {
+  font-size: 0.95rem;
+  padding: 0.45em 0.75em;
+}
