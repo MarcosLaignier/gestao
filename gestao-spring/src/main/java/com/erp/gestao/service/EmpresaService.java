@@ -1,7 +1,7 @@
 package com.erp.gestao.service;
 
 import com.erp.gestao.dto.filterDTO.EmpresaFilterDTO;
-import com.erp.gestao.model.Empresa;
+import com.erp.gestao.model.endereco.Empresa;
 import com.erp.gestao.repository.EmpresaRepository;
 import com.erp.gestao.utils.BaseService;
 import com.erp.gestao.utils.CollectionMetodsUtils;

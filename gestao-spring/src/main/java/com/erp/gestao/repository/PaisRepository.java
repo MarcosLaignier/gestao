@@ -1,6 +1,6 @@
 package com.erp.gestao.repository;
 
-import com.erp.gestao.model.Pais;
+import com.erp.gestao.model.endereco.Pais;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

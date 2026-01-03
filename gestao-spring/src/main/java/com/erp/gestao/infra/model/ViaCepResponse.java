@@ -1,6 +1,6 @@
 package com.erp.gestao.infra.model;
 
-import com.erp.gestao.model.Cidade;
+import com.erp.gestao.model.endereco.Cidade;
 import lombok.Data;
 
 @Data

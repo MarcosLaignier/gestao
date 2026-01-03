@@ -1,4 +1,4 @@
-package com.erp.gestao.model;
+package com.erp.gestao.model.endereco;
 
 import jakarta.persistence.*;
 import lombok.Getter;

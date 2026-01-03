@@ -1,1 +1,1 @@
-select * from pessoa;                                                             ((SELECT id FROM pais WHERE sigla = 'BR'), 'Tocantins', 'TO', '17', 0);
+select * from pessoa;

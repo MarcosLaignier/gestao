@@ -3,6 +3,7 @@ package com.erp.gestao.model;
 import com.erp.gestao.enums.AtivoInativoEnum;
 import com.erp.gestao.enums.SexoEnum;
 import com.erp.gestao.enums.TipoPessoaEnum;
+import com.erp.gestao.model.endereco.Endereco;
 import com.erp.gestao.utils.validate.ValidateField;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
