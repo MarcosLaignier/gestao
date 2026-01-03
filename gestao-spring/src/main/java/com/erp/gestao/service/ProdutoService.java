@@ -5,7 +5,6 @@ import com.erp.gestao.model.Produto;
 import com.erp.gestao.repository.ProdutoRepository;
 import com.erp.gestao.utils.BaseService;
 import com.erp.gestao.utils.SpecificationBuilder;
-import com.erp.gestao.utils.validate.GenericUniqueValidator;
 import com.erp.gestao.utils.validate.ValidateMetodsUtils;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;

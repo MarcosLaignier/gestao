@@ -6,7 +6,6 @@ import com.erp.gestao.repository.EmpresaRepository;
 import com.erp.gestao.utils.BaseService;
 import com.erp.gestao.utils.CollectionMetodsUtils;
 import com.erp.gestao.utils.SpecificationBuilder;
-import com.erp.gestao.utils.validate.ValidateMetodsUtils;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

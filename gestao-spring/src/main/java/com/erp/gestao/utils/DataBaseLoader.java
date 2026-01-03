@@ -287,45 +287,46 @@ public class DataBaseLoader implements CommandLineRunner {
         List<Estado> estadoList = estadoRepository.findAll();
         if (CollectionMetodsUtils.isEmpty(estadoList)) {
 
+
+            Pais brasil = paisRepository.findBySigla("BR");
+
+            if (brasil == null) {
+                throw new RuntimeException("Brasil não encontrado!");
+            }
+
+            List<Estado> estados = List.of(
+                    new Estado(brasil, "Acre", "AC", "12"),
+                    new Estado(brasil, "Alagoas", "AL", "27"),
+                    new Estado(brasil, "Amapá", "AP", "16"),
+                    new Estado(brasil, "Amazonas", "AM", "13"),
+                    new Estado(brasil, "Bahia", "BA", "29"),
+                    new Estado(brasil, "Ceará", "CE", "23"),
+                    new Estado(brasil, "Distrito Federal", "DF", "53"),
+                    new Estado(brasil, "Espírito Santo", "ES", "32"),
+                    new Estado(brasil, "Goiás", "GO", "52"),
+                    new Estado(brasil, "Maranhão", "MA", "21"),
+                    new Estado(brasil, "Mato Grosso", "MT", "51"),
+                    new Estado(brasil, "Mato Grosso do Sul", "MS", "50"),
+                    new Estado(brasil, "Minas Gerais", "MG", "31"),
+                    new Estado(brasil, "Pará", "PA", "15"),
+                    new Estado(brasil, "Paraíba", "PB", "25"),
+                    new Estado(brasil, "Paraná", "PR", "41"),
+                    new Estado(brasil, "Pernambuco", "PE", "26"),
+                    new Estado(brasil, "Piauí", "PI", "22"),
+                    new Estado(brasil, "Rio de Janeiro", "RJ", "33"),
+                    new Estado(brasil, "Rio Grande do Norte", "RN", "24"),
+                    new Estado(brasil, "Rio Grande do Sul", "RS", "43"),
+                    new Estado(brasil, "Rondônia", "RO", "11"),
+                    new Estado(brasil, "Roraima", "RR", "14"),
+                    new Estado(brasil, "Santa Catarina", "SC", "42"),
+                    new Estado(brasil, "São Paulo", "SP", "35"),
+                    new Estado(brasil, "Sergipe", "SE", "28"),
+                    new Estado(brasil, "Tocantins", "TO", "17")
+            );
+
+            estadoRepository.saveAll(estados);
+            System.out.println("-> Estados do Brasil carregados com sucesso!");
         }
-        Pais brasil = paisRepository.findBySigla("BR");
-
-        if (brasil == null) {
-            throw new RuntimeException("Brasil não encontrado!");
-        }
-
-        List<Estado> estados = List.of(
-                new Estado(brasil, "Acre", "AC", "12"),
-                new Estado(brasil, "Alagoas", "AL", "27"),
-                new Estado(brasil, "Amapá", "AP", "16"),
-                new Estado(brasil, "Amazonas", "AM", "13"),
-                new Estado(brasil, "Bahia", "BA", "29"),
-                new Estado(brasil, "Ceará", "CE", "23"),
-                new Estado(brasil, "Distrito Federal", "DF", "53"),
-                new Estado(brasil, "Espírito Santo", "ES", "32"),
-                new Estado(brasil, "Goiás", "GO", "52"),
-                new Estado(brasil, "Maranhão", "MA", "21"),
-                new Estado(brasil, "Mato Grosso", "MT", "51"),
-                new Estado(brasil, "Mato Grosso do Sul", "MS", "50"),
-                new Estado(brasil, "Minas Gerais", "MG", "31"),
-                new Estado(brasil, "Pará", "PA", "15"),
-                new Estado(brasil, "Paraíba", "PB", "25"),
-                new Estado(brasil, "Paraná", "PR", "41"),
-                new Estado(brasil, "Pernambuco", "PE", "26"),
-                new Estado(brasil, "Piauí", "PI", "22"),
-                new Estado(brasil, "Rio de Janeiro", "RJ", "33"),
-                new Estado(brasil, "Rio Grande do Norte", "RN", "24"),
-                new Estado(brasil, "Rio Grande do Sul", "RS", "43"),
-                new Estado(brasil, "Rondônia", "RO", "11"),
-                new Estado(brasil, "Roraima", "RR", "14"),
-                new Estado(brasil, "Santa Catarina", "SC", "42"),
-                new Estado(brasil, "São Paulo", "SP", "35"),
-                new Estado(brasil, "Sergipe", "SE", "28"),
-                new Estado(brasil, "Tocantins", "TO", "17")
-        );
-
-        estadoRepository.saveAll(estados);
-        System.out.println("-> Estados do Brasil carregados com sucesso!");
     }
 
 }
