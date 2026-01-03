@@ -10,28 +10,28 @@
   <tab title="Dados Gerais" icon="bi-box-seam">
 
     @if (model) {
-            <div class="flex-column">
-<!--Falta uma forma legal de colocar o status atual do equipamento-->
-<!--              Aqui vai cod patrimonio-->
+      <div class="flex-column">
 
-      <text-box-component label="Nome" colClass="col-md-4" [(dataField)]="model.nome"></text-box-component>
-      <text-box-component label="Modelo" colClass="col-md-4" [(dataField)]="model.modelo"></text-box-component>
+        <text-box-component label="Cod. Patrimonio" colClass="col-md-1" [(dataField)]="model.codigoPatrimonio"></text-box-component>
 
-      <div class="d-flex gap-2">
-        <date-box-component label="Aquisição" colClass="col-md-2" [(dataField)]="model.dataAquisicao"></date-box-component>
-<!--Aqui vai o valor da diaria-->
+        <text-box-component label="Nome" colClass="col-md-4" [(dataField)]="model.nome"></text-box-component>
+        <text-box-component label="Modelo" colClass="col-md-4" [(dataField)]="model.modelo"></text-box-component>
+
+        <div class="d-flex gap-2">
+          <date-box-component label="Aquisição" [(dataField)]="model.dataAquisicao"></date-box-component>
+          <number-box-component label="Valor Diaria" [(dataField)]="model.valorDiaria"></number-box-component>
+        </div>
+
+        <text-area-component label="Observação" colClass="col-md-4" [(dataField)]="model.observacoes"></text-area-component>
+
       </div>
-
-<!--              Aqui vai a observacao-->
-
-              </div>
     }
 
   </tab>
 
 
   <tab title="Locações" icon="bi-clock-history">
-
+<!--Aqui tem que aguardar modelagem-->
   </tab>
 
 </tabs-component>

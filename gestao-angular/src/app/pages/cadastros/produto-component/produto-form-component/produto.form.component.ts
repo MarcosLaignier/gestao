@@ -11,6 +11,8 @@ import {TabsComponent} from "../../../../shared/components-commons/tabs-componen
 import {TabComponent} from "../../../../shared/components-commons/tabs-component/tab.component";
 import {TextBoxComponent} from "../../../../shared/components-commons/text-box-component/text.box.component";
 import {DateBoxComponent} from "../../../../shared/components-commons/date-box-component/date.box.component";
+import {TextAreaComponent} from "../../../../shared/components-commons/text-area-component/text.area.component";
+import {NumberBoxComponent} from "../../../../shared/components-commons/number-box-component/number.box.component";
 
 
 @Component({
@@ -22,7 +24,9 @@ import {DateBoxComponent} from "../../../../shared/components-commons/date-box-c
     TabsComponent,
     TabComponent,
     TextBoxComponent,
-    DateBoxComponent
+    DateBoxComponent,
+    TextAreaComponent,
+    NumberBoxComponent
   ],
   templateUrl: './produto.form.component.html',
 })
