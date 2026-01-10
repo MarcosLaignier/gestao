@@ -3,6 +3,7 @@ package com.erp.gestao.utils;
 import com.erp.gestao.enums.AtivoInativoEnum;
 import com.erp.gestao.enums.SexoEnum;
 import com.erp.gestao.enums.TipoPessoaEnum;
+import com.erp.gestao.model.Marca;
 import com.erp.gestao.model.TipoProduto;
 import com.erp.gestao.model.endereco.Empresa;
 import com.erp.gestao.model.endereco.Estado;
@@ -29,19 +30,21 @@ public class DataBaseLoader implements CommandLineRunner {
     private final PessoaRepository pessoaRepository;
     private final PaisRepository paisRepository;
     private final EstadoRepository estadoRepository;
-
     private final TipoProdutoRespository tipoProdutoRespository;
+    private final MarcaRepository marcaRepository;
 
     public DataBaseLoader(EmpresaRepository empresaRepository,
                           PessoaRepository pessoaRepository,
                           PaisRepository paisRepository,
                           EstadoRepository estadoRepository,
-                          TipoProdutoRespository tipoProdutoRespository) {
+                          TipoProdutoRespository tipoProdutoRespository,
+                          MarcaRepository marcaRepository) {
         this.empresaRepository = empresaRepository;
         this.pessoaRepository = pessoaRepository;
         this.paisRepository = paisRepository;
         this.estadoRepository = estadoRepository;
         this.tipoProdutoRespository = tipoProdutoRespository;
+        this.marcaRepository = marcaRepository;
     }
 
     @Override
@@ -51,6 +54,7 @@ public class DataBaseLoader implements CommandLineRunner {
         createPaises();
         createEstadosBrasil();
         createTipoProdudo();
+        createMarca();
     }
 
     private void createEmpresa() {
@@ -84,12 +88,25 @@ public class DataBaseLoader implements CommandLineRunner {
         }
     }
 
+    private void createMarca() {
+        List<Marca> marcaList = marcaRepository.findAll();
+        if (CollectionMetodsUtils.isEmpty(marcaList) || marcaList.size() == 1) {
+            List<Marca> marcas = List.of(
+                    new Marca( "Samsung"),
+                    new Marca("LG")
+            );
+            marcaRepository.saveAll(marcas);
+            System.out.println("-> Marcas carregados com sucesso!");
+
+        }
+    }
+
     private void createTipoProdudo() {
         List<TipoProduto> tipoProdutoListList = tipoProdutoRespository.findAll();
         if (CollectionMetodsUtils.isEmpty(tipoProdutoListList) || tipoProdutoListList.size() == 1) {
             List<TipoProduto> tipoProdutos = List.of(
-                    new TipoProduto( "1", "Still"),
-                    new TipoProduto("2", "Samsung")
+                    new TipoProduto( "1", "Monitor"),
+                    new TipoProduto("2", "Telefone")
             );
 
             tipoProdutoRespository.saveAll(tipoProdutos);

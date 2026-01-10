@@ -3,7 +3,7 @@ import {RouterModule} from "@angular/router";
 import {ToolbarComponent} from "../../../shared/components-commons/toolbar-filter-component/toolbar.component";
 import {GridComponent} from "../../../shared/components-commons/grid-column-component/grid.component";
 import {CrudPadrao} from "../../../shared/utils/crud/crud.padrao";
-import {TipoProduto} from "../../../shared/model/tipoproduto";
+import {TipoProduto} from "../../../shared/model/tipo.produto";
 import {TipoProdutoFilterDTO} from "../../../shared/dto/filterDTO/tipo.produto.dto";
 import {TipoProdutoService} from "../../../shared/service/tipoprodutoservice";
 import {TipoProdutoFilterComponet} from "./tipo-produto-filter/tipo.produto.filter.componet";
@@ -38,6 +38,4 @@ export class TipoProdutoComponent extends CrudPadrao<TipoProduto, TipoProdutoFil
       this.filter = new TipoProdutoFilterDTO();
     }
   }
-
-
 }

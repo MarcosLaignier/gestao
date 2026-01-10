@@ -1,5 +1,5 @@
 import {CrudPadrao} from "../../../../shared/utils/crud/crud.padrao";
-import {TipoProduto} from "../../../../shared/model/tipoproduto";
+import {TipoProduto} from "../../../../shared/model/tipo.produto";
 import {TipoProdutoFilterDTO} from "../../../../shared/dto/filterDTO/tipo.produto.dto";
 import {Component, Injector} from "@angular/core";
 import {ActivatedRoute, RouterModule} from "@angular/router";

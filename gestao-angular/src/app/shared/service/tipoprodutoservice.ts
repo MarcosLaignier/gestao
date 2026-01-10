@@ -3,7 +3,7 @@ import {CrudServicePadrao} from "../utils/service/crud.service.padrao";
 import {Pessoa} from "../model/pessoa";
 import {PessoaFilterDTO} from "../dto/filterDTO/pessoa.filter.dto";
 import {HttpClient} from "@angular/common/http";
-import {TipoProduto} from "../model/tipoproduto";
+import {TipoProduto} from "../model/tipo.produto";
 import {TipoProdutoFilterDTO} from "../dto/filterDTO/tipo.produto.dto";
 
 @Injectable({ providedIn: 'root' })

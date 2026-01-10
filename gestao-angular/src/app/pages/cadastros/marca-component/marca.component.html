@@ -1,0 +1,15 @@
+<div>
+  <toolbar-filter-component [tituloPagina]="'Tipo de Produtos'"
+                            (filtrar)="doFilter()">
+
+  </toolbar-filter-component>
+</div>
+
+<marca-filter [filter]="filter">
+
+</marca-filter>
+
+<grid-component [typeDataSource]="dataSourceType"
+                [dataSource]="dataSource"
+                [routerByEditDblClick]="true">
+</grid-component>
