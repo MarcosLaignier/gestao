@@ -41,6 +41,7 @@ export class SideBarComponent{
       icon: 'bi-folder2-open',
       children: [
         { label: 'Empresa', icon: 'bi-building', route: '/cadastros/empresa' },
+        { label: 'Tipo Produto', icon: 'bi-box', route: '/cadastros/tipoProduto' },
         { label: 'Pessoas', icon: 'bi-person', route: '/cadastros/pessoa' },
         { label: 'Produtos', icon: 'bi-box-seam', route: '/cadastros/produtos' }
       ]

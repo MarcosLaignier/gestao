@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 public abstract class BaseController<T,ID> {
 
     public abstract BaseService getService();
@@ -13,6 +15,12 @@ public abstract class BaseController<T,ID> {
     @GetMapping("/{id}")
     public ResponseEntity<T> findById(@PathVariable("id") Integer id) {
         T entityReturn = (T) getService().getById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(entityReturn);
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<List<T>> findAll( ) {
+        List<T> entityReturn = (List<T>) getService().findAll( );
         return ResponseEntity.status(HttpStatus.OK).body(entityReturn);
     }
 

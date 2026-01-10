@@ -9,6 +9,14 @@ export const CADASTROS_ROUTES: Routes = [
     ]
   },
   {
+    path: 'tipoProduto',
+    children: [
+      {path: '', loadComponent: () => import('./tipo-produto-component/tipo.produto.component').then(c => c.TipoProdutoComponent)},
+      {path: 'create', loadComponent: () => import('./tipo-produto-component/tipo-produto-form/tipo.produto.form.component').then(c => c.TipoProdutoFormComponent)},
+      {path: 'editar/:id', loadComponent: () => import('./tipo-produto-component/tipo-produto-form/tipo.produto.form.component').then(c => c.TipoProdutoFormComponent)}
+    ]
+  },
+  {
     path: 'produtos',
     children: [
       {path: '', loadComponent: () => import('./produto-component/produto.component').then(c => c.ProdutoComponent)},

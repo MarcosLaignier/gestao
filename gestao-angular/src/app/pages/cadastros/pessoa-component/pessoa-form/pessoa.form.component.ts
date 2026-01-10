@@ -72,7 +72,7 @@ export class PessoaFormComponent extends CrudPadrao<Pessoa, PessoaFilterDTO>{
     if (id) {
       this.mainService.getById(Number(id)).subscribe(pessoa => {
         if(pessoa.body){
-          this.model = pessoa.body
+          this.model = pessoa.body as Pessoa
         }
       });
 

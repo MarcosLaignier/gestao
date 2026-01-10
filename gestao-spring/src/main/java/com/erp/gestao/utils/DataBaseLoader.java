@@ -3,14 +3,12 @@ package com.erp.gestao.utils;
 import com.erp.gestao.enums.AtivoInativoEnum;
 import com.erp.gestao.enums.SexoEnum;
 import com.erp.gestao.enums.TipoPessoaEnum;
+import com.erp.gestao.model.TipoProduto;
 import com.erp.gestao.model.endereco.Empresa;
 import com.erp.gestao.model.endereco.Estado;
 import com.erp.gestao.model.endereco.Pais;
 import com.erp.gestao.model.Pessoa;
-import com.erp.gestao.repository.EmpresaRepository;
-import com.erp.gestao.repository.EstadoRepository;
-import com.erp.gestao.repository.PaisRepository;
-import com.erp.gestao.repository.PessoaRepository;
+import com.erp.gestao.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -32,14 +30,18 @@ public class DataBaseLoader implements CommandLineRunner {
     private final PaisRepository paisRepository;
     private final EstadoRepository estadoRepository;
 
+    private final TipoProdutoRespository tipoProdutoRespository;
+
     public DataBaseLoader(EmpresaRepository empresaRepository,
                           PessoaRepository pessoaRepository,
                           PaisRepository paisRepository,
-                          EstadoRepository estadoRepository) {
+                          EstadoRepository estadoRepository,
+                          TipoProdutoRespository tipoProdutoRespository) {
         this.empresaRepository = empresaRepository;
         this.pessoaRepository = pessoaRepository;
         this.paisRepository = paisRepository;
         this.estadoRepository = estadoRepository;
+        this.tipoProdutoRespository = tipoProdutoRespository;
     }
 
     @Override
@@ -48,6 +50,7 @@ public class DataBaseLoader implements CommandLineRunner {
         createPessoa();
         createPaises();
         createEstadosBrasil();
+        createTipoProdudo();
     }
 
     private void createEmpresa() {
@@ -77,6 +80,20 @@ public class DataBaseLoader implements CommandLineRunner {
 
             pessoaRepository.saveAll(pessoas);
             System.out.println("-> Pessoas carregados com sucesso!");
+
+        }
+    }
+
+    private void createTipoProdudo() {
+        List<TipoProduto> tipoProdutoListList = tipoProdutoRespository.findAll();
+        if (CollectionMetodsUtils.isEmpty(tipoProdutoListList) || tipoProdutoListList.size() == 1) {
+            List<TipoProduto> tipoProdutos = List.of(
+                    new TipoProduto( "1", "Still"),
+                    new TipoProduto("2", "Samsung")
+            );
+
+            tipoProdutoRespository.saveAll(tipoProdutos);
+            System.out.println("-> Tipo de Produtos carregados com sucesso!");
 
         }
     }

@@ -1,0 +1,12 @@
+
+<form class="row g-1 p-3 border rounded shadow-sm">
+
+  <div class="flex-column">
+
+    <div class="d-flex flex-column gap-1">
+      <text-box-component [label]="'Codigo'"  [colClass]="'col-md-2'" [(dataField)]="filter.codigo" placeHolder="Digite o Codigo do Produto"></text-box-component>
+      <text-box-component [label]="'Nome'" [colClass]="'col-md-4'" [(dataField)]="filter.nome" placeHolder="Digite o Nome"></text-box-component>
+    </div>
+
+  </div>
+</form>
