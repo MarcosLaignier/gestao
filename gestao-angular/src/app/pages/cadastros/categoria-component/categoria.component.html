@@ -1,13 +1,13 @@
 <div>
-  <toolbar-filter-component [tituloPagina]="'Tipo de Marcas'"
+  <toolbar-filter-component [tituloPagina]="'Tipo de Categorias'"
                             (filtrar)="doFilter()">
 
   </toolbar-filter-component>
 </div>
 
-<marca-filter [filter]="filter">
+<categoria-filter [filter]="filter"
 
-</marca-filter>
+></categoria-filter>
 
 <grid-component [typeDataSource]="dataSourceType"
                 [dataSource]="dataSource"

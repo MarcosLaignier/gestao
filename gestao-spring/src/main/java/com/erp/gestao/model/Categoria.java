@@ -8,11 +8,11 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name ="tipoproduto")
+@Table(name ="categoria")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Data
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class TipoProduto {
+public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,25 +21,13 @@ public class TipoProduto {
     @ValidateField(value = {ValidationType.NOT_NULL}, fieldName = "Nome")
     private String nome;
 
-    @ValidateField(value = {ValidationType.UNIQUE}, fieldName = "Codigo")
-    private String codigo;
-
-//    @ManyToOne
-//    @ValidateField(value = {ValidationType.NOT_NULL}, fieldName = "Marca")
-//    private Marca marca;
-//
-//    @ManyToOne
-//    @ValidateField(value = {ValidationType.NOT_NULL}, fieldName = "Categoria")
-//    private Categoria categoria;
-
     @Version
     private Integer versao = 0;
 
-    public TipoProduto() {
+    public Categoria() {
     }
 
-    public TipoProduto(String codigo, String nome ) {
-        this.codigo = codigo;
+    public Categoria(String nome) {
         this.nome = nome;
     }
 

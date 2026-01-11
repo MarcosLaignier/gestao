@@ -41,8 +41,9 @@ export class SideBarComponent{
       icon: 'bi-folder2-open',
       children: [
         { label: 'Empresa', icon: 'bi-building', route: '/cadastros/empresa' },
-        { label: 'Marca', icon: 'bi bi-badge-tm', route: '/cadastros/marca' },
-        { label: 'Tipo Produto', icon: 'bi-box', route: '/cadastros/tipoProduto' },
+        { label: 'Marcas', icon: 'bi bi-badge-tm', route: '/cadastros/marca' },
+        { label: 'Categorias', icon: 'bi bi-tags', route: '/cadastros/categoria' },
+        { label: 'Tipo Produtos', icon: 'bi-box', route: '/cadastros/tipoProduto' },
         { label: 'Pessoas', icon: 'bi-person', route: '/cadastros/pessoa' },
         { label: 'Produtos', icon: 'bi-box-seam', route: '/cadastros/produtos' }
       ]

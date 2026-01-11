@@ -3,6 +3,7 @@ package com.erp.gestao.utils;
 import com.erp.gestao.enums.AtivoInativoEnum;
 import com.erp.gestao.enums.SexoEnum;
 import com.erp.gestao.enums.TipoPessoaEnum;
+import com.erp.gestao.model.Categoria;
 import com.erp.gestao.model.Marca;
 import com.erp.gestao.model.TipoProduto;
 import com.erp.gestao.model.endereco.Empresa;
@@ -32,19 +33,22 @@ public class DataBaseLoader implements CommandLineRunner {
     private final EstadoRepository estadoRepository;
     private final TipoProdutoRespository tipoProdutoRespository;
     private final MarcaRepository marcaRepository;
+    private final CategoriaRepository categoriaRepository;
 
     public DataBaseLoader(EmpresaRepository empresaRepository,
                           PessoaRepository pessoaRepository,
                           PaisRepository paisRepository,
                           EstadoRepository estadoRepository,
                           TipoProdutoRespository tipoProdutoRespository,
-                          MarcaRepository marcaRepository) {
+                          MarcaRepository marcaRepository,
+                          CategoriaRepository categoriaRepository) {
         this.empresaRepository = empresaRepository;
         this.pessoaRepository = pessoaRepository;
         this.paisRepository = paisRepository;
         this.estadoRepository = estadoRepository;
         this.tipoProdutoRespository = tipoProdutoRespository;
         this.marcaRepository = marcaRepository;
+        this.categoriaRepository = categoriaRepository;
     }
 
     @Override
@@ -55,6 +59,7 @@ public class DataBaseLoader implements CommandLineRunner {
         createEstadosBrasil();
         createTipoProdudo();
         createMarca();
+        createCategoria();
     }
 
     private void createEmpresa() {
@@ -96,7 +101,20 @@ public class DataBaseLoader implements CommandLineRunner {
                     new Marca("LG")
             );
             marcaRepository.saveAll(marcas);
-            System.out.println("-> Marcas carregados com sucesso!");
+            System.out.println("-> Marcas carregadas com sucesso!");
+
+        }
+    }
+
+    private void createCategoria() {
+        List<Categoria> categoriaList = categoriaRepository.findAll();
+        if (CollectionMetodsUtils.isEmpty(categoriaList) || categoriaList.size() == 1) {
+            List<Categoria> categorias = List.of(
+                    new Categoria( "Telefone"),
+                    new Categoria("Monitor")
+            );
+            categoriaRepository.saveAll(categorias);
+            System.out.println("-> Categorias carregadas com sucesso!");
 
         }
     }
