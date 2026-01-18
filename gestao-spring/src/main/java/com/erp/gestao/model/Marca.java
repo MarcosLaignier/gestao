@@ -9,7 +9,6 @@ import lombok.Data;
 
 @Entity
 @Table(name ="marca")
-@Inheritance(strategy = InheritanceType.JOINED)
 @Data
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Marca {

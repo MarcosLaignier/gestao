@@ -20,7 +20,7 @@ public class CategoriaService extends BaseService<Categoria, Integer> {
     @Autowired
     private CategoriaRepository repository;
     @Override
-    public JpaRepository getRepository() { return repository; }
+    public CategoriaRepository getRepository() { return repository; }
 
     public List<Categoria> listar(CategoriaFilterDTO filter) {
         return repository.findAll(

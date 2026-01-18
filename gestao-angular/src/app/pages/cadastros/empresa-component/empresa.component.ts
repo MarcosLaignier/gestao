@@ -143,7 +143,7 @@ export class EmpresaComponent extends CrudPadrao<Empresa, EmpresaFilterDTO>{
   }
 
   getCEP(cep: string){
-    if(cep.length == 8){
+    if(cep?.length == 8){
 
       this.viaCepService.buscarCep(cep).subscribe( endereco => {
         console.log(endereco)

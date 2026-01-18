@@ -9,7 +9,7 @@ export abstract class FormFieldBase<T> {
   /** Responsavel por aplicar o label no component */
   @Input() label: string = ''
 
-  @Input() placeHolder: string = '';
+  @Input() placeholder: string = '';
 
   /** Desabilita os campos */
   @Input() disabled: boolean = false;

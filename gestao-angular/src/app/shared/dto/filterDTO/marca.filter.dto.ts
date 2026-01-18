@@ -1,4 +1,4 @@
-export class MarcaFilterDto {
+export class MarcaFilterDTO {
 
   id: number;
 

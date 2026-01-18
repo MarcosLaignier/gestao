@@ -21,6 +21,13 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @ManyToOne
+    @ValidateField(value = {ValidationType.NOT_NULL}, fieldName = "Categoria")
+    private Categoria categoria;
+
+    @ManyToOne
+    private Marca marca;
+
     @ValidateField(value = {ValidationType.NOT_NULL}, fieldName = "Nome")
     private String nome;
 

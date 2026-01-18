@@ -1,9 +1,15 @@
 import {GridColumn} from "../utils/directives/grid.column.decorator";
 import {StatusProdutoEnum} from "../enum/status.produto.enum";
+import {Marca} from "./marca";
+import {Categoria} from "./categoria";
 
 export class Produto{
 
   id: number;
+
+  categoria: Categoria;
+
+  marca: Marca;
 
   @GridColumn({ label: 'Nome', type: 'texto', ordem: 2 })
   nome: string;

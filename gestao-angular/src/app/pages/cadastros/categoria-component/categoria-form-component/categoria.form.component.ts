@@ -4,9 +4,6 @@ import {ToolbarComponent} from "../../../../shared/components-commons/toolbar-fi
 import {TextBoxComponent} from "../../../../shared/components-commons/text-box-component/text.box.component";
 import {CrudPadrao} from "../../../../shared/utils/crud/crud.padrao";
 import {AlertService} from "../../../../shared/components-commons/alert-component/alert.service";
-import {Marca} from "../../../../shared/model/marca";
-import {MarcaFilterDto} from "../../../../shared/dto/filterDTO/marca.filter.dto";
-import {MarcaSercice} from "../../../../shared/service/marca.sercice";
 import {Categoria} from "../../../../shared/model/categoria";
 import {CategoriaFilterDto} from "../../../../shared/dto/filterDTO/categoria.filter.dto";
 import {CategoriaSercice} from "../../../../shared/service/categoria.service";

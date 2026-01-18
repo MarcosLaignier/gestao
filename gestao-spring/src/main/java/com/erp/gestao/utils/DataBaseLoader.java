@@ -5,7 +5,6 @@ import com.erp.gestao.enums.SexoEnum;
 import com.erp.gestao.enums.TipoPessoaEnum;
 import com.erp.gestao.model.Categoria;
 import com.erp.gestao.model.Marca;
-import com.erp.gestao.model.TipoProduto;
 import com.erp.gestao.model.endereco.Empresa;
 import com.erp.gestao.model.endereco.Estado;
 import com.erp.gestao.model.endereco.Pais;
@@ -31,7 +30,6 @@ public class DataBaseLoader implements CommandLineRunner {
     private final PessoaRepository pessoaRepository;
     private final PaisRepository paisRepository;
     private final EstadoRepository estadoRepository;
-    private final TipoProdutoRespository tipoProdutoRespository;
     private final MarcaRepository marcaRepository;
     private final CategoriaRepository categoriaRepository;
 
@@ -39,14 +37,12 @@ public class DataBaseLoader implements CommandLineRunner {
                           PessoaRepository pessoaRepository,
                           PaisRepository paisRepository,
                           EstadoRepository estadoRepository,
-                          TipoProdutoRespository tipoProdutoRespository,
                           MarcaRepository marcaRepository,
                           CategoriaRepository categoriaRepository) {
         this.empresaRepository = empresaRepository;
         this.pessoaRepository = pessoaRepository;
         this.paisRepository = paisRepository;
         this.estadoRepository = estadoRepository;
-        this.tipoProdutoRespository = tipoProdutoRespository;
         this.marcaRepository = marcaRepository;
         this.categoriaRepository = categoriaRepository;
     }
@@ -57,7 +53,6 @@ public class DataBaseLoader implements CommandLineRunner {
         createPessoa();
         createPaises();
         createEstadosBrasil();
-        createTipoProdudo();
         createMarca();
         createCategoria();
     }
@@ -119,19 +114,6 @@ public class DataBaseLoader implements CommandLineRunner {
         }
     }
 
-    private void createTipoProdudo() {
-        List<TipoProduto> tipoProdutoListList = tipoProdutoRespository.findAll();
-        if (CollectionMetodsUtils.isEmpty(tipoProdutoListList) || tipoProdutoListList.size() == 1) {
-            List<TipoProduto> tipoProdutos = List.of(
-                    new TipoProduto( "1", "Monitor"),
-                    new TipoProduto("2", "Telefone")
-            );
-
-            tipoProdutoRespository.saveAll(tipoProdutos);
-            System.out.println("-> Tipo de Produtos carregados com sucesso!");
-
-        }
-    }
 
     private void createPaises() {
         List<Pais> paisList = paisRepository.findAll();
