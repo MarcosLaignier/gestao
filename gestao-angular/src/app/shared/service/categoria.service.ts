@@ -5,7 +5,7 @@ import {Categoria} from "../model/categoria";
 import {CategoriaFilterDto} from "../dto/filterDTO/categoria.filter.dto";
 
 @Injectable({ providedIn: 'root' })
-export class CategoriaSercice extends CrudServicePadrao<Categoria,CategoriaFilterDto> {
+export class CategoriaService extends CrudServicePadrao<Categoria,CategoriaFilterDto> {
 
   constructor(http: HttpClient) {
     super(http, 'categoria');

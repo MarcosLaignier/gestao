@@ -12,11 +12,14 @@
     @if (model) {
       <div class="flex-column">
         <badge-component [text]="model.statusAtual" [color]="getColorStatus()" size="lg" ></badge-component>
-        <text-box-component label="Cod. Patrimonio" colClass="col-md-1" [(dataField)]="model.codigoPatrimonio"></text-box-component>
+        <text-box-component label="Cod" colClass="col-md-1" [(dataField)]="model.codigoPatrimonio"></text-box-component>
 
         <text-box-component label="Nome" colClass="col-md-4" [(dataField)]="model.nome"></text-box-component>
+        <div class="d-flex gap-2">
+          <categoria-seletor label="Categoria" [(dataField)]="model.categoria"></categoria-seletor>
+          <marca-seletor label="Marca" [(dataField)]="model.marca"></marca-seletor>
+        </div>
         <text-box-component label="Modelo" colClass="col-md-4" [(dataField)]="model.modelo"></text-box-component>
-
         <div class="d-flex gap-2">
           <date-box-component label="Aquisição" [(dataField)]="model.dataAquisicao"></date-box-component>
           <number-box-component label="Valor Diaria" [(dataField)]="model.valorDiaria"></number-box-component>

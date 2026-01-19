@@ -6,7 +6,7 @@ import {CrudPadrao} from "../../../../shared/utils/crud/crud.padrao";
 import {AlertService} from "../../../../shared/components-commons/alert-component/alert.service";
 import {Categoria} from "../../../../shared/model/categoria";
 import {CategoriaFilterDto} from "../../../../shared/dto/filterDTO/categoria.filter.dto";
-import {CategoriaSercice} from "../../../../shared/service/categoria.service";
+import {CategoriaService} from "../../../../shared/service/categoria.service";
 
 @Component({
   selector: 'categoria-form-component',
@@ -21,7 +21,7 @@ import {CategoriaSercice} from "../../../../shared/service/categoria.service";
 export class CategoriaFormComponent extends CrudPadrao<Categoria, CategoriaFilterDto> {
 
   constructor(injector: Injector,
-              private mainService: CategoriaSercice,
+              private mainService: CategoriaService,
               private route: ActivatedRoute,
               private alertService: AlertService
   ) {

@@ -14,6 +14,12 @@ import {TextAreaComponent} from "../../../../shared/components-commons/text-area
 import {NumberBoxComponent} from "../../../../shared/components-commons/number-box-component/number.box.component";
 import {BadgeComponent} from "../../../../shared/components-commons/badge-component/badge.component";
 import {StatusProdutoEnum} from "../../../../shared/enum/status.produto.enum";
+import {
+  SelectMarcaComponent
+} from "../../../../shared/components-commons/marca-seletor-component/marca.seletor.component";
+import {
+  CategoriaSeletorComponent
+} from "../../../../shared/components-commons/categoria-seletor-component/categoria.seletor.component";
 
 
 @Component({
@@ -28,7 +34,9 @@ import {StatusProdutoEnum} from "../../../../shared/enum/status.produto.enum";
     DateBoxComponent,
     TextAreaComponent,
     NumberBoxComponent,
-    BadgeComponent
+    BadgeComponent,
+    SelectMarcaComponent,
+    CategoriaSeletorComponent
   ],
   templateUrl: './produto.form.component.html',
 })
@@ -52,9 +60,9 @@ export class ProdutoFormComponent extends CrudPadrao<Produto, ProdutoFilterDTO>{
     this.model = new Produto();
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.mainService.getById(Number(id)).subscribe(pessoa => {
-        if(pessoa.body){
-          this.model = pessoa.body
+      this.mainService.getById(Number(id)).subscribe(produto => {
+        if(produto.body){
+          this.model = produto.body
         }
       });
 

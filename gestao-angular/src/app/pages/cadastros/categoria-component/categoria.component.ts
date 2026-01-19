@@ -5,7 +5,7 @@ import {GridComponent} from "../../../shared/components-commons/grid-column-comp
 import {CrudPadrao} from "../../../shared/utils/crud/crud.padrao";
 import {Categoria} from "../../../shared/model/categoria";
 import {CategoriaFilterDto} from "../../../shared/dto/filterDTO/categoria.filter.dto";
-import {CategoriaSercice} from "../../../shared/service/categoria.service";
+import {CategoriaService} from "../../../shared/service/categoria.service";
 import {CategoriaFilterComponent} from "./categoria-filter-component/categoria.filter.component";
 
 @Component({
@@ -25,7 +25,7 @@ export class CategoriaComponent extends CrudPadrao<Categoria, CategoriaFilterDto
   dataSourceType = new Categoria();
 
   constructor(injector: Injector,
-              private mainService:CategoriaSercice) {
+              private mainService:CategoriaService) {
     super(injector, "categoria");
   }
 
