@@ -4,9 +4,9 @@ import {RouterModule} from "@angular/router";
 import {Produto} from "../../../shared/model/produto";
 import {ProdutoFilterDTO} from "../../../shared/dto/filterDTO/produto.filter.dto";
 import {ProdutoService} from "../../../shared/service/produto.service";
-import {GridComponent} from "../../../shared/components-commons/grid-column-component/grid.component";
-import {ToolbarComponent} from "../../../shared/components-commons/toolbar-filter-component/toolbar.component";
 import {ProdutoFilterComponent} from "./produto-filter-component/produto.filter.component";
+import {GridComponent} from "../../../shared/components-commons/infra/grid-column-component/grid.component";
+import {ToolbarComponent} from "../../../shared/components-commons/infra/toolbar-filter-component/toolbar.component";
 
 
 @Component({

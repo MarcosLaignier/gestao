@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import { Location } from '@angular/common';
+import {Location} from '@angular/common';
 import {Router, RouterModule} from "@angular/router";
 
 @Component({

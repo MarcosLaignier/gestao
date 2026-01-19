@@ -1,7 +1,7 @@
-import { HttpInterceptorFn, HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { inject } from '@angular/core';
-import { tap } from 'rxjs';
-import { AlertService } from '../../components-commons/alert-component/alert.service';
+import {HttpErrorResponse, HttpInterceptorFn, HttpResponse} from '@angular/common/http';
+import {inject} from '@angular/core';
+import {tap} from 'rxjs';
+import {AlertService} from "../../components-commons/infra/alert-component/alert.service";
 
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
 

@@ -1,12 +1,12 @@
 import {Component, Injector} from "@angular/core";
 import {RouterModule} from "@angular/router";
-import {ToolbarComponent} from "../../../shared/components-commons/toolbar-filter-component/toolbar.component";
-import {GridComponent} from "../../../shared/components-commons/grid-column-component/grid.component";
 import {CrudPadrao} from "../../../shared/utils/crud/crud.padrao";
 import {Categoria} from "../../../shared/model/categoria";
 import {CategoriaFilterDto} from "../../../shared/dto/filterDTO/categoria.filter.dto";
 import {CategoriaService} from "../../../shared/service/categoria.service";
 import {CategoriaFilterComponent} from "./categoria-filter-component/categoria.filter.component";
+import {ToolbarComponent} from "../../../shared/components-commons/infra/toolbar-filter-component/toolbar.component";
+import {GridComponent} from "../../../shared/components-commons/infra/grid-column-component/grid.component";
 
 @Component({
   selector: 'categoria-component',

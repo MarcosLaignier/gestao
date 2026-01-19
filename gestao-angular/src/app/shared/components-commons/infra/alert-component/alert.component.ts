@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { AlertMessage, AlertService } from './alert.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Subscription} from 'rxjs';
+import {AlertMessage, AlertService} from './alert.service';
 import {CommonModule} from "@angular/common";
 
 @Component({

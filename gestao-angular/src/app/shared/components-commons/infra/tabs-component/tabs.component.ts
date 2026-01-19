@@ -1,11 +1,6 @@
-import {
-  AfterContentInit,
-  Component,
-  ContentChildren,
-  QueryList
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { TabComponent } from './tab.component';
+import {AfterContentInit, Component, ContentChildren, QueryList} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {TabComponent} from './tab.component';
 
 @Component({
   selector: 'tabs-component',

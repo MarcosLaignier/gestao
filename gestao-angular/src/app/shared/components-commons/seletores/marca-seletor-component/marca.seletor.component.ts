@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {Marca} from "../../model/marca";
 import {
   BaseSelectEntityComponent,
   getSeletorBaseTemplateDefault
-} from "../base-select-entity-component/base.select.entity.component";
-import {MarcaService} from "../../service/marca.service";
+} from "../../infra/base-select-entity-component/base.select.entity.component";
+import {MarcaService} from "../../../service/marca.service";
+import {Marca} from "../../../model/marca";
 
 @Component({
   selector: 'marca-seletor',

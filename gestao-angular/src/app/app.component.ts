@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SideBarComponent } from './shared/components-commons/side-bar-component/side.bar.component';
-import {AlertComponent} from "./shared/components-commons/alert-component/alert.component";
+import {AlertComponent} from "./shared/components-commons/infra/alert-component/alert.component";
 
 @Component({
   selector: 'app-root',

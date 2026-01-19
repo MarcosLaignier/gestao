@@ -4,9 +4,9 @@ import {CrudPadrao} from "../../../shared/utils/crud/crud.padrao";
 import {Marca} from "../../../shared/model/marca";
 import {MarcaFilterDTO} from "../../../shared/dto/filterDTO/marca.filter.dto";
 import {MarcaService} from "../../../shared/service/marca.service";
-import {GridComponent} from "../../../shared/components-commons/grid-column-component/grid.component";
-import {ToolbarComponent} from "../../../shared/components-commons/toolbar-filter-component/toolbar.component";
 import {MarcaFilterComponent} from "./marca-filter-component/marca.filter.component";
+import {ToolbarComponent} from "../../../shared/components-commons/infra/toolbar-filter-component/toolbar.component";
+import {GridComponent} from "../../../shared/components-commons/infra/grid-column-component/grid.component";
 
 @Component({
   selector: 'marca-component',

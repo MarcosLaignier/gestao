@@ -1,12 +1,12 @@
 import {Component, Injector} from "@angular/core";
 import {ActivatedRoute, RouterModule} from "@angular/router";
-import {ToolbarComponent} from "../../../../shared/components-commons/toolbar-filter-component/toolbar.component";
-import {TextBoxComponent} from "../../../../shared/components-commons/text-box-component/text.box.component";
 import {CrudPadrao} from "../../../../shared/utils/crud/crud.padrao";
-import {AlertService} from "../../../../shared/components-commons/alert-component/alert.service";
 import {Marca} from "../../../../shared/model/marca";
 import {MarcaFilterDTO} from "../../../../shared/dto/filterDTO/marca.filter.dto";
 import {MarcaService} from "../../../../shared/service/marca.service";
+import {ToolbarComponent} from "../../../../shared/components-commons/infra/toolbar-filter-component/toolbar.component";
+import {TextBoxComponent} from "../../../../shared/components-commons/infra/text-box-component/text.box.component";
+import {AlertService} from "../../../../shared/components-commons/infra/alert-component/alert.service";
 
 @Component({
   selector: 'marca-form-component',

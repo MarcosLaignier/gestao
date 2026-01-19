@@ -1,25 +1,28 @@
 import {Component, Injector} from "@angular/core";
 import {ActivatedRoute, RouterModule} from "@angular/router";
 import {CrudPadrao} from "../../../../shared/utils/crud/crud.padrao";
-import {AlertService} from "../../../../shared/components-commons/alert-component/alert.service";
-import {ProdutoService} from "../../../../shared/service/produto.service";
-import {Produto} from "../../../../shared/model/produto";
-import {ProdutoFilterDTO} from "../../../../shared/dto/filterDTO/produto.filter.dto";
-import {ToolbarComponent} from "../../../../shared/components-commons/toolbar-filter-component/toolbar.component";
-import {TabsComponent} from "../../../../shared/components-commons/tabs-component/tabs.component";
-import {TabComponent} from "../../../../shared/components-commons/tabs-component/tab.component";
-import {TextBoxComponent} from "../../../../shared/components-commons/text-box-component/text.box.component";
-import {DateBoxComponent} from "../../../../shared/components-commons/date-box-component/date.box.component";
-import {TextAreaComponent} from "../../../../shared/components-commons/text-area-component/text.area.component";
-import {NumberBoxComponent} from "../../../../shared/components-commons/number-box-component/number.box.component";
-import {BadgeComponent} from "../../../../shared/components-commons/badge-component/badge.component";
-import {StatusProdutoEnum} from "../../../../shared/enum/status.produto.enum";
+import {ToolbarComponent} from "../../../../shared/components-commons/infra/toolbar-filter-component/toolbar.component";
+import {TabsComponent} from "../../../../shared/components-commons/infra/tabs-component/tabs.component";
+import {TabComponent} from "../../../../shared/components-commons/infra/tabs-component/tab.component";
+import {TextBoxComponent} from "../../../../shared/components-commons/infra/text-box-component/text.box.component";
+import {DateBoxComponent} from "../../../../shared/components-commons/infra/date-box-component/date.box.component";
+import {TextAreaComponent} from "../../../../shared/components-commons/infra/text-area-component/text.area.component";
+import {
+  NumberBoxComponent
+} from "../../../../shared/components-commons/infra/number-box-component/number.box.component";
+import {BadgeComponent} from "../../../../shared/components-commons/infra/badge-component/badge.component";
 import {
   SelectMarcaComponent
-} from "../../../../shared/components-commons/marca-seletor-component/marca.seletor.component";
+} from "../../../../shared/components-commons/seletores/marca-seletor-component/marca.seletor.component";
 import {
   CategoriaSeletorComponent
-} from "../../../../shared/components-commons/categoria-seletor-component/categoria.seletor.component";
+} from "../../../../shared/components-commons/seletores/categoria-seletor-component/categoria.seletor.component";
+import {Produto} from "../../../../shared/model/produto";
+import {ProdutoFilterDTO} from "../../../../shared/dto/filterDTO/produto.filter.dto";
+import {ProdutoService} from "../../../../shared/service/produto.service";
+import {AlertService} from "../../../../shared/components-commons/infra/alert-component/alert.service";
+import {StatusProdutoEnum} from "../../../../shared/enum/status.produto.enum";
+
 
 
 @Component({

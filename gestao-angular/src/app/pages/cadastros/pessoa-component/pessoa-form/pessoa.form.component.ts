@@ -7,21 +7,26 @@ import {PessoaService} from "../../../../shared/service/pessoa.service";
 import {AtivoInativoEnum} from "../../../../shared/enum/ativo.inativo.enum";
 import {TipoPessoaEnum} from "../../../../shared/enum/tipo.pessoa.enum";
 
-import {ToolbarComponent} from "../../../../shared/components-commons/toolbar-filter-component/toolbar.component";
-import {RadioEnumComponent} from "../../../../shared/components-commons/radio-enum-component/radio.enum.component";
-import {TextBoxComponent} from "../../../../shared/components-commons/text-box-component/text.box.component";
-import {DateBoxComponent} from "../../../../shared/components-commons/date-box-component/date.box.component";
-import {SelectEnumComponent} from "../../../../shared/components-commons/select-enum-component/select.enum.component";
-import {TabsComponent} from "../../../../shared/components-commons/tabs-component/tabs.component";
-import {TabComponent} from "../../../../shared/components-commons/tabs-component/tab.component";
+
 import {SexoEnum} from "../../../../shared/enum/sexo.enum";
 import {Telefone} from "../../../../shared/model/telefone";
-import {SwitchComponent} from "../../../../shared/components-commons/switch-component/switch.component";
-import {GridComponent} from "../../../../shared/components-commons/grid-column-component/grid.component";
 import _ from "lodash";
-import {AlertService} from "../../../../shared/components-commons/alert-component/alert.service";
 import {Endereco} from "../../../../shared/model/endereco";
 import {ViaCepService} from "../../../../infra/ws/via.cep.service";
+import {ToolbarComponent} from "../../../../shared/components-commons/infra/toolbar-filter-component/toolbar.component";
+import {
+  RadioEnumComponent
+} from "../../../../shared/components-commons/infra/radio-enum-component/radio.enum.component";
+import {TextBoxComponent} from "../../../../shared/components-commons/infra/text-box-component/text.box.component";
+import {DateBoxComponent} from "../../../../shared/components-commons/infra/date-box-component/date.box.component";
+import {
+  SelectEnumComponent
+} from "../../../../shared/components-commons/infra/select-enum-component/select.enum.component";
+import {TabsComponent} from "../../../../shared/components-commons/infra/tabs-component/tabs.component";
+import {TabComponent} from "../../../../shared/components-commons/infra/tabs-component/tab.component";
+import {SwitchComponent} from "../../../../shared/components-commons/infra/switch-component/switch.component";
+import {GridComponent} from "../../../../shared/components-commons/infra/grid-column-component/grid.component";
+import {AlertService} from "../../../../shared/components-commons/infra/alert-component/alert.service";
 
 
 @Component({

@@ -4,9 +4,9 @@ import {FormsModule} from '@angular/forms';
 import {
   BaseSelectEntityComponent,
   getSeletorBaseTemplateDefault
-} from "../base-select-entity-component/base.select.entity.component";
-import {Categoria} from "../../model/categoria";
-import {CategoriaService} from "../../service/categoria.service";
+} from "../../infra/base-select-entity-component/base.select.entity.component";
+import {Categoria} from "../../../model/categoria";
+import {CategoriaService} from "../../../service/categoria.service";
 
 @Component({
   selector: 'categoria-seletor',

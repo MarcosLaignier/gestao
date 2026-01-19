@@ -5,9 +5,9 @@ import {CrudPadrao} from "../../../shared/utils/crud/crud.padrao";
 import {Router, RouterModule} from "@angular/router";
 import {PessoaFilterDTO} from "../../../shared/dto/filterDTO/pessoa.filter.dto";
 
-import {ToolbarComponent} from "../../../shared/components-commons/toolbar-filter-component/toolbar.component";
 import {PessoaFilterComponent} from "./pessoa-filter/pessoa.filter.component";
-import {GridComponent} from "../../../shared/components-commons/grid-column-component/grid.component";
+import {ToolbarComponent} from "../../../shared/components-commons/infra/toolbar-filter-component/toolbar.component";
+import {GridComponent} from "../../../shared/components-commons/infra/grid-column-component/grid.component";
 
 
 @Component({

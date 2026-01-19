@@ -1,6 +1,6 @@
 import {Directive, Input, OnInit} from '@angular/core';
-import {FormFieldBase} from "../../utils/form.field.base";
-import {CrudServicePadrao} from "../../utils/service/crud.service.padrao";
+import {FormFieldBase} from "../../../utils/form.field.base";
+import {CrudServicePadrao} from "../../../utils/service/crud.service.padrao";
 
 @Directive()
 export abstract class BaseSelectEntityComponent<T> extends FormFieldBase<T> implements OnInit {

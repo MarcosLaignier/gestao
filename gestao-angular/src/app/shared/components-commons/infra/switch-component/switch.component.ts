@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormFieldBase } from '../../utils/form.field.base';
+import {Component} from '@angular/core';
+import {FormFieldBase} from "../../../utils/form.field.base";
 
 @Component({
   selector: 'switch-component',

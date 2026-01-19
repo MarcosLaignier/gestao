@@ -1,7 +1,7 @@
 import {Component, Input} from "@angular/core";
 import {RouterModule} from "@angular/router";
-import {TextBoxComponent} from "../../../../shared/components-commons/text-box-component/text.box.component";
 import {MarcaFilterDTO} from "../../../../shared/dto/filterDTO/marca.filter.dto";
+import {TextBoxComponent} from "../../../../shared/components-commons/infra/text-box-component/text.box.component";
 
 @Component({
   selector: 'marca-filter',
