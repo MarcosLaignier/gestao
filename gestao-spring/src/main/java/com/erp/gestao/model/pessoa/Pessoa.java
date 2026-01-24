@@ -1,8 +1,9 @@
-package com.erp.gestao.model;
+package com.erp.gestao.model.pessoa;
 
 import com.erp.gestao.enums.AtivoInativoEnum;
 import com.erp.gestao.enums.SexoEnum;
 import com.erp.gestao.enums.TipoPessoaEnum;
+import com.erp.gestao.model.Telefone;
 import com.erp.gestao.model.endereco.Endereco;
 import com.erp.gestao.utils.validate.ValidateField;
 import com.erp.gestao.utils.validate.ValidationType;

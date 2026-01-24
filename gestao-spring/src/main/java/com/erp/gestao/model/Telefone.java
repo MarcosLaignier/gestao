@@ -1,5 +1,6 @@
 package com.erp.gestao.model;
 
+import com.erp.gestao.model.pessoa.Pessoa;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;

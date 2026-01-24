@@ -1,7 +1,7 @@
 package com.erp.gestao.controller;
 
 import com.erp.gestao.dto.filterDTO.PessoaFilterDTO;
-import com.erp.gestao.model.Pessoa;
+import com.erp.gestao.model.pessoa.Pessoa;
 import com.erp.gestao.service.PessoaService;
 import com.erp.gestao.utils.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;

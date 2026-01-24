@@ -1,6 +1,6 @@
 package com.erp.gestao.repository;
 
-import com.erp.gestao.model.Pessoa;
+import com.erp.gestao.model.pessoa.Pessoa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;

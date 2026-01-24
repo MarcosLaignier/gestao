@@ -1,7 +1,7 @@
 package com.erp.gestao.service;
 
 import com.erp.gestao.dto.filterDTO.PessoaFilterDTO;
-import com.erp.gestao.model.Pessoa;
+import com.erp.gestao.model.pessoa.Pessoa;
 import com.erp.gestao.repository.PessoaRepository;
 import com.erp.gestao.utils.BaseService;
 import com.erp.gestao.utils.CollectionMetodsUtils;

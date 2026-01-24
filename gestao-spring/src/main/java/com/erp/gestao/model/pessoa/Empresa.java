@@ -1,6 +1,5 @@
-package com.erp.gestao.model.endereco;
+package com.erp.gestao.model.pessoa;
 
-import com.erp.gestao.model.Pessoa;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Data;
