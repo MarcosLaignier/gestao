@@ -1,9 +1,11 @@
-<div class="d-flex">
-  <side-bar-component></side-bar-component>
+<div class="app-layout" [class.sidebar-collapsed]="!sidebarOpen">
+  <side-bar-component
+    (sidebarToggle)="sidebarOpen = $event">
+  </side-bar-component>
 
-  <!-- Conteúdo -->
-  <div class="flex-grow-1 p-4">
+  <main class="app-content">
     <router-outlet></router-outlet>
-  </div>
+  </main>
+
   <alert-component></alert-component>
 </div>

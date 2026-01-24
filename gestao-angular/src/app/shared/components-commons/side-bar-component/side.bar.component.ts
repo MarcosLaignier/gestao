@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
 interface MenuItem {
@@ -93,8 +93,12 @@ export class SideBarComponent implements OnInit {
     this.router.events.subscribe(() => this.expandMenuByRoute());
   }
 
+  @Output()
+  sidebarToggle = new EventEmitter<boolean>();
+
   toggleSidebar() {
     this.sidebarOpen = !this.sidebarOpen;
+    this.sidebarToggle.emit(this.sidebarOpen);
   }
 
   toggleSubmenu(item: MenuItem) {
