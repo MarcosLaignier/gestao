@@ -17,6 +17,6 @@ import {AlertComponent} from "./shared/components-commons/infra/alert-component/
 export class AppComponent {
   title = 'gestao-angular';
 
-  sidebarOpen = true;
+  sidebarOpen = false;
 
 }

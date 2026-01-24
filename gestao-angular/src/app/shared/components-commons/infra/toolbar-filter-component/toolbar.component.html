@@ -1,16 +1,39 @@
-<div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2 header-panel">
-  <h3 class="mb-0 fw-semibold text-dark">{{ tituloPagina }}</h3>
-  <div class="d-flex gap-2">
+<div class="page-context-header">
+  <div class="page-title">
+    <i class="bi bi-window-stack"></i>
+    <span class="title-text">{{ tituloPagina }}</span>
+  </div>
+
+  <div class="page-actions">
+
     @if (listMode) {
-      <button type="button" class="btn btn-outline-secondary" (click)="filtrarClick($event)">Filtrar</button>
+      <button class="btn-action secondary" (click)="filtrarClick($event)">
+        <i class="bi bi-funnel"></i>
+        <span>Filtrar</span>
+      </button>
+
+      <button class="btn-action primary" (click)="novoClick($event)">
+        <i class="bi bi-plus-circle"></i>
+        <span>Novo</span>
+      </button>
     }
-    @if (listMode) {
-      <button type="button" class="btn btn-outline-secondary" (click)="novoClick($event)">Novo</button>
-    }
+
     @if (!listMode) {
-      <button type="button" class="btn btn-outline-secondary" (click)="salvarClick($event)">Salvar</button>
+      <button class="btn-action success" (click)="salvarClick($event)">
+        <i class="bi bi-check-circle"></i>
+        <span>Salvar</span>
+      </button>
     }
-    <button type="button" class="btn btn-outline-secondary" (click)="limparClick($event)">Limpar</button>
-    <button type="button" class="btn btn-outline-secondary" (click)="fecharClick($event)">Fechar</button>
+
+    <button class="btn-action secondary" (click)="limparClick($event)">
+      <i class="bi bi-eraser"></i>
+      <span>Limpar</span>
+    </button>
+
+    <button class="btn-action danger" (click)="fecharClick($event)">
+      <i class="bi bi-x-circle"></i>
+      <span>Fechar</span>
+    </button>
+
   </div>
 </div>
