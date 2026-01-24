@@ -9,6 +9,7 @@ import com.erp.gestao.model.pessoa.Empresa;
 import com.erp.gestao.model.endereco.Estado;
 import com.erp.gestao.model.endereco.Pais;
 import com.erp.gestao.model.pessoa.Pessoa;
+import com.erp.gestao.model.pessoa.colaborador.FuncaoFuncionario;
 import com.erp.gestao.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -32,19 +33,24 @@ public class DataBaseLoader implements CommandLineRunner {
     private final EstadoRepository estadoRepository;
     private final MarcaRepository marcaRepository;
     private final CategoriaRepository categoriaRepository;
+    private final FuncaoFuncionarioRepository funcaoFuncionarioRepository;
 
     public DataBaseLoader(EmpresaRepository empresaRepository,
                           PessoaRepository pessoaRepository,
                           PaisRepository paisRepository,
                           EstadoRepository estadoRepository,
                           MarcaRepository marcaRepository,
-                          CategoriaRepository categoriaRepository) {
+                          CategoriaRepository categoriaRepository,
+                          FuncaoFuncionarioRepository funcaoFuncionarioRepository) {
+
         this.empresaRepository = empresaRepository;
         this.pessoaRepository = pessoaRepository;
         this.paisRepository = paisRepository;
         this.estadoRepository = estadoRepository;
         this.marcaRepository = marcaRepository;
         this.categoriaRepository = categoriaRepository;
+        this.funcaoFuncionarioRepository = funcaoFuncionarioRepository;
+
     }
 
     @Override
@@ -55,6 +61,8 @@ public class DataBaseLoader implements CommandLineRunner {
         createEstadosBrasil();
         createMarca();
         createCategoria();
+        createFuncoesFuncionarios();
+
     }
 
     private void createEmpresa() {
@@ -360,6 +368,23 @@ public class DataBaseLoader implements CommandLineRunner {
 
             estadoRepository.saveAll(estados);
             System.out.println("-> Estados do Brasil carregados com sucesso!");
+        }
+    }
+
+    private void createFuncoesFuncionarios() {
+        List<FuncaoFuncionario> funcaoList = funcaoFuncionarioRepository.findAll();
+        if (CollectionMetodsUtils.isEmpty(funcaoList) || funcaoList.size() == 1) {
+            List<FuncaoFuncionario> funcaoFuncionarioList = List.of(
+                    new FuncaoFuncionario("Proprietario", true ),
+                    new FuncaoFuncionario("Socio", true),
+                    new FuncaoFuncionario("Gestor", true),
+                    new FuncaoFuncionario("Gerente", true),
+                    new FuncaoFuncionario("Vendedor", false)
+            );
+
+            funcaoFuncionarioRepository.saveAll(funcaoFuncionarioList);
+            System.out.println("-> Funções de Funcionarios carregadas com sucesso!");
+
         }
     }
 
