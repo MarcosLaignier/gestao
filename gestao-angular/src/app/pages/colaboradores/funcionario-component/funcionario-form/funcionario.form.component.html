@@ -1,0 +1,17 @@
+<div>
+  <toolbar-filter-component [tituloPagina]="'Cadastro de Funcionario'"
+                            [listMode]="false"
+                            (salvar)="doSave(model)">
+  </toolbar-filter-component>
+</div>
+
+
+@if (model) {
+  <div class="card-body">
+<!--    <div class="row g-3">-->
+<!--      <text-box-component label="Descrição" colClass="col-md-2" [(dataField)]="model.descricao"></text-box-component>-->
+<!--      <switch-component label="Permissão de Acesso ao Painel do Gestor" colClass="col-md-4" [(dataField)]="model.acessoPainelGestor"></switch-component>-->
+<!--    </div>-->
+  </div>
+}
+

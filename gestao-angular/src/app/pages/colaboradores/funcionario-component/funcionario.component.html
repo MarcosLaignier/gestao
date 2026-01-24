@@ -1,0 +1,16 @@
+  <div>
+    <toolbar-filter-component [tituloPagina]="'Funcionarios'"
+                              (filtrar)="doFilter()">
+
+    </toolbar-filter-component>
+  </div>
+
+<funcionario-filter [filter]="filter">
+
+</funcionario-filter>
+
+<grid-component [typeDataSource]="dataSourceType"
+                [dataSource]="dataSource"
+                [routerByEditDblClick]="true">
+</grid-component>
+

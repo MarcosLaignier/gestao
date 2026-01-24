@@ -7,4 +7,10 @@ export const routes: Routes = [
       import('./pages/cadastros/cadastros.routes')
         .then(m => m.CADASTROS_ROUTES)
   },
+  {
+    path: 'pessoal',
+    loadChildren: () =>
+      import('./pages/colaboradores/colaboradores.routes')
+        .then(m => m.COLABORADORES_ROUTES)
+  },
 ];
