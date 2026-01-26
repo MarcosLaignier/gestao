@@ -19,7 +19,7 @@ public abstract class BaseController<T,ID> {
         return ResponseEntity.status(HttpStatus.OK).body(entityReturn);
     }
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<T>> findAll( ) {
         List<T> entityReturn = (List<T>) getService().findAll( );
         return ResponseEntity.status(HttpStatus.OK).body(entityReturn);
