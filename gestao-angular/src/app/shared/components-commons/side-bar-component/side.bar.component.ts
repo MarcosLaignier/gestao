@@ -33,6 +33,7 @@ export class SideBarComponent implements OnInit {
         { label: 'Categorias', icon: 'bi-tags', route: '/cadastros/categoria' },
         { label: 'Tipo de Produto', icon: 'bi-box', route: '/cadastros/tipoProduto' },
         { label: 'Produtos', icon: 'bi-box-seam', route: '/cadastros/produtos' }
+
       ]
     },
 
@@ -41,7 +42,8 @@ export class SideBarComponent implements OnInit {
       icon: 'bi-people',
       children: [
         {label: 'Cadastro de Clientes', icon: 'bi-person-check', route: '/pessoas/clientes'},
-        {label: 'Cadastro de Fornecedores', icon: 'bi-building-check', route: '/pessoas/fornecedores'}
+        {label: 'Cadastro de Fornecedores', icon: 'bi-building-check', route: '/pessoas/fornecedores'},
+        {label: 'Pessoas', icon: 'bi-person-check', route: '/cadastros/pessoa'}
       ]
     },
     {
