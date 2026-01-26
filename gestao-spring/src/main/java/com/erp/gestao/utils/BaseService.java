@@ -1,6 +1,7 @@
 package com.erp.gestao.utils;
 
 import com.erp.gestao.utils.validate.GenericUniqueValidator;
+import com.erp.gestao.utils.validate.ValidateMetodsUtils;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -81,6 +82,7 @@ public abstract class BaseService<T,ID>  {
 
 
     protected void validate(T entity) throws ServiceException {
+        ValidateMetodsUtils.validate(entity,  genericUniqueValidator);
     }
 
     protected void validateDelete(T entity) throws ServiceException {
