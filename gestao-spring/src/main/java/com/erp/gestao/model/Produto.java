@@ -10,6 +10,7 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name ="produto")
@@ -47,6 +48,9 @@ public class Produto {
 
     @Column(columnDefinition = "TEXT")
     private String observacoes;
+
+    @OneToMany(mappedBy = "produto",  cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Reserva> reservas;
 
     @Version
     private Integer versao = 0;
