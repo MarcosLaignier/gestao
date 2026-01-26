@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping(value = "/funcao-funcionario")
 public class FuncaoFuncionarioController extends BaseController<FuncaoFuncionario, Integer> {
 

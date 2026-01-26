@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping(value = "/pessoa")
 public class PessoaController  extends BaseController<Pessoa, Integer> {
 
