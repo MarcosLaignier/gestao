@@ -41,6 +41,10 @@ public class ValidateMetodsUtils {
                     case NOT_NULL -> validateNotNull(field, value, annotation, errors);
                     case SIZE -> validateSize(field, value, annotation, errors);
                     case UNIQUE -> validateUnique(entity, field, value, annotation, uniqueValidator, errors);
+                    case GREATER_THAN -> validateGreaterThan(field, value, annotation, errors);
+                    case GREATER_THAN_EQUAL -> validateGreaterThanEqual(field, value, annotation, errors);
+                    case LESS_THAN -> validateLessThan(field, value, annotation, errors);
+                    case LESS_THAN_EQUAL -> validateLessThanEqual(field, value, annotation, errors);
                 }
             }
         }
@@ -87,6 +91,38 @@ public class ValidateMetodsUtils {
         if (exists) {
             errors.add(ValidationType.UNIQUE.format(valField.fieldName(), 0, 0)
             );
+        }
+    }
+
+    private static void validateGreaterThan(Field field, Object value, ValidateField valField, List<String> errors) {
+        if (value instanceof Integer integer) {
+            if (integer < valField.min()) {
+                errors.add(ValidationType.GREATER_THAN.format(valField.fieldName(), valField.min(), valField.max()));
+            }
+        }
+    }
+
+    private static void validateGreaterThanEqual(Field field, Object value, ValidateField valField, List<String> errors) {
+        if (value instanceof Integer integer) {
+            if (integer <= valField.min()) {
+                errors.add(ValidationType.GREATER_THAN_EQUAL.format(valField.fieldName(), valField.min(), valField.max()));
+            }
+        }
+    }
+
+    private static void validateLessThan(Field field, Object value, ValidateField valField, List<String> errors) {
+        if (value instanceof Integer integer) {
+            if (integer > valField.max()) {
+                errors.add(ValidationType.LESS_THAN.format(valField.fieldName(), valField.max(), valField.min()));
+            }
+        }
+    }
+
+    private static void validateLessThanEqual(Field field, Object value, ValidateField valField, List<String> errors) {
+        if (value instanceof Integer integer) {
+            if (integer >= valField.max()) {
+                errors.add(ValidationType.LESS_THAN_EQUAL.format(valField.fieldName(), valField.max(), valField.min()));
+            }
         }
     }
 }
