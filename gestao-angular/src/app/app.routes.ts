@@ -13,4 +13,10 @@ export const routes: Routes = [
       import('./pages/colaboradores/colaboradores.routes')
         .then(m => m.COLABORADORES_ROUTES)
   },
+  {
+    path: 'movimentos',
+    loadChildren: () =>
+      import('./pages/movimentos/movimentos.routes')
+        .then(m => m.MOVIMENTOS_ROUTES)
+  },
 ];
