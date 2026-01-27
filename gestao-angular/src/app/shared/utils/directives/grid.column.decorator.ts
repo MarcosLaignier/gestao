@@ -9,6 +9,8 @@ export interface GridColumnOptions {
   ordem?: number;
   hidden?: boolean;
   width?: string;
+  isObject?: boolean;           // true se quiser passar um objeto
+  displayProperty?: string;     // qual propriedade do objeto exibir
 }
 
 export function GridColumn(options: GridColumnOptions = {}) {

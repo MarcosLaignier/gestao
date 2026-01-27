@@ -6,7 +6,7 @@ import {Router, RouterModule} from "@angular/router";
 
 @Component({
   selector: 'grid-component',
-  standalone:true,
+  standalone: true,
   imports: [
     RouterModule
   ],
@@ -17,14 +17,14 @@ export class GridComponent {
 
   gridColumnConfig: any[] = [];
   @Input() titleGridVisible: boolean = false;
-  @Input() titleGrid : string = '';
+  @Input() titleGrid: string = '';
   @Input() dataSource: any[] = [];
   @Input() columns: string[] = [];
   @Input() routerByEditDblClick: boolean = false;
 
   @Output() dblClickLine = new EventEmitter<any>();
 
-  private _typeDataSource:any;
+  private _typeDataSource: any;
 
 
   get typeDataSource(): any {
@@ -122,7 +122,7 @@ export class GridComponent {
   }
 
   editItem(row: any) {
-    if(this.routerByEditDblClick && row?.id){
+    if (this.routerByEditDblClick && row?.id) {
       const currentUrl = this.router.url;
       const newUrl = `${currentUrl}/editar/${row?.id}`;
       this.router.navigateByUrl(newUrl);
@@ -131,9 +131,15 @@ export class GridComponent {
     this.dblClickLine.emit(row);
   }
 
-  formatByType(value: any, col: any) {
+  formatByType(value: any, col: any): any {
 
     if (value == null) return '';
+
+    if (col.isObject && col.displayProperty) {
+      const displayValue = value[col.displayProperty];
+      // Aplica recursivamente o formatByType caso necessário
+      return this.formatByType(displayValue, {...col, isObject: false});
+    }
 
     switch (col.type) {
 
@@ -141,10 +147,9 @@ export class GridComponent {
         return this.formatDate(value);
 
       case 'documento':
-        if (value.toString().length <= 11){
-        return this.applyMask(value, col.mask ?? '000.000.000-00');
-        }
-        else{
+        if (value.toString().length <= 11) {
+          return this.applyMask(value, col.mask ?? '000.000.000-00');
+        } else {
           return this.applyMask(value, col.mask ?? '00.000.000/0000-00 ');
         }
 
