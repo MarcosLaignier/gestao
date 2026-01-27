@@ -1,0 +1,19 @@
+<form class="row g-1 p-3 border rounded shadow-sm">
+
+  <div class="flex-column">
+
+    <div class="d-flex flex-row gap-4">
+      <text-box-component [label]="'Nº da Reserva'" [colClass]="'col-md-2'"
+                          [placeholder]="'Ex: 10256'"></text-box-component>
+
+      <autocomplete-component class='col-md-4'
+                              [label]="'Pessoa'"
+                              [dataSource]="pessoaData"
+                              [displayKey]="'nome'"
+                              [filterKeys]="['nome','documento']"
+                              (dataFieldChange)="onPessoaSelecionada($event)"
+                              [placeholder]="'Nome ou CPF'">
+      </autocomplete-component>
+    </div>
+  </div>
+</form>

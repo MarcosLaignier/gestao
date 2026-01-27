@@ -1,0 +1,13 @@
+<div>
+  <toolbar-filter-component [tituloPagina]="'Produtos Reservados'"
+                            (filtrar)="doFilter()">
+  </toolbar-filter-component>
+</div>
+
+<reserva-filter-component></reserva-filter-component>
+
+
+<grid-component [typeDataSource]="dataSourceType"
+                [dataSource]="dataSource"
+                [routerByEditDblClick]="true">
+</grid-component>
