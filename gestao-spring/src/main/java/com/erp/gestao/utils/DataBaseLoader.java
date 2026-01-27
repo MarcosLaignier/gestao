@@ -2,9 +2,12 @@ package com.erp.gestao.utils;
 
 import com.erp.gestao.enums.AtivoInativoEnum;
 import com.erp.gestao.enums.SexoEnum;
+import com.erp.gestao.enums.StatusProdutoEnum;
 import com.erp.gestao.enums.TipoPessoaEnum;
 import com.erp.gestao.model.Categoria;
 import com.erp.gestao.model.Marca;
+import com.erp.gestao.model.Produto;
+import com.erp.gestao.model.Reserva;
 import com.erp.gestao.model.pessoa.Empresa;
 import com.erp.gestao.model.endereco.Estado;
 import com.erp.gestao.model.endereco.Pais;
@@ -14,6 +17,7 @@ import com.erp.gestao.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -34,6 +38,8 @@ public class DataBaseLoader implements CommandLineRunner {
     private final MarcaRepository marcaRepository;
     private final CategoriaRepository categoriaRepository;
     private final FuncaoFuncionarioRepository funcaoFuncionarioRepository;
+    private final ProdutoRepository produtoRepository;
+    private final ReservaRepository reservaRepository;
 
     public DataBaseLoader(EmpresaRepository empresaRepository,
                           PessoaRepository pessoaRepository,
@@ -41,7 +47,9 @@ public class DataBaseLoader implements CommandLineRunner {
                           EstadoRepository estadoRepository,
                           MarcaRepository marcaRepository,
                           CategoriaRepository categoriaRepository,
-                          FuncaoFuncionarioRepository funcaoFuncionarioRepository) {
+                          FuncaoFuncionarioRepository funcaoFuncionarioRepository,
+                          ProdutoRepository produtoRepository,
+                          ReservaRepository reservaRepository) {
 
         this.empresaRepository = empresaRepository;
         this.pessoaRepository = pessoaRepository;
@@ -50,6 +58,8 @@ public class DataBaseLoader implements CommandLineRunner {
         this.marcaRepository = marcaRepository;
         this.categoriaRepository = categoriaRepository;
         this.funcaoFuncionarioRepository = funcaoFuncionarioRepository;
+        this.produtoRepository = produtoRepository;
+        this.reservaRepository = reservaRepository;
 
     }
 
@@ -62,6 +72,8 @@ public class DataBaseLoader implements CommandLineRunner {
         createMarca();
         createCategoria();
         createFuncoesFuncionarios();
+        createProdutos();
+        createReservas();
 
     }
 
@@ -386,6 +398,91 @@ public class DataBaseLoader implements CommandLineRunner {
             System.out.println("-> Funções de Funcionarios carregadas com sucesso!");
 
         }
+    }
+
+    private void createProdutos() {
+        List<Produto> produtoList = produtoRepository.findAll();
+        if (CollectionMetodsUtils.isEmpty(produtoList)) {
+            Categoria telefone = categoriaRepository.findAll().stream()
+                    .filter(c -> c.getNome().equals("Telefone"))
+                    .findFirst()
+                    .orElse(null);
+
+            Categoria monitor = categoriaRepository.findAll().stream()
+                    .filter(c -> c.getNome().equals("Monitor"))
+                    .findFirst()
+                    .orElse(null);
+
+            Marca samsung = marcaRepository.findAll().stream()
+                    .filter(m -> m.getNome().equals("Samsung"))
+                    .findFirst()
+                    .orElse(null);
+
+            Marca lg = marcaRepository.findAll().stream()
+                    .filter(m -> m.getNome().equals("LG"))
+                    .findFirst()
+                    .orElse(null);
+
+            List<Produto> produtos = List.of(
+                    criarProduto(telefone, samsung, "Samsung Galaxy S21", "PAT-001", "Galaxy S21", new BigDecimal("150.00"), StatusProdutoEnum.DISPONIVEL),
+                    criarProduto(telefone, samsung, "Samsung Galaxy A52", "PAT-002", "Galaxy A52", new BigDecimal("100.00"), StatusProdutoEnum.DISPONIVEL),
+                    criarProduto(monitor, lg, "LG 24 polegadas", "PAT-003", "24UP550", new BigDecimal("80.00"), StatusProdutoEnum.DISPONIVEL),
+                    criarProduto(monitor, samsung, "Samsung 27 polegadas", "PAT-004", "LU28E590DS", new BigDecimal("120.00"), StatusProdutoEnum.DISPONIVEL),
+                    criarProduto(telefone, lg, "LG K22", "PAT-005", "LG-K22", new BigDecimal("50.00"), StatusProdutoEnum.DISPONIVEL)
+            );
+
+            produtoRepository.saveAll(produtos);
+            System.out.println("-> Produtos carregados com sucesso!");
+        }
+    }
+
+    private Produto criarProduto(Categoria categoria, Marca marca, String nome, String codigoPatrimonio, String modelo, BigDecimal valorDiaria, StatusProdutoEnum status) {
+        Produto produto = new Produto();
+        produto.setCategoria(categoria);
+        produto.setMarca(marca);
+        produto.setNome(nome);
+        produto.setCodigoPatrimonio(codigoPatrimonio);
+        produto.setModelo(modelo);
+        produto.setValorDiaria(valorDiaria);
+        produto.setStatusAtual(status);
+        produto.setDataAquisicao(LocalDate.now().minusMonths(6));
+        produto.setObservacoes("Produto mockado para testes de Reserva");
+        return produto;
+    }
+
+    private void createReservas() {
+        List<Reserva> reservaList = reservaRepository.findAll();
+        if (CollectionMetodsUtils.isEmpty(reservaList)) {
+            List<Pessoa> pessoas = pessoaRepository.findAll();
+            List<Produto> produtos = produtoRepository.findAll();
+
+            if (!pessoas.isEmpty() && !produtos.isEmpty()) {
+                LocalDate hoje = LocalDate.now();
+
+                List<Reserva> reservas = List.of(
+                        criarReserva(pessoas.get(0), produtos.get(0), hoje, 5, hoje.plusDays(5)),
+                        criarReserva(pessoas.get(1), produtos.get(1), hoje.minusDays(3), 7, hoje.plusDays(4)),
+                        criarReserva(pessoas.get(2), produtos.get(2), hoje.minusDays(10), 10, hoje)
+                );
+
+                reservaRepository.saveAll(reservas);
+                System.out.println("-> Reservas carregadas com sucesso!");
+            }
+        }
+    }
+
+    private Reserva criarReserva(Pessoa locatario, Produto produto, LocalDate dataReserva, Integer quantidadeDeDias, LocalDate previsaoDeEntrega) {
+        Reserva reserva = new Reserva();
+        reserva.setLocatario(locatario);
+        reserva.setProduto(produto);
+        reserva.setDataReserva(dataReserva);
+        reserva.setQuantidadeDeDias(quantidadeDeDias);
+        reserva.setPrevisaoDeEntrega(previsaoDeEntrega);
+        reserva.setQuantidadeLocada(1);
+        reserva.setEstorno(false);
+        reserva.setEstornoCompleto(false);
+        reserva.setVersao(0);
+        return reserva;
     }
 
 }
