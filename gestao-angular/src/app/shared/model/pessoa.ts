@@ -4,6 +4,7 @@ import {Endereco} from "./endereco";
 import {Telefone} from "./telefone";
 import {SexoEnum} from "../enum/sexo.enum";
 import {GridColumn} from "../utils/directives/grid.column.decorator";
+import {PessoaPapel} from "./pessoa.papel";
 
 export class Pessoa{
 
@@ -32,6 +33,8 @@ export class Pessoa{
   telefoneList: Telefone[];
 
   enderecoList: Endereco[];
+
+   papeis: PessoaPapel[];
 
   versao: number;
 

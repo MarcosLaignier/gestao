@@ -1,7 +1,12 @@
 <form class="row g-1 p-3 border rounded shadow-sm">
 
   <div class="flex-column">
-   <pessoa-filter-component [filter]="filter"></pessoa-filter-component>
+    <pessoa-filter-component [filter]="filter.pessoaFilterDTO">
+      <div extra-filters class="d-flex flex-row gap-1">
+        <date-box-component [label]="'Admissão de'" [colClass]="'col-md-1'" [(dataField)]="filter.admissaoInicio"></date-box-component>
+        <date-box-component [label]="'Admissão Até'" [colClass]="'col-md-1'" [(dataField)]="filter.admissaoFim"></date-box-component>
+      </div>
+    </pessoa-filter-component>
 
   </div>
 </form>

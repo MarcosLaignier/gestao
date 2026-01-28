@@ -17,7 +17,6 @@ import java.util.List;
 
 @Entity
 @Table(name ="pessoa")
-@Inheritance(strategy = InheritanceType.JOINED)
 @Data
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Pessoa {
@@ -55,6 +54,9 @@ public class Pessoa {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "pessoa")
     private List<Endereco> enderecoList;
+
+    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PessoaPapel> papeis;
 
     @Version
     private Integer versao = 0;

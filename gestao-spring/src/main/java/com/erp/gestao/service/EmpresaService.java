@@ -42,13 +42,13 @@ public class EmpresaService extends BaseService<Empresa, Integer> {
 
 //        ValidateMetodsUtils.validateFieldsNonNull(entity);
 
-        if (!CollectionMetodsUtils.validaDocumento(entity.getDocumento())){
-            throw new IllegalArgumentException("Documento inválido");
-        }
-
-        if(entity.getNascimento() != null && entity.getNascimento().isAfter(LocalDate.now())){
-            throw new IllegalArgumentException("A data de criação da empresa não pode ser futura!");
-        }
+//        if (!CollectionMetodsUtils.validaDocumento(entity.getDocumento())){
+//            throw new IllegalArgumentException("Documento inválido");
+//        }
+//
+//        if(entity.getNascimento() != null && entity.getNascimento().isAfter(LocalDate.now())){
+//            throw new IllegalArgumentException("A data de criação da empresa não pode ser futura!");
+//        }
 
 
         super.validate(entity);
@@ -69,13 +69,13 @@ public class EmpresaService extends BaseService<Empresa, Integer> {
 
     private void sincronizarReferencias(Empresa pessoa) {
 
-        Optional.ofNullable(pessoa.getTelefoneList())
-                .orElse(List.of())
-                .forEach(t -> t.setPessoa(pessoa));
-
-        Optional.ofNullable(pessoa.getEnderecoList())
-                .orElse(List.of())
-                .forEach(e -> e.setPessoa(pessoa));
+//        Optional.ofNullable(pessoa.getTelefoneList())
+//                .orElse(List.of())
+//                .forEach(t -> t.setPessoa(pessoa));
+//
+//        Optional.ofNullable(pessoa.getEnderecoList())
+//                .orElse(List.of())
+//                .forEach(e -> e.setPessoa(pessoa));
     }
 
     public Empresa getEmpresa(){

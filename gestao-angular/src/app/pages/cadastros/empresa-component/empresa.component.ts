@@ -73,20 +73,20 @@ export class EmpresaComponent extends CrudPadrao<Empresa, EmpresaFilterDTO>{
         this.model = value.body
       }else{
         this.model = new Empresa();
-        this.model.tipoPessoa = TipoPessoaEnum.JURIDICA;
-        this.model.situacao = AtivoInativoEnum.ATIVO;
-        this.model.enderecoList = [];
-        this.model.telefoneList = [];
+        this.model.pessoa.tipoPessoa = TipoPessoaEnum.JURIDICA;
+        this.model.pessoa.situacao = AtivoInativoEnum.ATIVO;
+        this.model.pessoa.enderecoList = [];
+        this.model.pessoa.telefoneList = [];
       }
     })
   }
 
   adicionaContato() {
-    if(_.isNil(this.model.telefoneList)){
-      this.model.telefoneList = [];
+    if(_.isNil(this.model.pessoa.telefoneList)){
+      this.model.pessoa.telefoneList = [];
     }
     if(this.validaAdicionaTelefone(this.telefoneSelected)){
-      this.model.telefoneList.push(this.telefoneSelected)
+      this.model.pessoa.telefoneList.push(this.telefoneSelected)
       this.telefoneSelected = new Telefone();
     }
   }
@@ -97,7 +97,7 @@ export class EmpresaComponent extends CrudPadrao<Empresa, EmpresaFilterDTO>{
       return false;
     }
 
-    const existe = this.model.telefoneList.some(t => t.numero.replace(/\D/g, '') === telefoneAdd.numero.replace(/\D/g, ''));
+    const existe = this.model.pessoa.telefoneList.some(t => t.numero.replace(/\D/g, '') === telefoneAdd.numero.replace(/\D/g, ''));
 
     if (existe) {
       this.alertService.warning('Contato já existente!', 3000);
@@ -135,11 +135,11 @@ export class EmpresaComponent extends CrudPadrao<Empresa, EmpresaFilterDTO>{
   }
 
   adicionaEndereco() {
-    if(_.isNil(this.model.enderecoList)){
-      this.model.enderecoList = [];
+    if(_.isNil(this.model.pessoa.enderecoList)){
+      this.model.pessoa.enderecoList = [];
     }
     // if(this.validaAdicionaTelefone(this.telefoneSelected)){
-    this.model.enderecoList.push(this.enderecoSelected)
+    this.model.pessoa.enderecoList.push(this.enderecoSelected)
     this.enderecoSelected = new Endereco();
     // }
   }

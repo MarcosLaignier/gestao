@@ -27,12 +27,12 @@ public class FuncionarioService extends BaseService<Funcionario, Integer> {
     public List<Funcionario> listar(FuncionarioFilterDTO filter) {
         return repository.findAll(
                 SpecificationBuilder.of(Funcionario.class)
-                        .likeIgnoreCase("nome", filter.getNome())
-                        .likeIgnoreCase("documento", filter.getDocumento())
-                        .equal("nascimento", filter.getNascimento())
-                        .equal("situacao", filter.getSituacao())
+                        .likeIgnoreCase("nome", filter.getPessoaFilterDTO().getNome())
+                        .likeIgnoreCase("documento", filter.getPessoaFilterDTO().getDocumento())
+                        .equal("nascimento", filter.getPessoaFilterDTO().getNascimento())
+                        .equal("situacao", filter.getPessoaFilterDTO().getSituacao())
                         .between("admissao", filter.getAdmissaoInicio(), filter.getAdmissaoFim())
-                        .between("nascimento", filter.getNascimentoInicio(), filter.getNascimentoFim())
+                        .between("nascimento", filter.getPessoaFilterDTO().getNascimentoInicio(), filter.getPessoaFilterDTO().getNascimentoFim())
         );
     }
 
@@ -59,13 +59,13 @@ public class FuncionarioService extends BaseService<Funcionario, Integer> {
 
     private void sincronizarReferencias(Funcionario pessoa) {
 
-        Optional.ofNullable(pessoa.getTelefoneList())
-                .orElse(List.of())
-                .forEach(t -> t.setPessoa(pessoa));
-
-        Optional.ofNullable(pessoa.getEnderecoList())
-                .orElse(List.of())
-                .forEach(e -> e.setPessoa(pessoa));
+//        Optional.ofNullable(pessoa.getTelefoneList())
+//                .orElse(List.of())
+//                .forEach(t -> t.setPessoa(pessoa));
+//
+//        Optional.ofNullable(pessoa.getEnderecoList())
+//                .orElse(List.of())
+//                .forEach(e -> e.setPessoa(pessoa));
     }
 
 }

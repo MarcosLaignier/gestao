@@ -32,7 +32,9 @@ export class SideBarComponent implements OnInit {
         { label: 'Marcas', icon: 'bi-badge-tm', route: '/cadastros/marca' },
         { label: 'Categorias', icon: 'bi-tags', route: '/cadastros/categoria' },
         { label: 'Tipo de Produto', icon: 'bi-box', route: '/cadastros/tipoProduto' },
-        { label: 'Produtos', icon: 'bi-box-seam', route: '/cadastros/produtos' }
+        { label: 'Produtos', icon: 'bi-box-seam', route: '/cadastros/produtos' },
+        {label: 'Cadastro de Pessoas', icon: 'bi-person-check', route: '/cadastros/pessoa'}
+
 
       ]
     },

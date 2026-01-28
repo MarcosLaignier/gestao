@@ -1,6 +1,7 @@
 package com.erp.gestao.utils;
 
 import com.erp.gestao.enums.AtivoInativoEnum;
+import com.erp.gestao.enums.PapelEnum;
 import com.erp.gestao.enums.SexoEnum;
 import com.erp.gestao.enums.StatusProdutoEnum;
 import com.erp.gestao.enums.TipoPessoaEnum;
@@ -12,13 +13,16 @@ import com.erp.gestao.model.pessoa.Empresa;
 import com.erp.gestao.model.endereco.Estado;
 import com.erp.gestao.model.endereco.Pais;
 import com.erp.gestao.model.pessoa.Pessoa;
+import com.erp.gestao.model.pessoa.PessoaPapel;
 import com.erp.gestao.model.pessoa.colaborador.FuncaoFuncionario;
+import com.erp.gestao.model.pessoa.colaborador.Funcionario;
 import com.erp.gestao.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 /** Classe que sobe junto com o spring,
@@ -40,6 +44,8 @@ public class DataBaseLoader implements CommandLineRunner {
     private final FuncaoFuncionarioRepository funcaoFuncionarioRepository;
     private final ProdutoRepository produtoRepository;
     private final ReservaRepository reservaRepository;
+    private final FuncionarioRepository funcionarioRepository;
+
 
     public DataBaseLoader(EmpresaRepository empresaRepository,
                           PessoaRepository pessoaRepository,
@@ -49,7 +55,8 @@ public class DataBaseLoader implements CommandLineRunner {
                           CategoriaRepository categoriaRepository,
                           FuncaoFuncionarioRepository funcaoFuncionarioRepository,
                           ProdutoRepository produtoRepository,
-                          ReservaRepository reservaRepository) {
+                          ReservaRepository reservaRepository,
+                          FuncionarioRepository funcionarioRepository) {
 
         this.empresaRepository = empresaRepository;
         this.pessoaRepository = pessoaRepository;
@@ -60,13 +67,14 @@ public class DataBaseLoader implements CommandLineRunner {
         this.funcaoFuncionarioRepository = funcaoFuncionarioRepository;
         this.produtoRepository = produtoRepository;
         this.reservaRepository = reservaRepository;
+        this.funcionarioRepository = funcionarioRepository;
 
     }
 
     @Override
     public void run(String... args) {
-        createEmpresa();
         createPessoa();
+        createEmpresa();
         createPaises();
         createEstadosBrasil();
         createMarca();
@@ -77,26 +85,13 @@ public class DataBaseLoader implements CommandLineRunner {
 
     }
 
-    private void createEmpresa() {
-        Empresa empresa = new Empresa();
-        empresa.setNome("Empresa dos Murta");
-        empresa.setDocumento("88821382000165");
-        empresa.setNascimento(LocalDate.now());
-        empresa.setEmail("gestaoMurta@gmail.com");
-        empresa.setSituacao(AtivoInativoEnum.ATIVO);
-        empresa.setTipoPessoa(TipoPessoaEnum.JURIDICA);
-        empresa.setNomeFantasia("Murtolandia");
-        empresa.setInscricaoEstadual("000001");
 
-        empresaRepository.save(empresa);
-        System.out.println("-> Empresa carregada com sucesso!");
-
-    }
 
     private void createPessoa() {
         List<Pessoa> pessoaList = pessoaRepository.findAll();
         if (CollectionMetodsUtils.isEmpty(pessoaList) || pessoaList.size() == 1) {
             List<Pessoa> pessoas = List.of(
+                    new Pessoa("Empresa dos Murta", "88821382000165", LocalDate.now(), AtivoInativoEnum.ATIVO, SexoEnum.MASCULINO, TipoPessoaEnum.JURIDICA),
                     new Pessoa("Marcos Leao", "07956285607", LocalDate.now(), AtivoInativoEnum.ATIVO, SexoEnum.MASCULINO, TipoPessoaEnum.FISICA),
                     new Pessoa("Ana Souza", "12345678901", LocalDate.now(), AtivoInativoEnum.ATIVO, SexoEnum.FEMININO, TipoPessoaEnum.FISICA),
                     new Pessoa("Carlos Pereira", "98765432100", LocalDate.now(), AtivoInativoEnum.ATIVO, SexoEnum.MASCULINO, TipoPessoaEnum.FISICA)
@@ -106,6 +101,20 @@ public class DataBaseLoader implements CommandLineRunner {
             System.out.println("-> Pessoas carregados com sucesso!");
 
         }
+    }
+
+    private void createEmpresa() {
+
+        Pessoa pessoa = pessoaRepository.findById(1).orElseThrow(() -> new RuntimeException("Pessoa não encontrada"));
+
+        Empresa empresa = new Empresa();
+        empresa.setPessoa(pessoa);
+        empresa.setNomeFantasia("Murtolandia");
+        empresa.setInscricaoEstadual("000001");
+
+        empresaRepository.save(empresa);
+
+        System.out.println("-> Empresa carregada com sucesso!");
     }
 
     private void createMarca() {
