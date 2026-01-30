@@ -2,7 +2,7 @@ import {Component, Input} from "@angular/core";
 import {RouterModule} from "@angular/router";
 import {FuncionarioFilterDTO} from "../../../../shared/dto/filterDTO/funcionario.filter.dto";
 import {PessoaFilterComponent} from "../../../cadastros/pessoa-component/pessoa-filter/pessoa.filter.component";
-import {TextBoxComponent} from "../../../../shared/components-commons/infra/text-box-component/text.box.component";
+import {DateBoxComponent} from "../../../../shared/components-commons/infra/date-box-component/date.box.component";
 
 @Component({
   selector: 'funcionario-filter',
@@ -10,7 +10,8 @@ import {TextBoxComponent} from "../../../../shared/components-commons/infra/text
   standalone: true,
   imports: [
     RouterModule,
-    PessoaFilterComponent
+    PessoaFilterComponent,
+    DateBoxComponent
   ],
 })
 export class FuncionarioFilterComponet {

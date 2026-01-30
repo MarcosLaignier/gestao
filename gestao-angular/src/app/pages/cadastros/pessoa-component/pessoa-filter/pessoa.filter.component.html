@@ -8,18 +8,16 @@
     </div>
 
     <div class="d-flex flex-row gap-1">
-      <date-box-component [label]="'Nascimento de'" [colClass]="'col-md-2'" [(dataField)]="filter.nascimentoInicio"></date-box-component>
-      <date-box-component [label]="'Nascimento Até'" [colClass]="'col-md-2'" [(dataField)]="filter.nascimentoFim"></date-box-component>
+      <select-enum [label]="'Situação'" [enumObject]="situacaoEnum" [(dataField)]="filter.situacao"></select-enum>
+      <select-enum [label]="'Tipo'" [enumObject]="tipoEnum" [(dataField)]="filter.tipoPessoa"></select-enum>
     </div>
 
-    <select-enum [label]="'Situação'"
-                 [enumObject]="situacaoEnum"
-                 [(dataField)]="filter.situacao">
-    </select-enum>
+    <div class="d-flex flex-row gap-1">
+      <date-box-component [label]="'Nascimento de'" [colClass]="'col-md-1'" [(dataField)]="filter.nascimentoInicio"></date-box-component>
+      <date-box-component [label]="'Nascimento Até'" [colClass]="'col-md-1'" [(dataField)]="filter.nascimentoFim"></date-box-component>
+    </div>
 
-    <select-enum [label]="'Tipo'"
-                 [enumObject]="tipoEnum"
-                 [(dataField)]="filter.tipoPessoa">
-    </select-enum>
-  </div>
+
+    <!--    Caso precise colocar novos filters criar a div com este seletor-->
+    <ng-content select="[extra-filters]"></ng-content>  </div>
 </form>

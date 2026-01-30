@@ -23,12 +23,6 @@ public class ProdutoController extends BaseController<Produto, Integer> {
         return service;
     }
 
-    @GetMapping
-    public ResponseEntity<List<Produto>> findAll() {
-        List<Produto> result = service.findAll();
-        return ResponseEntity.status(HttpStatus.OK).body(result);
-    }
-
     @PostMapping("/listagem")
     public ResponseEntity<List<Produto>> filtrar(@RequestBody ProdutoFilterDTO filtro) {
         List<Produto> Equipamentos = service.listar(filtro);

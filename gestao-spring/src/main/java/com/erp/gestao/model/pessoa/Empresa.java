@@ -1,15 +1,14 @@
 package com.erp.gestao.model.pessoa;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import com.erp.gestao.enums.PapelEnum;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
 @Entity
 @Table(name = "empresa")
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Empresa extends Pessoa {
+public class Empresa extends PessoaPapel {
 
     private String nomeFantasia;
 
@@ -17,5 +16,7 @@ public class Empresa extends Pessoa {
 
     private String logotipoPath;
 
-
+    public Empresa() {
+        this.setPapel(PapelEnum.EMPRESA);
+    }
 }

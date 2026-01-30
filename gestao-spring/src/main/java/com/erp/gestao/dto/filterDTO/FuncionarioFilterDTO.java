@@ -7,7 +7,9 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-public class FuncionarioFilterDTO extends PessoaFilterDTO {
+public class FuncionarioFilterDTO  {
+
+    private PessoaFilterDTO pessoaFilterDTO;
 
     private LocalDate admissao;
 
