@@ -1,21 +1,19 @@
-import { Component } from '@angular/core';
-import { RouterModule } from "@angular/router";
-import { Input } from "@angular/core";
-import { ProdutoFilterDTO } from "../../../../shared/dto/filterDTO/produto.filter.dto";
+import {Component, Input} from '@angular/core';
+import {RouterModule} from "@angular/router";
+import {Produto} from "../../../../shared/model/produto";
 
 @Component({
   selector: 'produto-info-component',
   templateUrl: './produto-info-component.html',
   styleUrl: './produto-info-component.scss',
   standalone: true,
-    imports: [
-      RouterModule,
-    ],
+  imports: [
+    RouterModule,
+  ],
 
 })
 export class ProdutoInfoComponent {
 
-  @Input()
-  filter: ProdutoFilterDTO = new ProdutoFilterDTO();
+  @Input() produto: Produto = new Produto();
 
 }
