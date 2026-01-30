@@ -16,7 +16,7 @@ public class ArquivoDigitalService extends BaseService<ArquivoDigital, Long> {
     private ArquivoDigitalRepository arquivoDigitalRepository;
 
     @Override
-    public JpaRepository getRepository() {
+    public ArquivoDigitalRepository getRepository() {
         return arquivoDigitalRepository;
     }
 

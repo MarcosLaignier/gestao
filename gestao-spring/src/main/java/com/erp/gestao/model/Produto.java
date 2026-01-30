@@ -52,6 +52,9 @@ public class Produto {
     @OneToMany(mappedBy = "produto",  cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Reserva> reservas;
 
+    @OneToMany(mappedBy = "produto",  cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ProdutoArquivoDigital> arquivoDigitalList;
+
     @Version
     private Integer versao = 0;
 
