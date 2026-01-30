@@ -5,9 +5,12 @@ import {Funcionario} from "../../../../shared/model/funcionario";
 import {FuncionarioFilterDTO} from "../../../../shared/dto/filterDTO/funcionario.filter.dto";
 import {FuncionarioService} from "../../../../shared/service/funcionario.service";
 import {ToolbarComponent} from "../../../../shared/components-commons/infra/toolbar-filter-component/toolbar.component";
-import {TextBoxComponent} from "../../../../shared/components-commons/infra/text-box-component/text.box.component";
-import {SwitchComponent} from "../../../../shared/components-commons/infra/switch-component/switch.component";
 import {AlertService} from "../../../../shared/components-commons/infra/alert-component/alert.service";
+import {
+  PessoaSeletorComponent
+} from "../../../../shared/components-commons/seletores/pessoa-seletor-component/pessoa.seletor.component";
+import {DateBoxComponent} from "../../../../shared/components-commons/infra/date-box-component/date.box.component";
+import {PapelEnum} from "../../../../shared/enum/papel.enum";
 
 
 @Component({
@@ -16,6 +19,8 @@ import {AlertService} from "../../../../shared/components-commons/infra/alert-co
   imports: [
     RouterModule,
     ToolbarComponent,
+    PessoaSeletorComponent,
+    DateBoxComponent,
   ],
   templateUrl: './funcionario.form.component.html',
 })
@@ -39,6 +44,9 @@ export class FuncionarioFormComponent extends CrudPadrao<Funcionario, Funcionari
         }
       });
 
+    }else{
+      this.model.papel = PapelEnum.FUNCIONARIO;
+      this.model.ativo = true;
     }
   }
 
