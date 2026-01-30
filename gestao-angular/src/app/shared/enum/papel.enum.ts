@@ -1,5 +1,5 @@
 export enum  PapelEnum {
   EMPRESA = "Empresa",
-  FUNCIONARIO = "Funcionario",
+  FUNCIONARIO = "FUNCIONARIO",
   CLIENTE = "Cliente"
 }
