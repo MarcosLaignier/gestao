@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import * as _ from 'lodash';
 import {startCase} from 'lodash';
 import {Router, RouterModule} from "@angular/router";
+import {GridColumnExpand} from "../../../utils/directives/grid.column.decorator";
 
 
 @Component({
@@ -38,17 +39,31 @@ export class GridComponent {
 
     this._typeDataSource = value;
 
-    const ctor = value.constructor as any;
-    const cols = ctor.__grid_columns__;
+    const constructorClasse = value.constructor as any; // To construindo a classe principal que recebe via atributo pelo TypeDataSource
+    let colunasAnotadas = (constructorClasse.__grid_columns__ ?? []) as any[]; // Aqui vou ler todas as colunas que tem o decorator @GridColumn
+    const extendColumn = colunasAnotadas.find(c => c.isObject && c.isExtendsConstructor); // Aqui to buscando que expand(tem objeto)
+    if (extendColumn?.expandColumns?.length) { // Aqui verifico se existe se tem colunas para expandir( dentro da anotacao @GridColumn tem expandColumns...)
 
-    if (Array.isArray(cols)) {
-      this.gridColumnConfig = cols
-        .filter(c => !c.hidden)
-        .sort((a, b) => (a.ordem ?? 0) - (b.ordem ?? 0));
+      // Vou montar uma chave exemplo se é pessoa a classe expandida e tem nome la dentro, vai montar pessoa.nome
+      // com a chave extendida digo que seja o nome do atributo por exemplo PessoaPapel tem pessoa:Pessoa, vai pegar pessoa como key
+      const expandedCols = extendColumn.expandColumns.map(
+        (ec: GridColumnExpand) => ({...ec,
+          key: `${extendColumn.key}.${ec.key}`
+        })
+      );
+      colunasAnotadas = colunasAnotadas.filter(c => c != extendColumn);
 
-      this.columns = this.gridColumnConfig.map(c => c.key);
+      colunasAnotadas = [...expandedCols, ...colunasAnotadas];
     }
+
+    this.gridColumnConfig = colunasAnotadas
+      .filter(c => !c.hidden)
+      .sort((a, b) => (a.ordem ?? 0) - (b.ordem ?? 0));
+
+    this.columns = this.gridColumnConfig.map(c => c.key);
   }
+
+
 
   constructor(private router: Router) {
 
@@ -131,8 +146,17 @@ export class GridComponent {
     this.dblClickLine.emit(row);
   }
 
-  formatByType(value: any, col: any): any {
+  /** Metodo acessorio para quando for um atributo que tenha o expandable, que tem o path completo pessoa.nome por exmeplo
+   *
+   * @param obj
+   * @param path
+   */
+  resolveValue(obj: any, path: string): any {
+    if (!obj || !path) return null;
+    return path.split('.').reduce((acc, key) => acc?.[key], obj);
+  }
 
+  formatByType(value: any, col: any): any {
     if (value == null) return '';
 
     if (col.isObject && col.displayProperty) {

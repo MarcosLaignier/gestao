@@ -11,6 +11,18 @@ export interface GridColumnOptions {
   width?: string;
   isObject?: boolean;           // true se quiser passar um objeto
   displayProperty?: string;     // qual propriedade do objeto exibir
+  isExtendsConstructor?: boolean;
+  expandColumns?: GridColumnExpand[];
+}
+
+export interface GridColumnExpand {
+  key: string;
+  label?: string;
+  type?: GridColumnType;
+  ordem?: number;
+  mask?: string;
+  hidden?: boolean;
+  width?: string;
 }
 
 export function GridColumn(options: GridColumnOptions = {}) {

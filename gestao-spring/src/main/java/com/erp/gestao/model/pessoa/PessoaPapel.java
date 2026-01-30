@@ -1,19 +1,20 @@
 package com.erp.gestao.model.pessoa;
 
 import com.erp.gestao.enums.PapelEnum;
+import com.erp.gestao.model.pessoa.colaborador.Funcionario;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "pessoa_papel")
-@Data
 @Inheritance(strategy = InheritanceType.JOINED)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "papel")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "papel", visible = true)
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = Empresa.class, name = "EMPRESA")
+        @JsonSubTypes.Type(value = Empresa.class, name = "EMPRESA"),
+        @JsonSubTypes.Type(value = Funcionario.class, name = "FUNCIONARIO")
 })
+@Data
 public abstract class PessoaPapel {
 
     @Id
