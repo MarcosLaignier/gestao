@@ -9,27 +9,27 @@
         <!-- COLUNA TEXTO -->
         <div class="col-8">
           <div class="text-muted small mb-1">
-            Cod: <strong>PAT-001</strong>
+            Cod: <strong>{{produto.codigoPatrimonio}}</strong>
           </div>
 
           <div class="fw-semibold mb-2">
-            Samsung Galaxy S21
+            {{produto.nome}}
           </div>
 
           <div class="mb-2">
             <label class="form-label small mb-1">
               <i class="bi bi-tag"></i> Produto
             </label>
-            <select class="form-select form-select-sm">
-              <option selected>Telefone</option>
-            </select>
+            <div class="text-muted small mb-1">
+              {{produto.categoria?.nome}}
+            </div>
           </div>
 
           <div>
             <label class="form-label small mb-1">Marca</label>
-            <select class="form-select form-select-sm">
-              <option selected>Samsung</option>
-            </select>
+            <div class="text-muted small mb-1">
+              {{produto.marca?.nome}}
+            </div>
           </div>
         </div>
 

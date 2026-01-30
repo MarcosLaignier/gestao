@@ -22,6 +22,7 @@ import {ProdutoFilterDTO} from "../../../../shared/dto/filterDTO/produto.filter.
 import {ProdutoService} from "../../../../shared/service/produto.service";
 import {AlertService} from "../../../../shared/components-commons/infra/alert-component/alert.service";
 import {StatusProdutoEnum} from "../../../../shared/enum/status.produto.enum";
+import {ProdutoInfoComponent} from "../produto-info-component/produto-info-component";
 
 
 
@@ -39,7 +40,8 @@ import {StatusProdutoEnum} from "../../../../shared/enum/status.produto.enum";
     NumberBoxComponent,
     BadgeComponent,
     SelectMarcaComponent,
-    CategoriaSeletorComponent
+    CategoriaSeletorComponent,
+    ProdutoInfoComponent
   ],
   templateUrl: './produto.form.component.html',
 })
