@@ -6,6 +6,7 @@ import {ReservaFilterDto} from "../../../shared/dto/filterDTO/reserva.filter.dto
 import {ReservaService} from "../../../shared/service/reserva.service";
 import {GridComponent} from "../../../shared/components-commons/infra/grid-column-component/grid.component";
 import {ReservaFilterComponent} from "./reserva-filter/reserva.filter.component";
+import { ProdutoInfoComponent } from '../../cadastros/produto-component/produto-info-component/produto-info-component';
 
 @Component({
   selector: 'reserva-component',
@@ -13,8 +14,8 @@ import {ReservaFilterComponent} from "./reserva-filter/reserva.filter.component"
   imports: [
     ToolbarComponent,
     GridComponent,
-    ReservaFilterComponent
-  ],
+    ReservaFilterComponent,
+    ],
   templateUrl: './reserva.component.html',
   styleUrl: './reserva.component.scss',
 })

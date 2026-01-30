@@ -7,6 +7,7 @@ import {ProdutoService} from "../../../shared/service/produto.service";
 import {ProdutoFilterComponent} from "./produto-filter-component/produto.filter.component";
 import {GridComponent} from "../../../shared/components-commons/infra/grid-column-component/grid.component";
 import {ToolbarComponent} from "../../../shared/components-commons/infra/toolbar-filter-component/toolbar.component";
+import { ProdutoInfoComponent } from "./produto-info-component/produto-info-component";
 
 
 @Component({
@@ -17,6 +18,7 @@ import {ToolbarComponent} from "../../../shared/components-commons/infra/toolbar
     GridComponent,
     ToolbarComponent,
     ProdutoFilterComponent,
+    ProdutoInfoComponent
   ],
   templateUrl: './produto.component.html',
   styleUrls: ['./produto.component.scss']
