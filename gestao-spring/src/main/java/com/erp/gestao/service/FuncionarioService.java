@@ -1,6 +1,8 @@
 package com.erp.gestao.service;
 
 import com.erp.gestao.dto.filterDTO.FuncionarioFilterDTO;
+import com.erp.gestao.enums.PapelEnum;
+import com.erp.gestao.model.pessoa.Pessoa;
 import com.erp.gestao.model.pessoa.colaborador.Funcionario;
 import com.erp.gestao.repository.FuncionarioRepository;
 import com.erp.gestao.utils.BaseService;
@@ -10,8 +12,8 @@ import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service()
 public class FuncionarioService extends BaseService<Funcionario, Integer> {
@@ -53,6 +55,21 @@ public class FuncionarioService extends BaseService<Funcionario, Integer> {
     @Override
     protected void beforeSave(Funcionario entity) throws ServiceException {
         sincronizarReferencias(entity);
+        Pessoa pessoa = entity.getPessoa();
+
+        // Garante lista
+        if (pessoa.getPapeis() == null) {
+            pessoa.setPapeis(new ArrayList<>());
+        }
+
+        // Verifica se já existe papel FUNCIONARIO
+        boolean jaExiste = pessoa.getPapeis().stream()
+                .anyMatch(p -> p.getPapel() == PapelEnum.FUNCIONARIO);
+
+        if (!jaExiste) {
+            entity.setPessoa(pessoa);
+            pessoa.getPapeis().add(entity);
+        }
         super.beforeSave(entity);
     }
 

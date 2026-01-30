@@ -1,10 +1,6 @@
 package com.erp.gestao.model.pessoa.colaborador;
 
-import com.erp.gestao.enums.AtivoInativoEnum;
 import com.erp.gestao.enums.PapelEnum;
-import com.erp.gestao.enums.SexoEnum;
-import com.erp.gestao.enums.TipoPessoaEnum;
-import com.erp.gestao.model.pessoa.Pessoa;
 import com.erp.gestao.model.pessoa.PessoaPapel;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -24,8 +20,9 @@ public class Funcionario extends PessoaPapel{
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "funcionario")
     private List<FuncionarioPapel> funcionarioPapelList;
 
-    public Funcionario() {
+    protected Funcionario() {
         this.setPapel(PapelEnum.FUNCIONARIO);
+        this.setAtivo(true);
     }
 
 
