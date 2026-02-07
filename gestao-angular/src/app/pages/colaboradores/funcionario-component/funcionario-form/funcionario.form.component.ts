@@ -6,11 +6,14 @@ import {FuncionarioFilterDTO} from "../../../../shared/dto/filterDTO/funcionario
 import {FuncionarioService} from "../../../../shared/service/funcionario.service";
 import {ToolbarComponent} from "../../../../shared/components-commons/infra/toolbar-filter-component/toolbar.component";
 import {AlertService} from "../../../../shared/components-commons/infra/alert-component/alert.service";
-import {
-  PessoaSeletorComponent
-} from "../../../../shared/components-commons/seletores/pessoa-seletor-component/pessoa.seletor.component";
 import {DateBoxComponent} from "../../../../shared/components-commons/infra/date-box-component/date.box.component";
 import {PapelEnum} from "../../../../shared/enum/papel.enum";
+import {TabsComponent} from "../../../../shared/components-commons/infra/tabs-component/tabs.component";
+import {TabComponent} from "../../../../shared/components-commons/infra/tabs-component/tab.component";
+import {PessoaFormComponent} from "../../../cadastros/pessoa-component/pessoa-form/pessoa.form.component";
+import {
+  PessoaAutoCompleteComponent
+} from "../../../../shared/components-commons/seletores/pessoa-auto-complete-component/pessoa.auto.complete.component";
 
 
 @Component({
@@ -19,8 +22,11 @@ import {PapelEnum} from "../../../../shared/enum/papel.enum";
   imports: [
     RouterModule,
     ToolbarComponent,
-    PessoaSeletorComponent,
     DateBoxComponent,
+    TabsComponent,
+    TabComponent,
+    PessoaFormComponent,
+    PessoaAutoCompleteComponent,
   ],
   templateUrl: './funcionario.form.component.html',
 })

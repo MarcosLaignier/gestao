@@ -8,12 +8,20 @@
 
 @if (model) {
   <div class="card-body">
-    <!--    <div class="row g-3">-->
-    <!--      <text-box-component label="Descrição" colClass="col-md-2" [(dataField)]="model.descricao"></text-box-component>-->
-    <!--      <switch-component label="Permissão de Acesso ao Painel do Gestor" colClass="col-md-4" [(dataField)]="model.acessoPainelGestor"></switch-component>-->
-    <!--    </div>-->
-    <pessoa-seletor [(dataField)]="model.pessoa"></pessoa-seletor>
-    <date-box-component [(dataField)]="model.dataAdmissao"></date-box-component>
+    <div class="d-flex flex-row gap-1">
+      <pessoa-autocomplete [(dataField)]="model.pessoa" colClass="col-md-4"></pessoa-autocomplete>
+    </div>
+    <div class="d-flex flex-row gap-1">
+      <date-box-component [(dataField)]="model.dataAdmissao" label="Data Admissão"></date-box-component>
+    </div>
+    <tabs-component>
+      <tab title="Dados">
+        <pessoa-form-component [model]="model.pessoa"
+                               [isParent]="true">
+
+        </pessoa-form-component>
+      </tab>
+    </tabs-component>
   </div>
 }
 
