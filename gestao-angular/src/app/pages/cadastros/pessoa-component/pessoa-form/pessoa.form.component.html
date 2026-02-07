@@ -1,9 +1,11 @@
 <div>
-  <toolbar-filter-component [tituloPagina]="'Cadastro de Pessoa'"
-                            [listMode]="false"
-                            (salvar)="doSave(model)">
+  @if (!isParent){
+    <toolbar-filter-component [tituloPagina]="'Cadastro de Pessoa'"
+                              [listMode]="false"
+                              (salvar)="doSave(model)">
 
-  </toolbar-filter-component>
+    </toolbar-filter-component>
+  }
 </div>
 
 <tabs-component>
