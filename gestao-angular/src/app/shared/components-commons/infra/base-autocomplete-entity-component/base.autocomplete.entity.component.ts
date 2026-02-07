@@ -11,6 +11,7 @@ export abstract class BaseAutocompleteEntityComponent<T> extends FormFieldBase<T
 
   protected filteredItems: T[] = [];
   protected suggestionVisible = false;
+  protected alreadyAsked = false;
 
   textBoxData = '';
 
@@ -34,6 +35,8 @@ export abstract class BaseAutocompleteEntityComponent<T> extends FormFieldBase<T
   protected filterData(): void {
     const query = this.textBoxData?.trim();
 
+    this.alreadyAsked = false;
+
     if (!query || query.length < this.minLength) {
       this.filteredItems = [];
       this.suggestionVisible = false;
@@ -56,12 +59,32 @@ export abstract class BaseAutocompleteEntityComponent<T> extends FormFieldBase<T
   @HostListener('document:click', ['$event'])
   protected clickOut(event: MouseEvent): void {
     if (!this.eRef.nativeElement.contains(event.target)) {
+
+      const query = this.textBoxData?.trim();
+
+      if (
+        query &&
+        query.length >= this.minLength &&
+        !this.dataField &&
+        !this.alreadyAsked
+      ) {
+        this.alreadyAsked = true;
+        this.onNoSelectedAndBlur(query);
+      }
+
       this.suggestionVisible = false;
     }
   }
 
   /** Cada autocomplete decide como buscar, devera implementar */
   protected abstract load(term: string): Observable<T[]>;
+
+
+  /** Hook para caso clique fora sem selecioanr nada*/
+  protected onNoSelectedAndBlur(query: string): void {
+
+  }
+
 }
 
 /**
