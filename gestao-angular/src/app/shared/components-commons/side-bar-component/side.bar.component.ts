@@ -18,7 +18,7 @@ interface MenuItem {
 })
 export class SideBarComponent implements OnInit {
 
-  sidebarOpen = true;
+  sidebarOpen = false;
   isMobile = false;
 
   menuItems: MenuItem[] = [
@@ -106,27 +106,44 @@ export class SideBarComponent implements OnInit {
   }
 
   toggleSubmenu(item: MenuItem) {
-    if (!this.sidebarOpen) return;
+
+    if (!this.sidebarOpen) {
+      this.sidebarOpen = true;
+      this.sidebarToggle.emit(true);
+
+      this.menuItems.forEach(menu => menu.expanded = false);
+
+      setTimeout(() => {
+        item.expanded = true;
+      }, 250);
+
+      return;
+    }
 
     this.menuItems.forEach(menu => {
-      if (menu !== item && menu.children) {
+      if (menu != item) {
         menu.expanded = false;
       }
     });
 
-    item.expanded = !item.expanded;
+      item.expanded = !item.expanded;
   }
 
   expandMenuByRoute() {
     const currentUrl = this.router.url;
 
     this.menuItems.forEach(menu => {
-      if (!menu.children) return;
+      if (!menu.children) {
+        menu.expanded = false;
+        return;
+      }
+
       menu.expanded = menu.children.some(child =>
         currentUrl.startsWith(child.route ?? '')
       );
     });
   }
+
 
   checkScreen() {
     this.isMobile = window.innerWidth <= 768;
