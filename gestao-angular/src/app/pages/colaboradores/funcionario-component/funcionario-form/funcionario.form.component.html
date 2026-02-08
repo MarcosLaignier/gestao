@@ -9,19 +9,26 @@
 @if (model) {
   <div class="card-body">
     <div class="d-flex flex-row gap-1">
-      <pessoa-autocomplete [(dataField)]="model.pessoa" label="Funcionario" colClass="col-md-4"></pessoa-autocomplete>
+      <pessoa-autocomplete [(dataField)]="model.pessoa" [permiteCriarNova]="true" label="Funcionario" colClass="col-md-4"></pessoa-autocomplete>
     </div>
     <div class="d-flex flex-row gap-1">
       <date-box-component [(dataField)]="model.dataAdmissao" label="Data Admissão"></date-box-component>
     </div>
-    <tabs-component>
-      <tab title="Dados">
-        <pessoa-form-component [model]="model.pessoa"
-                               [isParent]="true">
+    @if (model.pessoa){
+      <tabs-component>
+        <tab title="Dados Pessoa">
+          <pessoa-form-component [model]="model.pessoa"
+                                 [isParent]="true">
 
-        </pessoa-form-component>
-      </tab>
-    </tabs-component>
+          </pessoa-form-component>
+        </tab>
+        <tab title="Historico Funções">
+          <grid-component [typeDataSource]="funcionarioPapelType"
+                          [dataSource]="model.funcionarioPapelList">
+          </grid-component>
+        </tab>
+      </tabs-component>
+    }
   </div>
 }
 

@@ -8,11 +8,16 @@ import {
 } from "../../infra/base-autocomplete-entity-component/base.autocomplete.entity.component";
 import {PessoaFilterDTO} from "../../../dto/filterDTO/pessoa.filter.dto";
 import {ConfirmDialogService} from "../../infra/confirm-dialog-component/confirm.dialog.service";
+import {TextBoxComponent} from "../../infra/text-box-component/text.box.component";
+import {NgClass} from "@angular/common";
 
 @Component({
   selector: 'pessoa-autocomplete',
   template: getAutocompleteBaseTemplate(),
-  imports: [], styles: [`
+  imports: [TextBoxComponent,
+    NgClass
+  ],
+  styles: [`
     :host {
       display: contents;
     }

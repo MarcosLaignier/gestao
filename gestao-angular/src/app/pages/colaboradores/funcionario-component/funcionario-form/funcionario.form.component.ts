@@ -14,6 +14,8 @@ import {PessoaFormComponent} from "../../../cadastros/pessoa-component/pessoa-fo
 import {
   PessoaAutoCompleteComponent
 } from "../../../../shared/components-commons/seletores/pessoa-auto-complete-component/pessoa.auto.complete.component";
+import {GridComponent} from "../../../../shared/components-commons/infra/grid-column-component/grid.component";
+import {FuncionarioPapel} from "../../../../shared/model/funcionario.papel";
 
 
 @Component({
@@ -27,10 +29,13 @@ import {
     TabComponent,
     PessoaFormComponent,
     PessoaAutoCompleteComponent,
+    GridComponent,
   ],
   templateUrl: './funcionario.form.component.html',
 })
 export class FuncionarioFormComponent extends CrudPadrao<Funcionario, FuncionarioFilterDTO>{
+
+  funcionarioPapelType: FuncionarioPapel = new FuncionarioPapel();
 
   constructor(injector: Injector,
               private mainService: FuncionarioService,
