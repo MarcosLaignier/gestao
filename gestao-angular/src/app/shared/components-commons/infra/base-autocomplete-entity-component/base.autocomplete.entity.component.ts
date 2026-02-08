@@ -77,7 +77,7 @@ export abstract class BaseAutocompleteEntityComponent<T> extends FormFieldBase<T
   }
 
   /** Cada autocomplete decide como buscar, devera implementar */
-  protected abstract load(term: string): Observable<T[]>;
+  protected abstract load(text: string): Observable<T[]>;
 
 
   /** Hook para caso clique fora sem selecioanr nada*/
