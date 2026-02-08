@@ -1,22 +1,18 @@
 import {map, Observable} from "rxjs";
 import {Pessoa} from "../../../model/pessoa";
 import {PessoaService} from "../../../service/pessoa.service";
-import {Component, ElementRef} from "@angular/core";
+import {Component, ElementRef, Input} from "@angular/core";
 import {
-  BaseAutocompleteEntityComponent, getAutocompleteBaseTemplate
+  BaseAutocompleteEntityComponent,
+  getAutocompleteBaseTemplate
 } from "../../infra/base-autocomplete-entity-component/base.autocomplete.entity.component";
 import {PessoaFilterDTO} from "../../../dto/filterDTO/pessoa.filter.dto";
-import {TextBoxComponent} from "../../infra/text-box-component/text.box.component";
-import {NgClass} from "@angular/common";
-import _ from "lodash";
+import {ConfirmDialogService} from "../../infra/confirm-dialog-component/confirm.dialog.service";
 
 @Component({
   selector: 'pessoa-autocomplete',
   template: getAutocompleteBaseTemplate(),
-  imports:[
-    TextBoxComponent,
-    NgClass
-  ], styles: [`
+  imports: [], styles: [`
     :host {
       display: contents;
     }
@@ -24,10 +20,11 @@ import _ from "lodash";
 })
 export class PessoaAutoCompleteComponent extends BaseAutocompleteEntityComponent<Pessoa> {
 
-  constructor(
-    eRef: ElementRef,
-    private pessoaService: PessoaService
-  ) {
+  @Input() permiteCriarNova: boolean = false;
+
+  constructor(eRef: ElementRef,
+              private pessoaService: PessoaService,
+              private confirmDialogService:ConfirmDialogService) {
     super(eRef);
   }
 
@@ -47,15 +44,22 @@ export class PessoaAutoCompleteComponent extends BaseAutocompleteEntityComponent
 
 
   // Aqui quero fazer uma logica ainda, se clicar fora quero criar um componente para perguntar se deseja criar a pessoa nao existente
-  protected override onNoSelectedAndBlur(query: string): void {
-    const confirmar = confirm(
-      `Deseja criar uma nova pessoa com o nome "${query}"?`
-    );
+  protected override async onNoSelectedAndBlur(query: string): Promise<void> {
+    if(this.permiteCriarNova){
+      const confirmar = await this.confirmDialogService.confirm({
+        title: 'Criar nova pessoa',
+        message: `Deseja criar uma nova pessoa com o nome "${query}"?`,
+        confirmText: 'Criar',
+        cancelText: 'Cancelar'
+      });
 
-    if (confirmar) {
-      // this.criarPessoa.emit(query);
-    } else {
-      this.textBoxData = '';
+      if (confirmar) {
+        // this.criarPessoa.emit(query);
+      } else {
+        this.textBoxData = '';
+        this.alreadyAsked = true;
+      }
     }
   }
+
 }

@@ -20,12 +20,9 @@ export abstract class BaseAutocompleteEntityComponent<T> extends FormFieldBase<T
   protected constructor(protected eRef: ElementRef) {
     super();
 
-    this.subjectSearch
-      .pipe(
-        debounceTime(300),
-        distinctUntilChanged(),
-        switchMap(term => this.load(term))
-      )
+    this.subjectSearch.pipe(debounceTime(300),
+      distinctUntilChanged(),
+      switchMap(term => this.load(term)))
       .subscribe(items => {
         this.filteredItems = items ?? [];
         this.suggestionVisible = true;
@@ -62,12 +59,7 @@ export abstract class BaseAutocompleteEntityComponent<T> extends FormFieldBase<T
 
       const query = this.textBoxData?.trim();
 
-      if (
-        query &&
-        query.length >= this.minLength &&
-        !this.dataField &&
-        !this.alreadyAsked
-      ) {
+      if (query && query.length >= this.minLength && !this.dataField && !this.alreadyAsked) {
         this.alreadyAsked = true;
         this.onNoSelectedAndBlur(query);
       }
@@ -76,14 +68,13 @@ export abstract class BaseAutocompleteEntityComponent<T> extends FormFieldBase<T
     }
   }
 
-  /** Cada autocomplete decide como buscar, devera implementar */
+  /** Cada autocomplete decide como buscar, deverá implementar */
   protected abstract load(text: string): Observable<T[]>;
 
-
-  /** Hook para caso clique fora sem selecioanr nada*/
-  protected onNoSelectedAndBlur(query: string): void {
-
+  /** Hook para caso clique fora sem selecionar nada */
+  protected async onNoSelectedAndBlur(query: string): Promise<void> {
   }
+
 
 }
 

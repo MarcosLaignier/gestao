@@ -17,6 +17,9 @@ export abstract class CrudPadrao<T,F> extends BaseCrudPadrao{
   @Input()
   isParent: boolean = false;
 
+  @Input()
+  readOnly: boolean = false;
+
   dataSource: T[] = [];
 
   http: HttpClient
